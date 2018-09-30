@@ -18,8 +18,9 @@
 	$price = $_POST['price'];
 	$quantity = $_POST['quantity'];
 	$description = $_POST['description'];
+	$stats = $_POST['status'];
 	$id = $_POST['user_id'];
-	if(mysqli_query($con,"UPDATE accessories SET image = '$image',name = '$name',brand = '$brand',category = '$category',price = '$price',quantity = '$quantity', description = '$description' WHERE id = $id")){
+	if(mysqli_query($con,"UPDATE accessories SET image = '$image',name = '$name',brand = '$brand',category = '$category',price = '$price',quantity = '$quantity', description = '$description' ,status = '$stats' WHERE id = $id")){
 		echo "Success";
 	}
 	else{

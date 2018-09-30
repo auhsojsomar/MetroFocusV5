@@ -9,7 +9,8 @@
 	$price = $_POST['price'];
 	$quantity = $_POST['quantity'];
 	$description = $_POST['description'];
-	if(mysqli_query($con,"INSERT INTO accessories (image,name,brand,category,price,description,quantity)VALUES('$new_name','$name','$brand','$category','$price','$description','$quantity')")){
+	$stats = $_POST['status'];
+	if(mysqli_query($con,"INSERT INTO accessories (image,name,brand,category,price,description,quantity,status)VALUES('$new_name','$name','$brand','$category','$price','$description','$quantity','$stats')")){
 		echo "Success";
 	}
 	else{
