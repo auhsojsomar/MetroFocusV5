@@ -61,34 +61,38 @@
     // https://smsgateway.me/
 
     require '../sms/autoload.php';
-
+        
     use SMSGatewayMe\Client\ApiClient;
     use SMSGatewayMe\Client\Configuration;
     use SMSGatewayMe\Client\Api\MessageApi;
     use SMSGatewayMe\Client\Model\SendMessageRequest;
 
-    // Configure client
-    $config = Configuration::getDefaultConfiguration();
-    $config->setApiKey('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzNzk2MjE5MCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYxNzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.fZ11G2HZ6QvIh2WjaGH63XsWyIBjbRItuuNwIPCfGiU');
-    $apiClient = new ApiClient($config);
-    $messageClient = new MessageApi($apiClient);
+    if(!empty($cnumber)){
+        // Configure client
+        $config = Configuration::getDefaultConfiguration();
+        $config->setApiKey('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzNzk2MjE5MCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYxNzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.fZ11G2HZ6QvIh2WjaGH63XsWyIBjbRItuuNwIPCfGiU');
+        $apiClient = new ApiClient($config);
+        $messageClient = new MessageApi($apiClient);
 
-    // Sending a SMS Message
-    $sendMessageRequest1 = new SendMessageRequest([
-        'phoneNumber' => $cnumber,
-        'message' => $message,
-        'deviceId' => 102592
-    ]);
-    // $sendMessageRequest2 = new SendMessageRequest([
-    //     'phoneNumber' => '07791064781',
-    //     'message' => 'test2',
-    //     'deviceId' => 2
-    // ]);
-    $sendMessages = $messageClient->sendMessages([
-        $sendMessageRequest1
-        // $sendMessageRequest2
-    ]);
-    // print_r($sendMessages);
-
-    echo "Message Sent!";
+        // Sending a SMS Message
+        $sendMessageRequest1 = new SendMessageRequest([
+            'phoneNumber' => $cnumber,
+            'message' => $message,
+            'deviceId' => 102592
+        ]);
+        // $sendMessageRequest2 = new SendMessageRequest([
+        //     'phoneNumber' => '07791064781',
+        //     'message' => 'test2',
+        //     'deviceId' => 2
+        // ]);
+        $sendMessages = $messageClient->sendMessages([
+            $sendMessageRequest1
+            // $sendMessageRequest2
+        ]);
+        // print_r($sendMessages);
+        echo "Message Sent!";  
+    }
+    else{
+        echo "Error";
+    }
  ?>

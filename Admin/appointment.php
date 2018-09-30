@@ -319,9 +319,16 @@ if($_COOKIE['role'] == 'Admin'){
                             method:'POST',
                             data:{uid:user_id2},
                             success:function(num){
-                                swal(num,'','success',{
+                                if(num == "Error"){
+                                    swal(num,'','error',{
                                     closeOnClickOutside:false,
                                 });
+                                }
+                                else{
+                                    swal(num,'','success',{
+                                    closeOnClickOutside:false,
+                                });
+                                }
                             }
                         });
                     }
