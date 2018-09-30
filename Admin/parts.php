@@ -529,11 +529,11 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#problemicon').removeClass('fas fa-exclamation-triangle');
                         $('#problemmessage').html('');
 
-                        var id = $('#user_id3').val();
+                        var data = $('#vform3').serialize();
                         $.ajax({
                             url:'php/parts/partsdefect.php',
                             method:'POST',
-                            data:{uid:id},
+                            data:data},
                             success:function(data){
                                 swal('Success','','success',{
                                     closeOnClickOutside:false
