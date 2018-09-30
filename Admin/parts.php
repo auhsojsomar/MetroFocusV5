@@ -533,7 +533,7 @@ if($_COOKIE['role'] == 'Admin'){
                         $.ajax({
                             url:'php/parts/partsdefect.php',
                             method:'POST',
-                            data:data},
+                            data:data,
                             success:function(data){
                                 swal('Success','','success',{
                                     closeOnClickOutside:false
