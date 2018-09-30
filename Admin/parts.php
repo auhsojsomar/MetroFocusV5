@@ -485,7 +485,13 @@ if($_COOKIE['role'] == 'Admin'){
                 });
                 $(document).on('click','button[name="defect"]',function(){
                     $('#defect').val('');
-                    $('#defect').val('');
+                    $('#defect').removeClass('is-danger');
+                    $('#defecticon').removeClass('fas fa-exclamation-triangle');
+                    $('#defectmessage').html('');
+                    $('#problem').val('');
+                    $('#problem').removeClass('is-danger');
+                    $('#problemicon').removeClass('fas fa-exclamation-triangle');
+                    $('#problemmessage').html('');
                     $('#defectmodal').addClass('is-active');
                     $('#user_id3').val($(this).attr('id'));
                 });
