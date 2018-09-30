@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include '../includes/db.php';
-$sql = mysqli_query($con,'SELECT * FROM accessories WHERE deleted = 0 ORDER BY id DESC');
+$sql = mysqli_query($con,'SELECT * FROM accessories WHERE deleted = 0 AND status = "Active" ORDER BY id DESC');
 if(isset($_COOKIE['email'])){
     $user = $_COOKIE['email'];
     $sql2 = mysqli_query($con,"SELECT SUM(quantity) FROM cart WHERE user = '$user'");
