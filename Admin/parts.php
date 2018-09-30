@@ -345,7 +345,7 @@ if($_COOKIE['role'] == 'Admin'){
                             </div>
                             <div class="field">
                                 <label class="label">Problem
-                                    <div class="control has-right-icon">
+                                    <div class="control has-icons-right">
                                         <textarea type="text" class="textarea" maxlength="200" name="problem" id="problem" placeholder="Problem"></textarea>
                                         <span class="icon is-small is-right">
                                             <i id="problemicon" class=""></i>
@@ -356,7 +356,7 @@ if($_COOKIE['role'] == 'Admin'){
                             </div>
                     </section>
                     <footer class="modal-card-foot">
-                        <button class="button is-success" id="btnDefect" type="submit" name="bntDefect">Load</button>
+                        <button class="button is-success" id="btnDefect" type="submit" name="bntDefect">Save</button>
                         <button class="button" id="defectcancel" type="button">Cancel</button>
                         <input type="hidden" name="user_id3" id="user_id3"></input>
                     </form>
@@ -500,6 +500,27 @@ if($_COOKIE['role'] == 'Admin'){
                 var load_error = document.getElementById('loadmessage');
 
                 function Defect(){
+                    if($('#defect').val() < 1){
+                        $('#defect').addClass('is-danger');
+                        $('#defecticon').addClass('fas fa-exclamation-triangle');
+                        $('#defectmessage').html('Enter a valid quantity');
+                    }
+                    else{
+                        $('#defect').removeClass('is-danger');
+                        $('#defecticon').removeClass('fas fa-exclamation-triangle');
+                        $('#defectmessage').html('');
+                    }
+                    if($('#problem').val() == ''){
+                        $('#problem').addClass('is-danger');
+                        $('#problemicon').addClass('fas fa-exclamation-triangle');
+                        $('#problemmessage').html('Enter the problem');
+                    }
+                    else{
+                        $('#problem').removeClass('is-danger');
+                        $('#problemicon').removeClass('fas fa-exclamation-triangle');
+                        $('#problemmessage').html('');
+                        
+                    }
                     return false;
                 }
 
