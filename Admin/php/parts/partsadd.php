@@ -9,7 +9,8 @@
 	$price = $_POST['price'];
 	$description = $_POST['description'];
 	$quantity = $_POST['quantity'];
-	if(mysqli_query($con,"INSERT INTO parts (image,name,brand,category,price,quantity,description)VALUES('$new_name','$name','$brand','$category','$price','$quantity','$description')")){
+	$stats = $_POST['status'];
+	if(mysqli_query($con,"INSERT INTO parts (image,name,brand,category,price,quantity,description,status)VALUES('$new_name','$name','$brand','$category','$price','$quantity','$description','$stats')")){
 		echo "Success";
 	}
 	else{

@@ -172,6 +172,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                         <tr>
                                                             <th>Name</th>
                                                             <th>Action</th>
+                                                            <th>Quantity</th>
                                                             <th>Date modified</th>
                                                             <th>Type</th>
                                                             <th>User</th>

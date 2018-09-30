@@ -175,6 +175,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                             <th>Category</th>
                                                             <th>Price</th>
                                                             <th>Quantity</th>
+                                                            <th>Status</th>
                                                             <th style="text-align: center;width: 15%;">Action</th>
                                                     </thead>
                                                     <tbody></tbody>

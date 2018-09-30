@@ -9,7 +9,8 @@
 			$row[3],
 			$row[4],
 			$row[5],
-			$row[6]
+			$row[6],
+			$row[7]
 		);
 	}
 	echo json_encode($output)
