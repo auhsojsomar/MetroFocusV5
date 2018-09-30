@@ -484,7 +484,10 @@ if($_COOKIE['role'] == 'Admin'){
                     });
                 });
                 $(document).on('click','button[name="defect"]',function(){
+                    $('#defect').val('');
+                    $('#defect').val('');
                     $('#defectmodal').addClass('is-active');
+                    $('#user_id3').val($(this).attr('id'));
                 });
                 var category = document.forms['vform']['category'];
                 var brand = document.forms['vform']['brand'];
@@ -519,7 +522,21 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#problem').removeClass('is-danger');
                         $('#problemicon').removeClass('fas fa-exclamation-triangle');
                         $('#problemmessage').html('');
-                        
+
+                        var id = $('#user_id3').val();
+                        $.ajax({
+                            url:'php/parts/partsdefect.php',
+                            method:'POST',
+                            data:{uid:id},
+                            success:function(data){
+                                swal('Success','','success',{
+                                    closeOnClickOutside:false
+                                })
+                                .then((value) => {
+                                    $('#defectmodal').removeClass('is-active');
+                                })
+                            }
+                        })
                     }
                     return false;
                 }
