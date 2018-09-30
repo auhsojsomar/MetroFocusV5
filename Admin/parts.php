@@ -249,7 +249,7 @@ if($_COOKIE['role'] == 'Admin'){
                         </div>
                         <div class="field">
                             <div class="columns is-multiline is-mobile">
-                                <div class="column is-half">
+                                <div class="column is-4">
                                     <label class="label">Price</label>
                                         <div class="control has-icons-right">
                                             <input step="any" type="number" class="input" id="price" name="price" placeholder="Price">
@@ -259,7 +259,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 <p class="help is-danger" id="pricemessage"></p>
                                         </div>
                                 </div>
-                                <div class="column is-half">
+                                <div class="column is-4">
                                     <label class="label">Quantity</label>
                                         <div class="control has-icons-right">
                                             <input min="1" type="number" class="input" id="quantity" name="quantity" placeholder="Quantity">
@@ -268,6 +268,15 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </span>
                                                 <p class="help is-danger" id="quantitymessage"></p>
                                         </div>
+                                </div>
+                                <div class="column is-4">
+                                    <label class="label">Status</label>
+                                    <div class="select">
+                                        <select name="status" id="status" style="width:500px;">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
