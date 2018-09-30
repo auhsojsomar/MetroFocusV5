@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include '../User/includes/db.php';
+
 if($_COOKIE['role'] == 'Admin'){
     ?>
     <!doctype html>
@@ -380,6 +381,7 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
             <script>
+                
                 setInterval(function(){
                     dataTable.ajax.reload(null,false);
                 },1000);
@@ -495,6 +497,7 @@ if($_COOKIE['role'] == 'Admin'){
                     });
                 });
                 $(document).on('click','button[name="defect"]',function(){
+                    var id = $(this).attr('id');
                     $('#defect').val('');
                     $('#defect').removeClass('is-danger');
                     $('#defecticon').removeClass('fas fa-exclamation-triangle');
@@ -504,7 +507,7 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#problemicon').removeClass('fas fa-exclamation-triangle');
                     $('#problemmessage').html('');
                     $('#defectmodal').addClass('is-active');
-                    $('#user_id3').val($(this).attr('id'));
+                    $('#user_id3').val(id);
                 });
                 var category = document.forms['vform']['category'];
                 var brand = document.forms['vform']['brand'];
@@ -539,7 +542,7 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#problem').removeClass('is-danger');
                         $('#problemicon').removeClass('fas fa-exclamation-triangle');
                         $('#problemmessage').html('');
-
+                        
                         var data = $('#vform3').serialize();
                         $.ajax({
                             url:'php/parts/partsdefect.php',
@@ -553,7 +556,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     $('#defectmodal').removeClass('is-active');
                                 })
                             }
-                        })
+                        });
                     }
                     return false;
                 }
