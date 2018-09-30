@@ -455,6 +455,7 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#price').val(data.price);
                         $('#quantity').val(data.quantity);
                         $('#description').val(data.description);
+                        $('#status').val(data.status);
                         $('#user_uploaded_image').html(data.user_image);
                         $('#partstitle').html('Edit Parts');
                         $('#user_id').val(user_id);
@@ -607,6 +608,7 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#description').removeClass('is-danger');
                     $('#descriptionicon').removeClass('fas fa-exclamation-triangle');
                     description_error.textContent = "";
+                    $('#status').val('Active');
                     $('#user_image').val('');
                     $('#user_uploaded_image').html('');
 

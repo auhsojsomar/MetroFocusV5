@@ -19,6 +19,7 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
+            <link rel="stylesheet" href="css/bulma-tooltip.min.css">
         </head>
         <body>
             <div class="main-wrapper">
@@ -295,7 +296,7 @@ if($_COOKIE['role'] == 'Admin'){
                     </footer>
                 </div>
             </div>
-             <div class="modal" id="loadmodal"> 
+            <div class="modal" id="loadmodal"> 
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
@@ -319,6 +320,45 @@ if($_COOKIE['role'] == 'Admin'){
                         <button class="button is-success" id="load" type="submit" name="bntLoad">Load</button>
                         <button class="button" id="loadcancel" type="button">Cancel</button>
                         <input type="hidden" name="user_id2" id="user_id2"></input>
+                    </form>
+                    </footer>
+                </div>
+            </div>
+            <div class="modal" id="defectmodal"> 
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <h1 class="modal-card-title" id="modaltitle">Defect</h1>
+                    </header>
+                    <section class="modal-card-body">
+                        <form method="POST" name="vform3" id="vform3" onsubmit="return Defect();">
+                            <div class="field">
+                                <label class="label">Quantity
+                                    <div class="control has-icons-right">
+                                        <input type="number" min="1" class="input" id="defect" name="defect" placeholder="Quantity Ammount">
+                                            <span class="icon is-small is-right">
+                                                <i id="defecticon" class=""></i>
+                                            </span>
+                                            <p class="help is-danger" id="defectmessage"></p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="field">
+                                <label class="label">Problem
+                                    <div class="control has-icons-right">
+                                        <textarea type="text" class="textarea" maxlength="200" name="problem" id="problem" placeholder="Problem"></textarea>
+                                        <span class="icon is-small is-right">
+                                            <i id="problemicon" class=""></i>
+                                        </span>
+                                        <p class="help is-danger" id="problemmessage"></p>
+                                    </div>
+                                </label>
+                            </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success" id="btnDefect" type="submit" name="bntDefect">Save</button>
+                        <button class="button" id="defectcancel" type="button">Cancel</button>
+                        <input type="hidden" name="user_id3" id="user_id3"></input>
                     </form>
                     </footer>
                 </div>
@@ -367,6 +407,9 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#loadmodal').removeClass('is-active');
 
                 });
+                $('#defectcancel').click(function(){
+                    $('#defect').removeClass('is-active');
+                })
                 $(document).on('click','button[name="load"]',function(){
                     $('#loadtext').val('');
                     $('#loadtext').removeClass('is-danger');
@@ -440,6 +483,18 @@ if($_COOKIE['role'] == 'Admin'){
                       }
                     });
                 });
+                $(document).on('click','button[name="defect"]',function(){
+                    $('#defect').val('');
+                    $('#defect').removeClass('is-danger');
+                    $('#defecticon').removeClass('fas fa-exclamation-triangle');
+                    $('#defectmessage').html('');
+                    $('#problem').val('');
+                    $('#problem').removeClass('is-danger');
+                    $('#problemicon').removeClass('fas fa-exclamation-triangle');
+                    $('#problemmessage').html('');
+                    $('#defectmodal').addClass('is-active');
+                    $('#user_id3').val($(this).attr('id'));
+                });
                 var category = document.forms['vform']['category'];
                 var brand = document.forms['vform']['brand'];
                 var productname = document.forms['vform']['name'];
@@ -452,6 +507,45 @@ if($_COOKIE['role'] == 'Admin'){
                 var description_error = document.getElementById('descriptionmessage');
                 var load = document.forms['vform2']['loadtext'];
                 var load_error = document.getElementById('loadmessage');
+                
+                function Defect(){
+                    if($('#defect').val() < 1){
+                        $('#defect').addClass('is-danger');
+                        $('#defecticon').addClass('fas fa-exclamation-triangle');
+                        $('#defectmessage').html('Enter a valid quantity');
+                    }
+                    else{
+                        $('#defect').removeClass('is-danger');
+                        $('#defecticon').removeClass('fas fa-exclamation-triangle');
+                        $('#defectmessage').html('');
+                    }
+                    if($('#problem').val() == ''){
+                        $('#problem').addClass('is-danger');
+                        $('#problemicon').addClass('fas fa-exclamation-triangle');
+                        $('#problemmessage').html('Enter the problem');
+                    }
+                    else{
+                        $('#problem').removeClass('is-danger');
+                        $('#problemicon').removeClass('fas fa-exclamation-triangle');
+                        $('#problemmessage').html('');
+
+                        var data = $('#vform3').serialize();
+                        $.ajax({
+                            url:'php/accessories/accessoriesdefect.php',
+                            method:'POST',
+                            data:data,
+                            success:function(data){
+                                swal('Success','','success',{
+                                    closeOnClickOutside:false
+                                })
+                                .then((value) => {
+                                    $('#defectmodal').removeClass('is-active');
+                                })
+                            }
+                        })
+                    }
+                    return false;
+                }
 
                 function Load(){
                     if(load.value == 0){

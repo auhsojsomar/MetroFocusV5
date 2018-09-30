@@ -21,6 +21,7 @@ if(isset($_POST["user_id"]))
 		$output["price"] = $row["price"];
 		$output["quantity"] = $row["quantity"];
 		$output["description"] = $row["description"];
+		$output["status"] = $row["status"];
 	}
 	echo json_encode($output);
 }
