@@ -263,7 +263,7 @@ if($_COOKIE['role'] == 'Admin'){
                                 <div class="column is-4">
                                     <label class="label">Quantity</label>
                                         <div class="control has-icons-right">
-                                            <input min="0" type="number" class="input" id="quantity" name="quantity" placeholder="Quantity">
+                                            <input min="1" type="number" class="input" id="quantity" name="quantity" placeholder="Quantity">
                                                 <span class="icon is-small is-right">
                                                     <i id="quantityicon" class=""></i>
                                                 </span>
@@ -317,7 +317,7 @@ if($_COOKIE['role'] == 'Admin'){
                             <div class="field">
                                 <label class="label"> Load
                                     <div class="control has-icons-right">
-                                        <input type="number" min="0" class="input" id="loadtext" name="loadtext" placeholder="Quantity Ammount">
+                                        <input type="number" min="1" class="input" id="loadtext" name="loadtext" placeholder="Quantity Ammount">
                                             <span class="icon is-small is-right">
                                                 <i id="loadicon" class=""></i>
                                             </span>
