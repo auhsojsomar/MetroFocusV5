@@ -542,7 +542,6 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#problem').removeClass('is-danger');
                         $('#problemicon').removeClass('fas fa-exclamation-triangle');
                         $('#problemmessage').html('');
-                        
                         var data = $('#vform3').serialize();
                         $.ajax({
                             url:'php/parts/partsdefect.php',
