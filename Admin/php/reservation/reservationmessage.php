@@ -1,8 +1,7 @@
 <?php 
     include '../../../User/includes/db.php';
-    // $id = $_POST['uid'];
-    $id = 211;
-    $sql = mysqli_query($con,"SELECT loginform.firstname,parts.name,parts.price,reservation.reservationdate,loginform.cnumber FROM loginform,reservation,parts WHERE parts.id = reservation.itemid AND reservation.username = loginform.username AND reservation.id = $id");
+    $id = $_POST['id'];
+    $sql = mysqli_query($con,"SELECT loginform.firstname,parts.name,parts.price,reservation.reservationdate,loginform.cnumber FROM loginform,reservation,parts WHERE parts.id = reservation.itemid AND reservation.username = loginform.username AND reservation.id = $id AND reservation.status = 'Pending'");
     $row = mysqli_fetch_array($sql);
     $firstname = $row[0];
     $name = $row[1];
@@ -11,8 +10,8 @@
     $cnumber = $row[4];
     $date = date("F d Y",strtotime($datetime));
     $time = date("g:i A",strtotime($datetime));
-    // $message = "Hi $firstname, This is the confirmation of your appointment on $date at $time \n\n --Metro Focus--";
-    $message =  "Hi $firstname! This message is the confirmation that your item which is/are the $name is already reserved for you and costs ₱".number_format($price,2,'.',',')." .We remind that you will get the item on $date at $time \n\n --Metro Focus--";
+    $message =  "Hi $firstname! This message is the confirmation that your item which is $name is already reserved for you and costs ₱".number_format($price,2,'.',',')." .We remind that you will get the item on $date at $time \n\n --Metro Focus--";
+    
     // itexmo.com
     // function itexmo($number,$message,$apicode){
     // $url = 'https://www.itexmo.com/php_api/api.php';
@@ -71,28 +70,32 @@
     use SMSGatewayMe\Client\Api\MessageApi;
     use SMSGatewayMe\Client\Model\SendMessageRequest;
 
-    // Configure client
-    $config = Configuration::getDefaultConfiguration();
-    $config->setApiKey('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzNzk2MjE5MCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYxNzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.fZ11G2HZ6QvIh2WjaGH63XsWyIBjbRItuuNwIPCfGiU');
-    $apiClient = new ApiClient($config);
-    $messageClient = new MessageApi($apiClient);
+    if(!empty($cnumber)){
+        // Configure client
+        $config = Configuration::getDefaultConfiguration();
+        $config->setApiKey('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzNzk2MjE5MCwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYxNzUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.fZ11G2HZ6QvIh2WjaGH63XsWyIBjbRItuuNwIPCfGiU');
+        $apiClient = new ApiClient($config);
+        $messageClient = new MessageApi($apiClient);
 
-    // Sending a SMS Message
-    $sendMessageRequest1 = new SendMessageRequest([
-        'phoneNumber' => $cnumber,
-        'message' => $message,
-        'deviceId' => 102592
-    ]);
-    // $sendMessageRequest2 = new SendMessageRequest([
-    //     'phoneNumber' => '07791064781',
-    //     'message' => 'test2',
-    //     'deviceId' => 2
-    // ]);
-    $sendMessages = $messageClient->sendMessages([
-        $sendMessageRequest1
-        // $sendMessageRequest2
-    ]);
-    print_r($sendMessages);
-
-    // echo "Message Sent!";
+        // Sending a SMS Message
+        $sendMessageRequest1 = new SendMessageRequest([
+            'phoneNumber' => $cnumber,
+            'message' => $message,
+            'deviceId' => 102592
+        ]);
+        // $sendMessageRequest2 = new SendMessageRequest([
+        //     'phoneNumber' => '07791064781',
+        //     'message' => 'test2',
+        //     'deviceId' => 2
+        // ]);
+        $sendMessages = $messageClient->sendMessages([
+            $sendMessageRequest1
+            // $sendMessageRequest2
+        ]);
+        // print_r($sendMessages);
+        echo "Message Sent!";
+    }
+    else{
+        echo "Error";
+    }
  ?>
