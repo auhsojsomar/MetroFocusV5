@@ -2,11 +2,14 @@
 	include '../../../User/includes/db.php';
     $id = $_POST['id'];
 	$reason = $_POST['message'];
-    $sql = mysqli_query($con,"SELECT firstname,cnumber FROM loginform WHERE username = (SELECT username FROM reservation WHERE id = $id AND status != 'Reject')");
+    $sql = mysqli_query($con,"SELECT firstname,cnumber,name,reservationdate FROM loginform,parts,reservation WHERE reservation.itemid = parts.id AND reservation.username = loginform.username AND reservation.category = 'Parts' AND reservation.status != 'Reject' AND reservation.status != 'Done' AND reservation.id = $id");
     $row = mysqli_fetch_array($sql);
     $firstname = $row[0];
-	$cnumber = $row[1];
-    $message =  "Hi $firstname!, $reason \n\n --Metro Focus--";
+    $cnumber = $row[1];
+    $item = $row[2];
+    $date = $row[3];
+    $newdate = date('F j, Y \a\t g:i A',strtotime($date));
+    $message =  "Dear $firstname, \n I am very sorry to inform you that your order: $item on $newdate has been cancelled, $reason .We sincerely apologize for the inconvenience.\n\n --Metro Focus--";
 
 	require '../sms/autoload.php';
 	

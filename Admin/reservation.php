@@ -228,7 +228,7 @@ if($_COOKIE['role'] == 'Admin'){
                                 <div class="field">
                                     <label class="label">Message</label>
                                     <div class="control has-icons-right">
-                                        <textarea class="textarea" name="message" id="message"></textarea>
+                                        <textarea class="textarea" name="message" id="message" placeholder="Reason..."></textarea>
                                         <span class="icon is-small is-right">
                                             <i class="" id="messageicon"></i>
                                         </span>
@@ -310,6 +310,30 @@ if($_COOKIE['role'] == 'Admin'){
                 var id = $(this).attr('id');
                 $('#user_id').val(id);
                 $('#reservationmodal').addClass('is-active');
+                $('#message').val('');
+                $('#message').removeClass('is-danger');
+                $('#messageicon').removeClass('fal fa-exclamation-triangle');
+                $('#messageto').html('');
+            });
+            $(document).on('click','button[name="done"]',function(){
+                var id = $(this).attr('id');
+                $.ajax({
+                    url:'php/reservation/done.php',
+                    method:'POST',
+                    data:{id:id},
+                    success:function(data){
+                        if(data == "Error"){
+                            swal(data,'','error',{
+                                closeOnClickOutside:false
+                            })
+                        }
+                        else{
+                            swal(data,'','success',{
+                            closeOnClickOutside:false
+                        })
+                        }
+                    }
+                });
             });
             var dataTable2 = $('#accessoriestable').DataTable({
                 "ajax":{
