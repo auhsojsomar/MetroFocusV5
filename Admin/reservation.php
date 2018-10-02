@@ -321,7 +321,7 @@ if($_COOKIE['role'] == 'Admin'){
                         }
                         else{
                             $.ajax({
-                                url:'php/reservation/reservationconfirm.php',
+                                url:'php/reservation/confirm.php',
                                 method:'POST',
                                 data:{id:user_id2},
                                 success:function(data){
@@ -387,7 +387,7 @@ if($_COOKIE['role'] == 'Admin'){
                         }
                         else{
                             $.ajax({
-                                url:'php/reservation/reservationconfirm.php',
+                                url:'php/reservation/confirm.php',
                                 method:'POST',
                                 data:{id:user_id2},
                                 success:function(data){
