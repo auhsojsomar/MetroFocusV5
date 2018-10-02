@@ -91,6 +91,10 @@
         ]);
         // print_r($sendMessages);
         echo "Message Sent!";  
+        $user = $_COOKIE['email'];
+        date_default_timezone_set('Asia/Manila');
+        $dateof = date('n/j/Y g:i A');
+        mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$name','Confirm','$dateof','Parts','$user')");
     }
     else{
         echo "Error";
