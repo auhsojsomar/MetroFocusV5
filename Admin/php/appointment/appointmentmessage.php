@@ -1,11 +1,12 @@
 <?php 
     include '../../../User/includes/db.php';
     $id = $_POST['id'];
-    $sql = mysqli_query($con,"SELECT firstname,loginform.cnumber,schedule FROM loginform,appointment WHERE loginform.username = appointment.username AND appointment.id = $id AND appointment.status != 'Confirmed' AND appointment.status != 'Reject' AND appointment.status != 'Done'");
+    $sql = mysqli_query($con,"SELECT firstname,loginform.cnumber,schedule,loginform.username FROM loginform,appointment WHERE loginform.username = appointment.username AND appointment.id = $id AND appointment.status != 'Confirmed' AND appointment.status != 'Reject' AND appointment.status != 'Done'");
     $row = mysqli_fetch_array($sql);
     $firstname = $row[0];
     $cnumber = $row[1];
     $datetime = $row[2];
+    $username = $row[3];
     $date = date("F d Y",strtotime($datetime));
     $time = date("g:i A",strtotime($datetime));
     $message = "Hi $firstname, This is the confirmation of your appointment on $date at $time \n\n --Metro Focus--";
@@ -94,7 +95,7 @@
         $user = $_COOKIE['email'];
         date_default_timezone_set('Asia/Manila');
         $dateof = date('n/j/Y g:i A');
-        mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$name','Confirm','$dateof','Parts','$user')");
+        mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$username','Confirm','$dateof','Appointment','$user')");
     }
     else{
         echo "Error";
