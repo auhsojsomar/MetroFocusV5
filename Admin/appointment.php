@@ -18,6 +18,7 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
+            <link rel="stylesheet" href="css/bulma-tooltip.min.css">
         </head>
         <body>
             <div class="main-wrapper">
