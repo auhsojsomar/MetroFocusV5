@@ -221,6 +221,33 @@ if($_COOKIE['role'] == 'Admin'){
                             </footer>
                         </div>
                 </div>
+                <div class="modal" id="reservationmodal"> 
+                    <div class="modal-background"></div>
+                        <div class="modal-card">
+                        <form method="POST">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Rejection Form</p>
+                            </header>
+                            <section class="modal-card-body">
+                                <div class="field">
+                                    <label class="label">Message</label>
+                                    <div class="control has-icons-right">
+                                        <textarea class="textarea" name="message" id="message" placeholder="Reason..."></textarea>
+                                        <span class="icon is-small is-right">
+                                            <i class="" id="messageicon"></i>
+                                        </span>
+                                        <p class="help is-danger" id="messageto"></p>
+                                    </div>
+                                </div>
+                            </section>
+                            <footer class="modal-card-foot">
+                                <input type="button" class="button is-success" value="Submit" name="submit" id="submit">
+                                <input type="button" class="button" value="Cancel" name="cancel" id="cancel">
+                                <input type="hidden" name="user_id" id="user_id"></input>
+                            </footer>
+                        </form>
+                        </div>
+                </div>
             <script src="js/jquery.min.js"></script>
             <script src="js/sweetalert.min.js"></script>
             <script src="js/vendor.js"></script>
@@ -299,6 +326,70 @@ if($_COOKIE['role'] == 'Admin'){
                         }
                     }
                 });
+            });
+            $(document).on('click','button[name="reject"]',function(){
+                var id = $(this).attr('id');
+                $('#user_id').val(id);
+                $('#reservationmodal').addClass('is-active');
+                $('#message').val('');
+                $('#message').removeClass('is-danger');
+                $('#messageicon').removeClass('fal fa-exclamation-triangle');
+                $('#messageto').html('');
+            });
+            $(document).on('click','button[name="done"]',function(){
+                var id = $(this).attr('id');
+                $.ajax({
+                    url:'php/appointment/done.php',
+                    method:'POST',
+                    data:{id:id},
+                    success:function(data){
+                        if(data == "Error"){
+                            swal(data,'','error',{
+                                closeOnClickOutside:false
+                            })
+                        }
+                        else{
+                            swal(data,'','success',{
+                            closeOnClickOutside:false
+                        })
+                        }
+                    }
+                });
+            });
+            $('#submit').click(function(){
+                if($('#message').val() == ""){
+                    $('#message').addClass('is-danger');
+                    $('#messageicon').addClass('fal fa-exclamation-triangle');
+                    $('#messageto').html('Enter a message');
+                }
+                else{
+                    $('#message').removeClass('is-danger');
+                    $('#messageicon').removeClass('fal fa-exclamation-triangle');
+                    $('#messageto').html('');
+                    var id = $('#user_id').val();
+                    var message = $('#message').val();
+                    $.ajax({
+                        url:'php/appointment/reject.php',
+                        method:'POST',
+                        data:{id:id,message:message},
+                        success:function(data){
+                            $('#reservationmodal').removeClass('is-active');
+                            if(data == "Error"){
+                                swal('Error','','error',{
+                                closeOnClickOutside:false
+                            })
+                            }
+                            else{
+                                swal('Message Sent!','','success',{
+                                closeOnClickOutside:false
+                            })
+                            }
+                        }
+                    });
+                }
+            });
+            $('#cancel').click(function(){
+                $('#reservationmodal').removeClass('is-active');
             });
             document.addEventListener('DOMContentLoaded',function(){
 

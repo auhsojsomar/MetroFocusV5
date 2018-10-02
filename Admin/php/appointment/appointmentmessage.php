@@ -3,8 +3,8 @@
     $id = $_POST['id'];
     $sql = mysqli_query($con,"SELECT firstname,loginform.cnumber,schedule FROM loginform,appointment WHERE loginform.username = appointment.username AND appointment.id = $id AND appointment.status != 'Confirmed' AND appointment.status != 'Reject' AND appointment.status != 'Done'");
     $row = mysqli_fetch_array($sql);
-    $cnumber = $row[0];
-    $firstname = $row[1];
+    $firstname = $row[0];
+    $cnumber = $row[1];
     $datetime = $row[2];
     $date = date("F d Y",strtotime($datetime));
     $time = date("g:i A",strtotime($datetime));
