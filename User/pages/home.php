@@ -12,7 +12,7 @@
 		<div class="hero-body wow fadeInUp">
 			<div class="container has-text-centered">
 				<h1 class="title is-cursor-pointer is-size-1-touch">
-					Metro<span>Focus on me</span>
+					Metro<span>Focus</span>
 				</h1>
 				<div class="field fieldmessage has-text-centered">
 					<p>Our service that feels like home.</p>
