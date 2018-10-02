@@ -376,21 +376,28 @@ if($_COOKIE['role'] == 'Admin'){
             $(document).on('click','button[name="confirm2"]',function(){
                 var user_id2 = $(this).attr("id");
                 $.ajax({
-                     url:"php/reservation/reservationconfirm.php",
-                        method:"POST",
-                        data:{user_id2:user_id2},
-                        success:function(data)
-                        {
-                            swal({
-                                title: "Confirmed",
-                                text: "",
-                                icon: "success",
-                                closeOnClickOutside: false,
-                            })
-                            .then((value) => {
-                            dataTable2.ajax.reload();
-                        });
+                    url:'php/reservation/accessoriesmessage.php',
+                    method:'POST',
+                    data:{id:user_id2},
+                    success:function(data){
+                        if(data == "Error"){
+                            swal('Error','','error',{
+                                closeOnClickOutside:false
+                            });
                         }
+                        else{
+                            $.ajax({
+                                url:'php/reservation/reservationconfirm.php',
+                                method:'POST',
+                                data:{id:user_id2},
+                                success:function(data){
+                                    swal('Message Sent!','','success',{
+                                        closeOnClickOutside:false
+                                    })
+                                }
+                            });
+                        }
+                    }
                 });
             });
             document.addEventListener('DOMContentLoaded',function(){
