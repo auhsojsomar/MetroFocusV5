@@ -212,11 +212,11 @@ if($_COOKIE['role'] == 'Admin'){
                     },
                     "columnDefs":[
                         {
-                            "targets":[0,1,2,3,4,5],
+                            "targets":[0,1,2,3,4,5,6],
                             "render":$.fn.dataTable.render.ellipsis(25),
                         },
                         {
-                            "targets":[0,1,2,3,4,5],
+                            "targets":[0,1,2,3,4,5,6],
                             "className":'dt-center',
                         },
                     ],
