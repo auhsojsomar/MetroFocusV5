@@ -18,6 +18,7 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
+            <link rel ="stylesheet" href="css/bulma-tooltip.min.css">
         </head>
         <body>
             <div class="main-wrapper">
@@ -164,12 +165,12 @@ if($_COOKIE['role'] == 'Admin'){
                                                     <table id="partstable" class="table table-bordered table-striped table-hover">
                                                     <thead>
                                                         <tr >
-                                                            <th>Email</th>
+                                                            <th>Username</th>
                                                             <th>Reservation Date</th>
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
                                                             <th>Status</th>
-                                                            <th style="width: 20%;text-align: center;">Action</th>
+                                                            <th style="width: 15%;text-align: center;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
@@ -194,12 +195,12 @@ if($_COOKIE['role'] == 'Admin'){
                                                     <table id="accessoriestable" class="table table-bordered table-striped table-hover">
                                                     <thead>
                                                         <tr >
-                                                            <th>Email</th>
+                                                            <th>Username</th>
                                                             <th>Reservation Date</th>
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
                                                             <th>Status</th>
-                                                            <th style="width: 20%;text-align: center;">Action</th>
+                                                            <th style="width: 15%;text-align: center;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
