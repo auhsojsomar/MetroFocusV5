@@ -288,25 +288,6 @@ if($_COOKIE['role'] == 'Admin'){
                    },
                  ],
             });
-            $(document).on('click','button[name="show"]',function(){
-                var user_id = $(this).attr("id");
-                $.ajax({
-                    url:"php/reservation/reservationfetchsingle.php",
-                    method:"POST",
-                    data:{user_id:user_id},
-                    dataType:"json",
-                    success:function(data)
-                    {
-                        $('#reservationmodal').addClass('is-active');
-                        $('#username').val(data.username);
-                        $('#reservedate').val(data.reservedate);
-                        $('#itemname').val(data.itemname);
-                        $('#itemquantity').val(data.itemquantity);
-                        $('#status').val(data.status);
-                        $('#reservetitle').html('Parts Reservation Details');
-                    }
-                });
-            });
             $(document).on('click','button[name="confirm"]',function(){
                 var user_id2 = $(this).attr("id");
                 $.ajax({
@@ -353,25 +334,6 @@ if($_COOKIE['role'] == 'Admin'){
                        "render":$.fn.dataTable.render.ellipsis(25),
                    },
                  ],
-            });
-            $(document).on('click','button[name="show2"]',function(){
-                var user_id = $(this).attr("id");
-                $.ajax({
-                    url:"php/reservation/accessoriesfetchsingle.php",
-                    method:"POST",
-                    data:{user_id:user_id},
-                    dataType:"json",
-                    success:function(data)
-                    {
-                        $('#reservationmodal').addClass('is-active');
-                        $('#username').val(data.username);
-                        $('#reservedate').val(data.reservedate);
-                        $('#itemname').val(data.itemname);
-                        $('#itemquantity').val(data.itemquantity);
-                        $('#status').val(data.status);
-                        $('#reservetitle').html('Accessories Reservation Details');
-                    }
-                });
             });
             $(document).on('click','button[name="confirm2"]',function(){
                 var user_id2 = $(this).attr("id");
