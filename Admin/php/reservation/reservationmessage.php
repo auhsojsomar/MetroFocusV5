@@ -94,6 +94,12 @@
         ]);
         // print_r($sendMessages);
         echo "Message Sent!";
+        $query = mysqli_query($con,"SELECT itemquantity FROM reservation WHERE id = $id");
+        $res = mysqli_fetch_array($query);
+        $user = $_COOKIE['email'];
+        date_default_timezone_set('Asia/Manila');
+        $dateof = date('n/j/Y g:i A');
+        mysqli_query($con,"INSERT INTO activitylogs (name,action,quantity,datemod,type,user,description)VALUES('$name','Confirm',$res[0],'$dateof','Parts','$user','Reservation')");
     }
     else{
         echo "Error";

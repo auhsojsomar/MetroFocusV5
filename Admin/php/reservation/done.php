@@ -8,6 +8,7 @@
     }
     else{
         mysqli_query($con,"UPDATE reservation SET status = 'Done' WHERE id = $id AND status != 'Done'");
-        echo "Done";    
+        echo "Done"; 
     }
+    
 ?>
