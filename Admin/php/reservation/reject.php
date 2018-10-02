@@ -1,8 +1,15 @@
 <?php
 	include '../../../User/includes/db.php';
     $id = $_POST['id'];
-	$reason = $_POST['message'];
-    $sql = mysqli_query($con,"SELECT firstname,cnumber,name,reservationdate FROM loginform,parts,reservation WHERE reservation.itemid = parts.id AND reservation.username = loginform.username AND reservation.category = 'Parts' AND reservation.status != 'Reject' AND reservation.status != 'Done' AND reservation.id = $id");
+    $reason = $_POST['message'];
+    $categ = mysqli_query($con,"SELECT category FROM reservation WHERE id = $id");
+    $categrow = mysqli_fetch_array($categ);
+    if($categrow[0] == "Parts"){
+        $sql = mysqli_query($con,"SELECT firstname,cnumber,name,reservationdate FROM loginform,parts,reservation WHERE reservation.itemid = parts.id AND reservation.username = loginform.username AND reservation.category = 'Parts' AND reservation.status != 'Reject' AND reservation.status != 'Done' AND reservation.id = $id");
+    }
+    else {
+        $sql = mysqli_query($con,"SELECT firstname,cnumber,name,reservationdate FROM loginform,accessories,reservation WHERE reservation.itemid = accessories.id AND reservation.username = loginform.username AND reservation.category = 'Accessories' AND reservation.status != 'Reject' AND reservation.status != 'Done' AND reservation.id = $id");
+    }
     $row = mysqli_fetch_array($sql);
     $firstname = $row[0];
     $cnumber = $row[1];
