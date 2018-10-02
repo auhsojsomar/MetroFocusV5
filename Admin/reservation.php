@@ -221,33 +221,19 @@ if($_COOKIE['role'] == 'Admin'){
                     <div class="modal-background"></div>
                         <div class="modal-card">
                             <header class="modal-card-head">
-                                <p class="modal-card-title" id="reservetitle">Appointment Details</p>
+                                <p class="modal-card-title">Rejection Form</p>
                             </header>
                             <section class="modal-card-body">
                                 <form method="POST" id="vfrom" name="vform">
                                 <div class="field">
-                                    <label for="" class="label">Email</label>
-                                    <input id="username" type="input" class="input" readonly>
-                                </div>
-                                <div class="field">
-                                    <label for="" class="label">Reservation Date</label>
-                                    <input id="reservedate" type="input" class="input" readonly>
-                                </div>
-                                <div class="field">
-                                    <label for="" class="label">Item Name</label>
-                                    <input id="itemname" type="input" class="input" readonly>
-                                </div>
-                                <div class="field">
-                                    <label for="" class="label">Quantity</label>
-                                    <input id="itemquantity" type="input" class="input" readonly>
-                                </div>
-                                <div class="field">
-                                    <label for="" class="label">Status</label>
-                                    <input id="status" type="input" class="input" readonly>
+                                    <label class="label">Message</label>
+                                    <textarea class="textarea" name="message" id="message" ></textarea>
                                 </div>
                                 </form>
                             </section>
-                            <footer>
+                            <footer class="modal-card-foot">
+                                <input type="button" class="button is-success" value="Submit" name="submit" id="submit">
+                                <input type="button" class="button" value="Cancel" name="cancel" id="cancel">
                                 <input type="hidden" name="user_id" id="user_id"></input>
                             </footer>
                         </div>
@@ -315,6 +301,9 @@ if($_COOKIE['role'] == 'Admin'){
                     }
                 });
             });
+            $(document).on('click','button[name="reject"]',function(){
+                $('#reservationmodal').addClass('is-active');
+            });
             var dataTable2 = $('#accessoriestable').DataTable({
                 "ajax":{
                 url:"php/reservation/accessoriesfetch.php",
@@ -361,6 +350,9 @@ if($_COOKIE['role'] == 'Admin'){
                         }
                     }
                 });
+            });
+            $('#cancel').click(function(){
+                $('#reservationmodal').removeClass('is-active');
             });
             document.addEventListener('DOMContentLoaded',function(){
 
