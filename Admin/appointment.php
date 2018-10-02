@@ -151,12 +151,6 @@ if($_COOKIE['role'] == 'Admin'){
                     <article class="content animated bounceInLeft">
                         <div class="title-block">
                             <h1 class="title"> Appointment</h1>
-                            <!-- <button type="button" class="button is-success" id="addproduct" name="branddss">
-                                <span class="icon is-small">
-                                      <i class="fal fa-plus-circle"></i>
-                                    </span>
-                                    <span> Add Brand</span>
-                            </button> -->
                         </div>
                         <section class="section" style="padding-top:0px;">
                             <div class="row">
@@ -191,69 +185,42 @@ if($_COOKIE['role'] == 'Admin'){
                     <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
                     <div class="mobile-menu-handle"></div> 
                 </div>
-                <div class="modal" id="brandmodal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <h1 class="modal-card-title" id="modaltitle">Add Brand</h1>
-                    </header>
-                    <section class="modal-card-body">
-                        <form method="POST" name="vform" id="vform" onsubmit="return Validate();">
-                        <div class="field">
-                            <label class="label">Brand</label>
-                                <div class="control has-icons-right">
-                                    <input class="input" id="txtbrand" name="txtbrand" placeholder="Brand Name">
-                                        <span class="icon is-small is-right">
-                                            <i id="iconbrand" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="messagebrand"></p>
+                <div class="modal" id="appointmentmodal"> 
+                    <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Appointment Details</p>
+                                <div class="delete" aria-label="close"></div>
+                            </header>
+                            <section class="modal-card-body">
+                                <form method="POST" id="vfrom" name="vform">
+                                <div class="field">
+                                    <label for="" class="label">Username</label>
+                                    <input id="username" type="input" class="input" readonly>
                                 </div>
-                            </div>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" id="save" type="submit" name="btnSave">Save</button>
-                        <button class="button" id="cancel" type="button">Cancel</button>
-                        <input type="hidden" name="user_id" id="user_id"></input>
-                        <input type="hidden" name="operation" id="operation"></input>
-                    </form>
-                    </footer>
+                                <div class="field">
+                                    <label for="" class="label">Concern</label>
+                                    <input id="concern" type="input" class="input" readonly>
+                                </div>
+                                <div class="field">
+                                    <label for="" class="label">Schedule</label>
+                                    <input id="schedule" type="input" class="input" readonly>
+                                </div>
+                                <div class="field">
+                                    <label for="" class="label">Contact Number</label>
+                                    <input id="cnumber" type="input" class="input" readonly>
+                                </div>
+                                <div class="field">
+                                    <label for="" class="label">Remarks</label>
+                                    <textarea id="remarks" type="input" class="textarea" readonly></textarea>
+                                </div>
+                                </form>
+                            </section>
+                            <footer>
+                                <input type="hidden" name="user_id" id="user_id"></input>
+                            </footer>
+                        </div>
                 </div>
-            </div>
-            <div class="modal" id="appointmentmodal"> 
-                <div class="modal-background"></div>
-                    <div class="modal-card">
-                        <header class="modal-card-head">
-                            <p class="modal-card-title">Appointment Details</p>
-                        </header>
-                        <section class="modal-card-body">
-                            <form method="POST" id="vfrom" name="vform">
-                            <div class="field">
-                                <label for="" class="label">Email</label>
-                                <input id="username" type="input" class="input" readonly>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Concern</label>
-                                <input id="concern" type="input" class="input" readonly>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Schedule</label>
-                                <input id="schedule" type="input" class="input" readonly>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Contact Number</label>
-                                <input id="cnumber" type="input" class="input" readonly>
-                            </div>
-                            <div class="field">
-                                <label for="" class="label">Remarks</label>
-                                <textarea id="remarks" type="input" class="textarea" readonly></textarea>
-                            </div>
-                            </form>
-                        </section>
-                        <footer>
-                            <input type="hidden" name="user_id" id="user_id"></input>
-                        </footer>
-                    </div>
-            </div>
             <script src="js/jquery.min.js"></script>
             <script src="js/sweetalert.min.js"></script>
             <script src="js/vendor.js"></script>
@@ -309,29 +276,27 @@ if($_COOKIE['role'] == 'Admin'){
             $(document).on('click','button[name="confirm"]',function(){
                 var user_id2 = $(this).attr("id");
                 $.ajax({
-                    url:"php/appointment/appointmentconfirm.php",
-                    method:"POST",
-                    data:{user_id2:user_id2},
-                    success:function(data)
-                    {
-                        dataTable.ajax.reload();
-                        $.ajax({
-                            url:'php/appointment/appointmentmessage.php',
-                            method:'POST',
-                            data:{uid:user_id2},
-                            success:function(num){
-                                if(num == "Error"){
-                                    swal(num,'','error',{
-                                    closeOnClickOutside:false,
-                                });
+                    url:'php/appointment/appointmentmessage.php',
+                    method:'POST',
+                    data:{id:user_id2},
+                    success:function(data){
+                        if(data == "Error"){
+                            swal('Error','','error',{
+                                closeOnClickOutside:false
+                            })
+                        }
+                        else{
+                            $.ajax({
+                                url:'php/appointment/appointmentconfirm.php',
+                                method:'POST',
+                                data:{id:user_id2},
+                                success:function(data){
+                                    swal('Message Sent!','','success',{
+                                        closeOnClickOutside:false
+                                    })
                                 }
-                                else{
-                                    swal(num,'','success',{
-                                    closeOnClickOutside:false,
-                                });
-                                }
-                            }
-                        });
+                            });
+                        }
                     }
                 });
             });

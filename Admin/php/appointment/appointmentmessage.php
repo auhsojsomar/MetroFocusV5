@@ -1,7 +1,7 @@
 <?php 
     include '../../../User/includes/db.php';
-    $id = $_POST['uid'];
-    $sql = mysqli_query($con,"SELECT loginform.cnumber,firstname,schedule FROM loginform,appointment WHERE appointment.status = 'Confirmed' AND loginform.username = appointment.username AND appointment.username = (SELECT username FROM appointment WHERE id = $id)LIMIT 1");
+    $id = $_POST['id'];
+    $sql = mysqli_query($con,"SELECT firstname,loginform.cnumber,schedule FROM loginform,appointment WHERE loginform.username = appointment.username AND appointment.id = $id AND appointment.status != 'Confirmed' AND appointment.status != 'Reject' AND appointment.status != 'Done'");
     $row = mysqli_fetch_array($sql);
     $cnumber = $row[0];
     $firstname = $row[1];

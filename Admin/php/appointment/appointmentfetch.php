@@ -16,7 +16,7 @@ foreach($result as $row)
     $sub_array[] = $row["cnumber"];
     $sub_array[] = $row["remarks"];
     $sub_array[] = $row["status"];
-    $sub_array[] = '<button type="button" style="padding:2px 19.5px" name="show" id="'.$row["id"].'" class="button is-info is-small"><i class="fal fa-eye"></i>Show</button><button type="button" style="padding:2px 14px" name="confirm" id="'.$row["id"].'" class="button is-success is-small"><i class="fal fa-check"></i> Confirm</button>';
+    $sub_array[] = '<button style="width:20px;" type="button" name="show" id="'.$row["id"].'" class="button is-primary is-small tooltip" data-tooltip="Show"><i class="fal fa-eye"></i></button><button style="width:20px;" type="button" name="confirm" id="'.$row["id"].'" class="button is-link is-small tooltip" data-tooltip="Confirm"><i class="fal fa-file-check"></i></button><button style="width:20px;" type="button" name="reject" id="'.$row["id"].'" class="button is-danger is-small tooltip" data-tooltip="Reject"><i class="fal fa-times"></i></button><button style="width:20px;" type="button" name="done" id="'.$row["id"].'" class="button is-success is-small tooltip" data-tooltip="Done"><i class="fal fa-check"></i></button>';
     $data[] = $sub_array;
 }
 $output = array(
