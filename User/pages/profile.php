@@ -163,32 +163,6 @@ if(!isset($_COOKIE['username'])){
     </div>
   </div>
 </div>
-<!-- <div class="tab_header">
-  <div class="container">
-    <div class="tabs is-boxed">
-      <ul>
-        <li class="item is-active"><a href="#account">Account</a></li>
-        <li class="item"><a href="#history">History</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div id="tab_container">
-  <div class="container_item is-active" data-item="1">
-    <article class="message">
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
-        placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
-        <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-        sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
-        sem eget, facilisis sodales sem.
-      </div>
-    </article>
-  </div>
-  <div class="container_item" data-item="2">
-    gago
-  </div>
-</div> -->
 <br>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/navbar-burger.js"></script>
