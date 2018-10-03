@@ -1,15 +1,18 @@
 .hero.is-primary {
-  background-color:#071425;
+  background-color: #071425;
   color: #fff;
 }
+
 @media screen and (max-width: 522px) {
-  #title{
+  #title {
     margin-left: 25px;
   }
-  #created{
+
+  #created {
     margin-left: 25px;
   }
 }
+
 /*@media screen and (min-width: 1280px){
   .container {
     max-width: 1152px;
@@ -53,6 +56,7 @@
   max-width: 100%;
   position: relative;
 }
+
 .image {
   display: block;
   position: relative;
@@ -79,7 +83,7 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.title:not(.is-spaced) + .subtitle {
+.title:not(.is-spaced)+.subtitle {
   margin-top: -1.25rem;
 }
 
@@ -92,6 +96,7 @@
 .has-text-light {
   color: whitesmoke !important;
 }
+
 .is-size-6 {
   font-size: 1rem !important;
 }
@@ -121,6 +126,7 @@
 .tabs.is-toggle ul {
   border-bottom: none;
 }
+
 .tabs ul {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -151,7 +157,7 @@ ul {
 
 .tabs.is-toggle li.is-active a {
   background-color: #FF7100;
-  border-color:#FF7100;
+  border-color: #FF7100;
   color: #fff;
   z-index: 1;
 }
@@ -167,6 +173,7 @@ ul {
   margin-bottom: 0;
   position: relative;
 }
+
 .tabs a {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -192,21 +199,23 @@ ul {
   position: relative;
 }
 
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1280px) {
   .column.is-9-widescreen {
-      -webkit-box-flex: 0;
-      -ms-flex: none;
-      flex: none;
-      width: 75%;
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    width: 75%;
   }
 }
 
-@media screen and (min-width: 769px){
-  .column.is-8, .column.is-8-tablet {
-      -webkit-box-flex: 0;
-      -ms-flex: none;
-      flex: none;
-      width: 66.66666667%;
+@media screen and (min-width: 769px) {
+
+  .column.is-8,
+  .column.is-8-tablet {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    width: 66.66666667%;
   }
 }
 
@@ -239,6 +248,20 @@ ul {
   color: #3b3108;
 }
 
-.navbar-brand a{
-	background: none !important;
+.navbar-brand a {
+  background: none !important;
+}
+
+#tab-content .columns {
+  display: none;
+}
+
+#tab-content .columns.is-active {
+  display: block;
+}
+
+.column.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
