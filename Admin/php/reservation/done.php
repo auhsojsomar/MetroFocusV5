@@ -1,7 +1,7 @@
 <?php
     include '../../../User/includes/db.php';
     $id = $_POST['id'];
-    $sql = mysqli_query($con,"SELECT status FROM reservation WHERE id = $id AND status != 'Done' AND status != 'Pending'");
+    $sql = mysqli_query($con,"SELECT status FROM reservation WHERE id = $id AND status != 'Done' AND status != 'Pending' AND status != 'Canceled'");
     $row = mysqli_fetch_array($sql);
     if($row[0] == ""){
         echo "Error";
