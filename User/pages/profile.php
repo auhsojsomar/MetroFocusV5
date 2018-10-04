@@ -153,7 +153,7 @@ if(!isset($_COOKIE['username'])){
 	<div class="columns is-active" data-content="1">
 		<div class="column page">
 			<div class="box">
-				<div class="subtitle"><button class="button is-danger" type="button">Cancel</button></div>
+				<button class="button is-danger" type="button">Cancel</button>
 			</div>
 		</div>
 	</div>
