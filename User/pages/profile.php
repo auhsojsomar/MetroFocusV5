@@ -10,8 +10,8 @@ if(isset($_COOKIE['email'])){
 if(!isset($_COOKIE['username'])){
 	header('Location: ../');
 }
-$sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
-$sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user'");
+$sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user' ORDER BY id DESC");
+$sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user' ORDER BY id DESC");
 
 ?>
 <meta charset="UTF-8">
