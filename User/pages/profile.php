@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
+$user = $_COOKIE['email'];
 if(isset($_COOKIE['email'])){
 	$user = $_COOKIE['email'];
 	$sql2 = mysqli_query($con,"SELECT SUM(quantity) FROM cart WHERE user = '$user'");
@@ -9,6 +10,8 @@ if(isset($_COOKIE['email'])){
 if(!isset($_COOKIE['username'])){
 	header('Location: ../');
 }
+$sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
+
 ?>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -150,17 +153,38 @@ if(!isset($_COOKIE['username'])){
 	</ul>
 </div>
 <div id="tab-content" id="tab-content">
-	<div class="columns is-active" data-content="1">
-		<div class="column page">
-			<div class="box">
-				<button class="button is-danger" type="button">Cancel</button>
-			</div>
-		</div>
-	</div>
-	<div class="columns" data-content="2">
+	<div class="columns" data-content="1">
 		<div class="column page">
 			<div class="box">
 				<div class="subtitle"><button class="button is-dark" type="button">Cancel</button></div>
+			</div>
+		</div>
+	</div>
+	<div class="columns is-active" data-content="2">
+		<div class="column page">
+			<div class="box">
+				<table class="table" style="width:30em;">
+                    <thead>
+                        <tr>
+                            <th>Concern</th>
+                            <th>Schedule</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while($row = mysqli_fetch_assoc($sql)){
+                            ?>
+                            <tr>
+                                <td><?php echo $row['concern'] ?></td>
+                                <td><?php echo $row['schedule'] ?></td>
+                                <td><button id="<?php echo $row['id'] ?>" name="cancel" class="button is-danger" type="button">Cancel</button></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -176,6 +200,7 @@ if(!isset($_COOKIE['username'])){
 <br>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/navbar-burger.js"></script>
+<script src="../js/sweetalert.min.js"></script>
 <?php include('../includes/footer.php'); ?>
 <script>
 	<?php
@@ -194,4 +219,11 @@ if($badge[0] < 1){
 		$('#tab-content .columns').removeClass('is-active');
 		$('.columns[data-content="' + tab + '"]').addClass('is-active');
 	});
+    $('button[name="cancel"]').click(function(){
+        swal('Are you sure you want to cancel your appointment?','this can\'t be change','warning',{
+            buttons:true,
+            dangerMode:true,
+            closeOnClickOutside:false
+        })
+    });
 </script>
