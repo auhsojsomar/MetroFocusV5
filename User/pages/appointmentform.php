@@ -159,7 +159,7 @@ if(isset($_COOKIE['email'])){
 	                            <div class="field">
 	                        		<label class="label">Remarks</label>
 		                            	<div class="control has-icons-right">
-		                                	<textarea class="textarea" id="remarks" name="remarks" placeholder=""></textarea>
+		                                	<textarea class="textarea" id="remarks" name="remarks"></textarea>
 		                                    <span class="icon is-small is-right">
 		                                        <i id="remarksicon" class=""></i>
 		                                    </span>
@@ -173,14 +173,14 @@ if(isset($_COOKIE['email'])){
 	                </div>
 	            </div>
 	        </div>
-	    </section>
+		</section>
 	    <?php include '../includes/footer.php'; ?>
         <script src="../js/jquery.min.js"></script>
         <script src="../js/sweetalert.min.js"></script>
         <script src="../js/navbar-burger.js"></script>
         <script src="../js/moment.js"></script>
         <script src="../js/bulma-calendar.min.js"></script>
-        <script src="../js/jquery.datetimepicker.full.min.js"></script>
+		<script src="../js/jquery.datetimepicker.full.min.js"></script>
         <script>
         	<?php 
         	if(isset($_COOKIE['email'])){
