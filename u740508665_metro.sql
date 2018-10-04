@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 02, 2018 at 04:16 PM
+-- Generation Time: Oct 04, 2018 at 01:42 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -69,15 +69,37 @@ CREATE TABLE IF NOT EXISTS `activitylogs` (
   `user` varchar(255) NOT NULL,
   `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activitylogs`
 --
 
 INSERT INTO `activitylogs` (`id`, `name`, `action`, `quantity`, `datemod`, `type`, `user`, `description`) VALUES
-(1, 'Parts 1', 'Added', NULL, '10/2/2018 9:48 AM', 'Parts', 'admin', NULL),
-(2, 'Accessories 1', 'Added', NULL, '10/2/2018 9:49 AM', 'Accessories', 'admin', NULL);
+(1, 'w', 'Confirm', 1, 'we', 'we', 'we', 'aw'),
+(2, 'Parts 1', 'Confirm', 1, '10/3/2018 1:10 AM', 'Parts', 'admin', 'Reservation'),
+(3, 'Accessories 1', 'Confirm', 1, '10/3/2018 1:12 AM', 'Accessories', 'admin', 'Reservation'),
+(4, '', 'Confirm', 1, '10/3/2018 1:16 AM', 'Parts', 'admin', 'Reservation'),
+(5, 'Accessories 1', 'Reject', 1, '10/3/2018 1:17 AM', 'Accessories', 'admin', 'Reservation'),
+(6, '', 'Confirm', 1, '10/3/2018 1:19 AM', '10/03/2018 08:00', 'admin', 'Reservation'),
+(7, '', 'Confirm', 1, '10/3/2018 1:20 AM', '10/03/2018 08:00', 'admin', 'Reservation'),
+(8, '', 'Confirm', 1, '10/3/2018 1:25 AM', 'Parts', 'admin', 'Reservation'),
+(9, 'Parts 1', 'Confirm', 1, '10/3/2018 1:47 AM', 'Parts', 'admin', 'Reservation'),
+(10, 'Parts 1', 'Reject', 1, '10/3/2018 1:47 AM', 'Parts', 'admin', 'Reservation'),
+(11, 'Parts 1', 'Done', 1, '10/3/2018 2:44 AM', 'Parts', '', 'Reservation'),
+(12, 'Parts 1', 'Done', 1, '10/3/2018 2:46 AM', 'Parts', '', 'Reservation'),
+(13, 'Parts 1', 'Done', 1, '10/3/2018 2:47 AM', 'Parts', 'admin', 'Reservation'),
+(14, 'Parts 1', 'Done', 1, '10/3/2018 2:53 AM', 'Parts', 'admin', 'Reservation'),
+(15, 'Parts 1', 'Reject', 1, '10/3/2018 2:53 AM', 'Parts', 'admin', 'Reservation'),
+(16, 'Parts 1', 'Reject', 1, '10/3/2018 2:53 AM', 'Parts', 'admin', 'Reservation'),
+(17, 'Parts 1', 'Done', 1, '10/3/2018 2:53 AM', 'Parts', 'admin', 'Reservation'),
+(18, 'auhsojsomar', 'Confirm', NULL, '10/3/2018 3:02 AM', 'Appointment', 'admin', NULL),
+(19, 'auhsojsomar', 'Reject', NULL, '10/3/2018 3:06 AM', 'Appointment', 'admin', NULL),
+(20, 'auhsojsomar', 'Confirm', NULL, '10/3/2018 3:12 AM', 'Appointment', 'admin', NULL),
+(21, 'auhsojsomar', 'Reject', NULL, '10/3/2018 3:12 AM', 'Appointment', 'admin', NULL),
+(22, 'auhsojsomar', 'Reject', NULL, '10/3/2018 3:16 AM', 'Appointment', 'admin', NULL),
+(23, 'auhsojsomar', 'Edited', NULL, '10/3/2018 3:21 AM', 'User', 'admin', NULL),
+(24, 'Parts 1', 'Done', 1, '10/4/2018 9:41 PM', 'Parts', 'admin', 'Reservation');
 
 -- --------------------------------------------------------
 
@@ -104,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 --
 
 INSERT INTO `appointment` (`id`, `username`, `concern`, `schedule`, `cnumber`, `remarks`, `status`, `deleted`) VALUES
-(1, 'auhsojsomar', 'What the fuck', '10/03/2018 08:00', '09484406141', 'Are you doing?', 'Done', 0),
-(2, 'auhsojsomar', 'you\'re', '10/03/2018 09:30', '09484406141', 'road', 'Done', 0);
+(1, 'auhsojsomar', 'What the fuck', '10/03/2018 08:00', '09484406141', 'Are you doing?', 'Pending', 0),
+(2, 'auhsojsomar', 'you\'re', '10/03/2018 09:30', '09484406141', 'road', 'Pending', 0);
 
 -- --------------------------------------------------------
 
