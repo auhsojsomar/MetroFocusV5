@@ -11,6 +11,7 @@ if(!isset($_COOKIE['username'])){
 	header('Location: ../');
 }
 $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
+$sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user'");
 
 ?>
 <meta charset="UTF-8">
@@ -181,7 +182,7 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
                                 <td><?php echo $row['schedule'] ?></td>
                                 <td><?php echo $row['status'] ?></td>
                                 <?php
-                                if($row['status'] != 'Canceled'){
+                                if($row['status'] != 'Canceled'  && $row['status'] != 'Done'){
                                     echo '<td><button id="'.$row["id"].'" name="cancel" class="button is-danger" type="button">Cancel</button></td>';
                                 }
                                 ?>
@@ -196,8 +197,46 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
 	</div>
 	<div class="columns" data-content="3">
 		<div class="column page">
-			<div class="box">
-				<div class="subtitle"><button class="button is-info" type="button">Cancel</button></div>
+			<div class="box" id="box2">
+				<table class="table" id="table2" style="width:40em">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Quantity</th>
+							<th>Schedule</th>
+							<th>Status</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						while($row = mysqli_fetch_assoc($sql2)){
+							$id = $row['itemid'];
+							if($row['category'] == 'Parts'){
+								$sql3 = mysqli_query($con,"SELECT name FROM parts WHERE id = $id");
+							}
+							else{
+								$sql3 = mysqli_query($con,"SELECT name FROM accessories WHERE id = $id");
+							}
+							$row2 = mysqli_fetch_assoc($sql3);
+							$name = $row2['name'];
+							?>
+							<tr>
+								<td><?php echo $name ?></td>
+								<td><?php echo $row['itemquantity'] ?></td>
+								<td><?php echo $row['reservationdate'] ?></td>
+								<td><?php echo $row['status'] ?></td>
+								<?php
+								if($row['status'] != 'Canceled' && $row['status'] != 'Done'){
+									echo '<td><button id="'.$row["id"].'" name="cancel2" class="button is-danger" type="button">Cancel</button></td>';
+								}
+								?>
+							</tr>
+							<?php
+						}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<br>
@@ -227,7 +266,7 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
 	});
     $(document).on('click','button[name="cancel"]',function(){
         var id = $(this).attr('id');
-        swal('Are you sure you want to your appointment?','this can\'t be change','warning',{
+        swal('Are you sure you want cancel to your appointment?','this can\'t be change','warning',{
             buttons:true,
             dangerMode:true,
             closeOnClickOutside:false
@@ -240,6 +279,26 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
                     data:{id:id},
                     success:function(data){
                         $('#box').load(' #table');
+                    }
+                })
+            }
+        });
+    });
+	$(document).on('click','button[name="cancel2"]',function(){
+        var id = $(this).attr('id');
+        swal('Are you sure you want cancel to your reservation?','this can\'t be change','warning',{
+            buttons:true,
+            dangerMode:true,
+            closeOnClickOutside:false
+        })
+        .then((value) => {
+            if(value){
+                $.ajax({
+                    url:'../php/reservefetch.php',
+                    method:'POST',
+                    data:{id:id},
+                    success:function(data){
+                        $('#box2').load(' #table2');
                     }
                 })
             }
