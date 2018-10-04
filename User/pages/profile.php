@@ -160,25 +160,31 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
 			</div>
 		</div>
 	</div>
-	<div class="columns is-active" data-content="2">
+	<div class="columns" data-content="2">
 		<div class="column page">
-			<div class="box">
-				<table class="table" style="width:30em;">
+			<div class="box" id="box">
+				<table class="table" style="width:30em;" id="table">
                     <thead>
                         <tr>
                             <th>Concern</th>
                             <th>Schedule</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id='tbod'>
                         <?php
                         while($row = mysqli_fetch_assoc($sql)){
                             ?>
                             <tr>
                                 <td><?php echo $row['concern'] ?></td>
                                 <td><?php echo $row['schedule'] ?></td>
-                                <td><button id="<?php echo $row['id'] ?>" name="cancel" class="button is-danger" type="button">Cancel</button></td>
+                                <td><?php echo $row['status'] ?></td>
+                                <?php
+                                if($row['status'] != 'Canceled'){
+                                    echo '<td><button id="'.$row["id"].'" name="cancel" class="button is-danger" type="button">Cancel</button></td>';
+                                }
+                                ?>
                             </tr>
                             <?php
                         }
@@ -204,12 +210,12 @@ $sql = mysqli_query($con,"SELECT * FROM appointment WHERE username = '$user'");
 <?php include('../includes/footer.php'); ?>
 <script>
 	<?php
-if($badge[0] < 1){
-?>
-	$('#badge').removeClass('badge is-badge-warning is-badge-left');
-	<?php
-}
-?>
+    if($badge[0] < 1){
+    ?>
+        $('#badge').removeClass('badge is-badge-warning is-badge-left');
+        <?php
+    }
+    ?>
 	$('#tab li').on('click', function () {
 		var tab = $(this).data('tab');
 
@@ -219,11 +225,24 @@ if($badge[0] < 1){
 		$('#tab-content .columns').removeClass('is-active');
 		$('.columns[data-content="' + tab + '"]').addClass('is-active');
 	});
-    $('button[name="cancel"]').click(function(){
-        swal('Are you sure you want to cancel your appointment?','this can\'t be change','warning',{
+    $(document).on('click','button[name="cancel"]',function(){
+        var id = $(this).attr('id');
+        swal('Are you sure you want to your appointment?','this can\'t be change','warning',{
             buttons:true,
             dangerMode:true,
             closeOnClickOutside:false
         })
+        .then((value) => {
+            if(value){
+                $.ajax({
+                    url:'../php/profile.php',
+                    method:'POST',
+                    data:{id:id},
+                    success:function(data){
+                        $('#box').load(' #table');
+                    }
+                })
+            }
+        });
     });
 </script>
