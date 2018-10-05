@@ -147,6 +147,7 @@
                     <p class="help is-danger is-large" id="verifymessage"></p>
                     </div>
                     <button class="button is-warning is-fullwidth has-text-centered" type="submit" id="btnReset" name="btnReset">Verify</button>
+                    <div style="margin-top:9px;"><label><a>Resend</a></label></div>
                   </div>
                 </form>
               </div>
