@@ -5,7 +5,7 @@
     $code = $_POST['code'];
     $sql = mysqli_query($con,"SELECT * FROM loginform WHERE username = '$user' AND verification = '$code'");
     if(mysqli_fetch_assoc($sql)){
-        mysqli_query($con,"UPDATE loginform SET verification = 'Verified'");
+        mysqli_query($con,"UPDATE loginform SET verification = 'Verified' WHERE username = '$user'");
         echo 'Success';
     }
     else {

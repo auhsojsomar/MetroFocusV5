@@ -231,17 +231,17 @@ if(isset($_COOKIE['username'])){
 		        $('#emailmessage').html('Username must be more than 6 characters!');
 	        }
 	        else if(data == "Exist"){
-	            $('#email').addClass('is-danger');
+						$('#email').addClass('is-danger');
 		        $('#emailicon').addClass('fal fa-exclamation-triangle');
 		        $('#emailmessage').html('Username is already used');
 	        }
 	        else if(username.test(email.value)){
-	            $('#email').removeClass('is-danger');
+						$('#email').removeClass('is-danger');
 		        $('#emailicon').removeClass('fal fa-exclamation-triangle');
 		        $('#emailmessage').html('');
 	        }
 	        else {
-	            $('#email').addClass('is-danger');
+						$('#email').addClass('is-danger');
 		        $('#emailicon').addClass('fal fa-exclamation-triangle');
 		        $('#emailmessage').html('Invalid Username ');
 	        }
