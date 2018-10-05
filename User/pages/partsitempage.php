@@ -218,6 +218,9 @@
           </div>
         </div>
       </section>
+      <section id="section">
+      </section>
+      <?php include '../includes/footer.php' ?>
       <div class="modal">
         <div class="modal-background"></div>
           <div class="modal-card">
