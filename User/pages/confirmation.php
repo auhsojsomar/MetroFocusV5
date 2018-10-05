@@ -171,6 +171,27 @@
               $('#verify').removeClass('is-danger');
               $('#verifyicon').removeClass('fal fa-exclamation-triangle');
               $('#verifymessage').html('');
+              var code = $('#verify').val();
+              $.ajax({
+                url:'../php/confirmation.php',
+                method:'POST',
+                data:{code:code},
+                success:function(data){
+                  if(data != 'Success'){
+                    swal(data,'','error',{
+                      closeOnClickOutside:false
+                    })
+                  }
+                  else{
+                    swal(data,'','success',{
+                      closeOnClickOutside:false
+                    })
+                    .then((value) => {
+                      window.location = 'loginpage.php';
+                    })
+                  }
+                }
+              })
             }
             return false;
           }

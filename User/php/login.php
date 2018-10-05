@@ -7,6 +7,7 @@
 	$row = mysqli_fetch_assoc($sql);
 	if($row['verification'] != 'Verified'){
 		echo 'Not';
+		$_SESSION['user'] = $row['username'];
 	}
 	else if($row['status'] == 'Admin'){
 		echo 'Admin';
