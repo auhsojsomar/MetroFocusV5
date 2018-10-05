@@ -323,9 +323,9 @@ if(isset($_COOKIE['username'])){
 	    		url:"../php/signup.php",
 	    		success:function(data){
 	    			if(data == "Success"){
-	    				swal("Signup Successfully","","success")
+	    				swal("Verify your number","","success")
 	    				.then((value) => {
-	    					window.location = '../';
+	    					window.location = 'confirmation.php';
 	    				});
 	    			}
 	    		}

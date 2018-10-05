@@ -7,7 +7,8 @@
 	$email = $_POST['email'];
 	$cn = $_POST['cnum'];
 	$password = md5($_POST['password']);
-	if($sql = mysqli_query($con,"INSERT INTO loginform (firstname,lastname,username,password,cnumber,created)VALUES('$fname','$lname','$email','$password','$cn','$date')")){
+	$rand = rand(100000,999999);
+	if($sql = mysqli_query($con,"INSERT INTO loginform (firstname,lastname,username,password,cnumber,created,verification)VALUES('$fname','$lname','$email','$password','$cn','$date','$rand')")){
 		echo "Success";
 	}
  ?>
