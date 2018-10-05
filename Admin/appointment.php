@@ -254,8 +254,6 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
-            <script src="../User/js/lib/ckeditor/ckeditor.js"></script>
-
             <script>
             setInterval(function(){
                 dataTable.ajax.reload(null,false);
