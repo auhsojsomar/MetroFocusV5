@@ -1,7 +1,7 @@
 <?php 
     include '../../../User/includes/db.php';
     $id = $_POST['id'];
-    $sql = mysqli_query($con,"SELECT loginform.firstname,parts.name,parts.price,reservation.reservationdate,loginform.cnumber FROM loginform,reservation,parts WHERE parts.id = reservation.itemid AND reservation.username = loginform.username AND reservation.id = $id AND reservation.status != 'Confirmed' AND reservation.status != 'Done' AND reservation.status != 'Reject'");
+    $sql = mysqli_query($con,"SELECT loginform.firstname,parts.name,parts.price,reservation.reservationdate,loginform.cnumber FROM loginform,reservation,parts WHERE parts.id = reservation.itemid AND reservation.username = loginform.username AND reservation.id = $id AND reservation.status != 'Confirmed' AND reservation.status != 'Done' AND reservation.status != 'Reject' AND reservation.status != 'Canceled'");
     $row = mysqli_fetch_array($sql);
     $firstname = $row[0];
     $name = $row[1];
