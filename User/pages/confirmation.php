@@ -167,6 +167,13 @@
               $('#verifyicon').addClass('fal fa-exclamation-triangle');
               $('#verifymessage').html('Enter the verification code');
             }
+            else{
+              $('#verify').removeClass('is-danger');
+              $('#verifyicon').removeClass('fal fa-exclamation-triangle');
+              $('#verifymessage').html('');
+
+              
+            }
             return false;
           }
         </script>
