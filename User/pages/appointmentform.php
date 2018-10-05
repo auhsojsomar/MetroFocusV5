@@ -181,7 +181,7 @@ if(isset($_COOKIE['email'])){
         <script src="../js/moment.js"></script>
         <script src="../js/bulma-calendar.min.js"></script>
 		<script src="../js/jquery.datetimepicker.full.min.js"></script>
-		<script src="../js/lib/ckeditor/ckeditor.js"></script>
+		<script src="//cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
         <script>
 			CKEDITOR.replace('remarks');
         	<?php 
