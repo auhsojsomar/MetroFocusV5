@@ -210,9 +210,9 @@ if($_COOKIE['role'] == 'Admin'){
                                     <label for="" class="label">Contact Number</label>
                                     <input id="cnumber" type="input" class="input" readonly>
                                 </div>
-                                <div class="field">
+                                <div class="field" id="rem">
                                     <label for="" class="label">Remarks</label>
-                                    <textarea id="remarks" type="input" class="textarea" readonly></textarea>
+                                    <!-- <textarea id="remarks" type="input" class="textarea" readonly></textarea> -->
                                 </div>
                                 </form>
                             </section>
@@ -254,6 +254,7 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
+            <script src="../User/js/lib/ckeditor/ckeditor.js"></script>
 
             <script>
             setInterval(function(){
@@ -294,9 +295,9 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#concern').val(data.concern);
                         $('#schedule').val(data.schedule);
                         $('#cnumber').val(data.cnumber);
-                        $('#remarks').val(data.remarks);
                         $('#status').val(data.status);
                         $('#user_id').val(user_id);
+                        $('#rem').html('<label for="" class="label">Remarks</label>'+data.remarks);
                     }
                 })
             });

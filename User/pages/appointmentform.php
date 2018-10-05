@@ -135,7 +135,7 @@ if(isset($_COOKIE['email'])){
 	                </div>
 	                <div class="columns form-container is-centered">
 	                    <div class="column is-half">
-	                        <form onsubmit="return Validate()" method="POST" name="vform" id="vform" enctype="multipart/form-data"">
+	                        <form onsubmit="return Validate()" method="POST" name="vform" id="vform" enctype="multipart/form-data">
 	                            <div class="field">
 	                        		<label class="label">Concern</label>
 		                            	<div class="control has-icons-right">
