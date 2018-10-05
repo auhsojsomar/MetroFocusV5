@@ -133,13 +133,13 @@ $sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user' OR
 </section>
 <div class="tabs is-boxed column is-centered is-mobile" id="tab">
 	<ul>
-		<li data-tab="1" class="is-active">
+		<!-- <li data-tab="1" class="is-active">
 			<a>
 				<span class="icon is-small"><i class="fal fa-user" aria-hidden="true"></i></span>
 				<span>Account</span>
 			</a>
-		</li>
-		<li data-tab="2">
+		</li> -->
+		<li data-tab="2" class="is-active">
 			<a>
 				<span class="icon is-small"><i class="fal fa-calendar-alt" aria-hidden="true"></i></span>
 				<span>Appointment</span>
@@ -161,7 +161,7 @@ $sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user' OR
 			</div>
 		</div>
 	</div>
-	<div class="columns" data-content="2">
+	<div class="columns is-active" data-content="2">
 		<div class="column page">
 			<div class="box" id="box">
 				<table class="table" style="width:30em;" id="table">
