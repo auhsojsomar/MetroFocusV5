@@ -9,7 +9,7 @@
 			</div>
 		</div>
 
-		<div class="hero-body wow fadeInUp">
+		<div class="hero-body wow slideInDown">
 			<div class="container has-text-centered">
 				<h1 class="title is-cursor-pointer is-size-1-touch">
 					Metro<span>Focus</span>
