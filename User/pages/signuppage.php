@@ -179,6 +179,7 @@ if(isset($_COOKIE['username'])){
 	var cpassword = document.forms['signupform']['cpassword'];
 	var cpassword_err = document.getElementById('cpasswordmessage');
 	var exist = "";
+	var cexist = "";
 	function fnamevalid(){
 		newval = $('#fname').val().replace(/[^A-z\s.]/g,"");
         $('#fname').val(newval);
@@ -248,23 +249,31 @@ if(isset($_COOKIE['username'])){
 	    });
 	}
 	function cnumvalid(){
-		newval = $('#cnumber').val().replace(/[^0-9.]/g, "");
-		$('#cnumber').val(newval);
-		if(cnumber.value == ""){
-            $('#cnumber').addClass('is-danger');
-            $('#cnumbericon').addClass('fal fa-exclamation-triangle');
-            cnumber_err.textContent = "Enter your contact number";
-        }
-        else if(cnumber.value.length < 11 || !cnum.test(cnumber.value)){
-        	$('#cnumber').addClass('is-danger');
-            $('#cnumbericon').addClass('fal fa-exclamation-triangle');
-            cnumber_err.textContent = "Enter a vaild contact number";
-        }
-        else {
-            $('#cnumber').removeClass('is-danger');
-            $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
-            cnumber_err.textContent = "";
-        }
+		$.post('../php/contact.php',{cnum : cnumber.value},function(data) {
+			cexist = data;
+			if(cnumber.value == ""){
+				$('#cnumber').addClass('is-danger');
+				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
+				cnumber_err.textContent = "Enter your contact number";
+			}
+			else if(data == "Exist"){
+				$('#cnumber').addClass('is-danger');
+				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
+				cnumber_err.textContent = "Contact number is already used";
+			}
+			else if(cnumber.value.length < 11 || !cnum.test(cnumber.value)){
+				$('#cnumber').addClass('is-danger');
+				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
+				cnumber_err.textContent = "Enter a vaild contact number";
+			}
+			else {
+				$('#cnumber').removeClass('is-danger');
+				$('#cnumbericon').removeClass('fal fa-exclamation-triangle');
+				cnumber_err.textContent = "";
+			}
+			newval = $('#cnumber').val().replace(/[^0-9.]/g, "");
+			$('#cnumber').val(newval);
+		});
 	}
 	function passwordvalid(){
 		if (password.value.length == 0){
@@ -316,7 +325,7 @@ if(isset($_COOKIE['username'])){
 			$('#lnamemessage').html('Invalid format');
 			$('#lname').addClass('is-danger');
 		}
-		else if((fname.value != "")&&(lname.value != "")&&(email.value != '')&&(username.test(email.value))&&(password.value.length != 0)&&(password.value.length > 7)&&(cpassword.value.length != 0)&&(cpassword.value == password.value)&&(exist != "Exist")&&(!namereg.test(lname.value))&&(!namereg.test(fname.value))&&(!nameregdot.test(fname.value))&&(!nameregdot.test(lname.value))&&(cnumber.value.length > 10)&&(cnum.test(cnumber.value))&&(email.value.length > 5)){
+		else if((fname.value != "")&&(lname.value != "")&&(email.value != '')&&(username.test(email.value))&&(password.value.length != 0)&&(password.value.length > 7)&&(cpassword.value.length != 0)&&(cpassword.value == password.value)&&(exist != "Exist")&&(!namereg.test(lname.value))&&(!namereg.test(fname.value))&&(!nameregdot.test(fname.value))&&(!nameregdot.test(lname.value))&&(cnumber.value.length > 10)&&(cnum.test(cnumber.value))&&(email.value.length > 5)&&cexist != "Exist"){
 	    	$.ajax({
 	    		data:$('#signupform').serialize(),
 	    		method:"POST",
