@@ -111,7 +111,7 @@ header('Location: ../');
               </div>
             </div>
           </form>
-          <nav class="level">
+          <!-- <nav class="level">
             <div class="level-item has-text-centered">
               <div>
                 <p class="heading"><a href="">Terms</a></p>
@@ -132,7 +132,7 @@ header('Location: ../');
                 <p class="heading"><a href="">Contact</a></p>
               </div>
             </div>
-          </nav>
+          </nav> -->
         </div>
       </div>
     </div>
