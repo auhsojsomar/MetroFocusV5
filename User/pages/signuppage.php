@@ -252,17 +252,17 @@ if(isset($_COOKIE['username'])){
 		$('#cnumber').val(newval);
 		if(cnumber.value == ""){
             $('#cnumber').addClass('is-danger');
-            $('#cnumbericon').addClass('fas fa-exclamation-triangle');
+            $('#cnumbericon').addClass('fal fa-exclamation-triangle');
             cnumber_err.textContent = "Enter your contact number";
         }
         else if(cnumber.value.length < 11 || !cnum.test(cnumber.value)){
         	$('#cnumber').addClass('is-danger');
-            $('#cnumbericon').addClass('fas fa-exclamation-triangle');
+            $('#cnumbericon').addClass('fal fa-exclamation-triangle');
             cnumber_err.textContent = "Enter a vaild contact number";
         }
         else {
             $('#cnumber').removeClass('is-danger');
-            $('#cnumbericon').removeClass('fas fa-exclamation-triangle');
+            $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
             cnumber_err.textContent = "";
         }
 	}

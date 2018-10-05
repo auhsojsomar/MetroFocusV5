@@ -268,7 +268,7 @@ if(isset($_COOKIE['email'])){
                         	      closeOnClickOutside: false,
                         	    })
                         	    .then((value) => {
-                        	    window.location = '../';
+                        	    window.location = 'profile.php';
                             	});
                             }
                             else{
