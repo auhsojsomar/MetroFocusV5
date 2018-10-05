@@ -125,7 +125,7 @@
                 <!-- <div class="logo has-text-centered">
                   <router-link to="/"><img src="" class="image" alt="LOGO"></router-link>
                 </div> -->
-                <form method="POST" name="loginform" id="loginform" onsubmit="return Forgot();">
+                <form method="POST" name="loginform" id="loginform" onsubmit="return Verify();">
                   <h1 style="color: white" class="has-text-centered title is-cursor-pointer is-size-1-touch">
                             Metro<span style="color: #FF7100">Focus</span>
                   </h1>
@@ -134,19 +134,19 @@
                   </div> -->
                   <div class="box">
                     <div class="field">
-                    <label>Email Address</label>
+                    <label>Verification Code</label>
                     <p class="control has-icons-left has-icons-right">
-                      <input class="input is-rounded" id="email" name="email" type="text" placeholder="youremail@example.com">
+                      <input class="input is-rounded" id="verify" name="verify" type="text" placeholder="Code">
                       <span class="icon is-small is-left">
-                      <i class="fal fa-envelope"></i>
+                      <i class="fal fa-key"></i>
                       </span>
                       <span class="icon is-small is-right">
-                      <i id="emailicon" class=""></i>
+                      <i id="verifyicon" class=""></i>
                       </span>
                     </p>
-                    <p class="help is-danger is-large" id="emailmessage"></p>
+                    <p class="help is-danger is-large" id="verifymessage"></p>
                     </div>
-                    <button class="button is-warning is-fullwidth has-text-centered" type="submit" id="btnReset" name="btnReset">Reset</button>
+                    <button class="button is-warning is-fullwidth has-text-centered" type="submit" id="btnReset" name="btnReset">Verify</button>
                   </div>
                 </form>
               </div>
@@ -157,10 +157,19 @@
         </section>
         <!-- <div style="background: #F3F4F5"><br><br><br></div> -->
         <?php include('../includes/footer.php'); ?>
-
         <script src="../js/jquery.min.js"></script>
         <script src="../js/sweetalert.min.js"></script>
         <script src="../js/navbar-burger.js"></script>
+        <script>
+          function Verify(){
+            if($('#verify').val() == ''){
+              $('#verify').addClass('is-danger');
+              $('#verifyicon').addClass('fal fa-exclamation-triangle');
+              $('#verifymessage').html('Enter the verification code');
+            }
+            return false;
+          }
+        </script>
     <?php
   }
   ?>

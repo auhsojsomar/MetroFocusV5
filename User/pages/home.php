@@ -142,14 +142,14 @@
 			<div class="column is-centered is-narrow is-two-fifths has-text-centered">
 				<div class="subtitle wow fadeInLeft">Hassle Free</div>
 					<div class="text wow fadeInDown" style="height: 100px;" data-wow-delay="0.5s">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						Doing business are now made easier by making it online. Faster, More efficient and Reliable.
 					</div>
 					<img style="width: 300px;height: 300px;" src="assets/img/NoHassle.png" alt="Image" class="image-box border-shadow wow fadeInLeft"data-wow-delay="1s">
 			</div>
 			<div class="column is-centered is-narrow is-two-fifths has-text-centered">
 				<div class="subtitle wow fadeInRight">Cost effective</div>
 					<div class="text wow fadeInDown" style="height: 100px;" data-wow-delay="0.5s">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+						Our goal is to provide our customer with the best value of services they need that reflects the worth of services they availed.
 					</div>
 					<img style="width: 300px;height: 300px;" src="assets/img/COST EFFECTIVE.png" alt="Image" class="image-box border-shadow wow fadeInRight" data-wow-delay="1s">
 			</div>
