@@ -171,9 +171,6 @@
               $('#verify').removeClass('is-danger');
               $('#verifyicon').removeClass('fal fa-exclamation-triangle');
               $('#verifymessage').html('');
-              <?php 
-              
-              ?>
             }
             return false;
           }
