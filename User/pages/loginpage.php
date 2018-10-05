@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_COOKIE['username'])){
-  header('Location: ../');
+header('Location: ../');
 }
 ?>
 <meta charset="UTF-8">
@@ -188,6 +188,8 @@ if(isset($_COOKIE['username'])){
             window.location = '../../Admin/';
           } else if (data == 'User') {
             window.location = '../';
+          } else if (data == 'Not') {
+            window.location = 'confirmation.php';
           } else {
             swal(data, "", "warning")
               .then((value) => {

@@ -5,7 +5,10 @@
 	$pass = md5($_POST['pass']);
 	$sql = mysqli_query($con,"SELECT * FROM loginform WHERE username = '$user' AND password = '$pass' AND deleted = 0");
 	$row = mysqli_fetch_assoc($sql);
-	if($row['status'] == 'Admin'){
+	if($row['verification'] != 'Verified'){
+		echo 'Not';
+	}
+	else if($row['status'] == 'Admin'){
 		echo 'Admin';
 		// $_COOKIE['role'] = 'Admin';
 		// $_COOKIE['username'] = $row['firstname'] .' '. $row['lastname'];
