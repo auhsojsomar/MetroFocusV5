@@ -285,7 +285,7 @@ if($_COOKIE['role'] == 'Admin'){
                         <div class="field">
                             <label class="label">Description</label>
                                 <div class="control has-icons-right">
-                                    <textarea maxlength="200" name="description" id="description" class="textarea" placeholder="Description"></textarea>
+                                    <textarea name="description" id="description" class="textarea" placeholder="Description"></textarea>
                                         <span class="icon is-small is-right">
                                             <i id="descriptionicon" class=""></i>
                                         </span>
@@ -381,7 +381,6 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
             <script>
-                
                 setInterval(function(){
                     dataTable.ajax.reload(null,false);
                 },1000);
