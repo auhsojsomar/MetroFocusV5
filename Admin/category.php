@@ -58,10 +58,10 @@ if($_COOKIE['role'] == 'Admin'){
                                    <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <a class="dropdown-item" href="../User/pages/profile.php">
                                             <i class="fa fa-user icon"></i> Profile </a>
-                                        <a class="dropdown-item" href="#">
+                                        <!-- <a class="dropdown-item" href="#">
                                             <i class="fa fa-bell icon"></i> Notifications </a>
                                         <a class="dropdown-item" href="#">
-                                            <i class="fa fa-gear icon"></i> Settings </a>
+                                            <i class="fa fa-gear icon"></i> Settings </a> -->
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="../User/pages/logout.php">
                                             <i class="fa fa-power-off icon"></i> Logout </a>

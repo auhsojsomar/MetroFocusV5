@@ -181,7 +181,9 @@ if(isset($_COOKIE['email'])){
         <script src="../js/moment.js"></script>
         <script src="../js/bulma-calendar.min.js"></script>
 		<script src="../js/jquery.datetimepicker.full.min.js"></script>
+		<script src="../js/lib/ckeditor/ckeditor.js"></script>
         <script>
+			CKEDITOR.replace('remarks');
         	<?php 
         	if(isset($_COOKIE['email'])){
         	  if($num[0] < 1){
@@ -244,11 +246,6 @@ if(isset($_COOKIE['email'])){
                     $('#remarksicon').addClass('fas fa-exclamation-triangle');
                     remarks_err.textContent = "What is the problem?";
                 }
-                else if(!space.test(remarks.value)){
-                	$('#remarks').addClass('is-danger');
-                    $('#remarksicon').addClass('fas fa-exclamation-triangle');
-                    remarks_err.textContent = "Invalid format";
-                }
                 else {
                     $('#remarks').removeClass('is-danger');
                     $('#remarksicon').removeClass('fas fa-exclamation-triangle');
@@ -256,7 +253,7 @@ if(isset($_COOKIE['email'])){
                 }
         	}
         	function ValidateAll(){
-        		if((concern.value != "")&&(schedule.value != "")&&(remarks.value != "")&&(space.test(concern.value))&&(space.test(remarks.value))){
+        		if((concern.value != "")&&(schedule.value != "")&&(remarks.value != "")&&(space.test(concern.value))){
         			var asdasd = $('#vform').serialize();
         			$.ajax({
                         data:asdasd,
