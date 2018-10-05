@@ -5,7 +5,7 @@
 	$pass = md5($_POST['pass']);
 	$sql = mysqli_query($con,"SELECT * FROM loginform WHERE username = '$user' AND password = '$pass' AND deleted = 0");
 	$row = mysqli_fetch_assoc($sql);
-	if($row['verification'] != 'Verified'){
+	if($row['verification'] != 'Verified' && $row['verification'] != ''){
 		echo 'Not';
 		$_SESSION['user'] = $row['username'];
 	}
