@@ -147,7 +147,7 @@
                     <p class="help is-danger is-large" id="verifymessage"></p>
                     </div>
                     <button class="button is-warning is-fullwidth has-text-centered" type="submit" id="btnReset" name="btnReset">Verify</button>
-                    <div style="margin-top:9px;"><label><a>Resend</a></label></div>
+                    <button class="button is-danger" type="button" id="resend" style="margin-top:10px;">Resend</button>
                   </div>
                 </form>
               </div>
@@ -162,6 +162,18 @@
         <script src="../js/sweetalert.min.js"></script>
         <script src="../js/navbar-burger.js"></script>
         <script>
+          $(document).on('click','#resend',function(){
+            <?php
+              include '../includes/db.php';
+              $user = $_SESSION['user'];
+              $sql = mysqli_query($con,"SELECT * FROM loginform WHERE username = '$user'");
+              $row = mysqli_fetch_assoc($sql);
+              $cn = $row['cnumber'];
+              $rand = $row['verification'];
+              include '../php/code.php';
+            ?>
+            swal('Check your phone','','success',{closeOnClickOutside:false});
+          });
           function Verify(){
             if($('#verify').val() == ''){
               $('#verify').addClass('is-danger');
