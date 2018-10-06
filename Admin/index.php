@@ -265,7 +265,7 @@ if($_COOKIE['role'] == 'Admin'){
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 title:{
-                    text: "Company Performace"
+                    text: "Company Performance"
                 },
                 axisX: {
                     valueFormatString: "MMM DD, YY"
@@ -289,11 +289,11 @@ if($_COOKIE['role'] == 'Admin'){
                     yValueFormatString: "#0.## °C",
                     showInLegend: true,
                     dataPoints: [
-                        { x: new Date(2018,8,11), y: 2000 },
-                        { x: new Date(2017,8,18), y: 1800 },
-                        { x: new Date(2017,8,26), y: 1750 },
-                        { x: new Date(2017,8,25), y: 1600 },
-                        { x: new Date(2017,8,31), y: 1700 }
+                        { x: new Date(2018,8,11), y: 2700 },
+                        { x: new Date(2018,7,18), y: 2000 },
+                        { x: new Date(2018,6,26), y: 1800 },
+                        { x: new Date(2018,5,25), y: 1700},
+                        { x: new Date(2018,4,31), y: 1600 }
                     ]
                 },
                 
