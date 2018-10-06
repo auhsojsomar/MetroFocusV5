@@ -7,6 +7,8 @@ $accessories = mysqli_query($con,"SELECT SUM(quantity) FROM accessories");
 $accessories2 = mysqli_fetch_array($accessories);
 $user = mysqli_query($con,"SELECT COUNT(*) FROM loginform WHERE status = 'User'");
 $user2 = mysqli_fetch_array($user);
+$pending = mysqli_query($con,"SELECT COUNT(*) FROM reservation,appointment WHERE reservation.status = 'Pending' AND appointment.status = 'Pending'");
+$pending2 = mysqli_fetch_array($pending);
 $total = $parts2[0]+$accessories2[0];
 if($_COOKIE['role'] == 'Admin'){
     ?>
@@ -216,27 +218,27 @@ if($_COOKIE['role'] == 'Admin'){
         					        </article>
                     			</div> -->
                                 <div class="tile is-parent">
-                                    <article class="tile is-child box is-danger">
-                                        <p class="title">100,000</p>
-                                        <p class="subtitle"><span class="icon is-small"><i class="fal fa-chart-bar"></i></span> Sales</p>
+                                    <article class="tile is-child box" style="background: red;">
+                                        <p class="title" style="color: #fff;"><?php echo $pending2[0] ?></p>
+                                        <p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-chart-bar"></i></span> Pending</p>
                                     </article>
                                 </div>
                     			<div class="tile is-parent">
-                					<article class="tile is-child box is-danger">
-	        					        <p class="title"><?php echo $parts2[0] ?></p>
-                                		<p class="subtitle"><span class="icon is-small"><i class="fal fa-camera-retro"></i></span> Camera Parts</p>
+                					<article class="tile is-child box is-danger" style="background: #071425">
+	        					        <p class="title" style="color: #fff;"><?php echo $parts2[0] ?></p>
+                                		<p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-camera-retro"></i></span> Camera Parts</p>
         					        </article>
                     			</div>
                     			<div class="tile is-parent">
-                					<article class="tile is-child box is-danger">
-	        					        <p class="title"><?php echo $accessories2[0] ?></p>
-                                		<p class="subtitle"><span class="icon is-small"><i class="fal fa-cogs"></i></span> Camera Accessories</p>
+                					<article class="tile is-child box is-danger" style="background: #ff7100">
+	        					        <p class="title" style="color: #fff;"><?php echo $accessories2[0] ?></p>
+                                		<p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-cogs"></i></span> Camera Accessories</p>
         					        </article>
                     			</div>
                     			<div class="tile is-parent">
-                					<article class="tile is-child box is-danger">
-	        					        <p class="title"><?php echo $user2[0] ?></p>
-                                		<p class="subtitle"><span class="icon is-small"><i class="fal fa-users"></i></span> Registered Users</p>
+                					<article class="tile is-child box is-danger" style="background: green;">
+	        					        <p class="title" style="color: #fff;"><?php echo $user2[0] ?></p>
+                                		<p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-users"></i></span> Registered Users</p>
         					        </article>
                     			</div>
                                 
