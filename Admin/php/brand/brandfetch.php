@@ -1,7 +1,7 @@
 <?php
 include '../../../User/includes/db.php';
 $output = array();
-$query = "SELECT * FROM brand WHERE deleted = 0 ORDER BY id DESC";
+$query = "SELECT * FROM brand WHERE deleted = 0 ORDER BY brand";
 $statement = $connection->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
