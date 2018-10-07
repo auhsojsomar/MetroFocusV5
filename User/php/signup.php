@@ -11,7 +11,7 @@
 	$_SESSION['user'] = $email;
 	if($sql = mysqli_query($con,"INSERT INTO loginform (firstname,lastname,username,password,cnumber,created,verification)VALUES('$fname','$lname','$email','$password','$cn','$date','$rand')")){
 		$_SESSION['user'] = $email;
-		echo "Success";
 		include_once 'code.php';
+		echo "Success";
 	}
  ?>
