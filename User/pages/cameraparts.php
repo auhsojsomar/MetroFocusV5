@@ -221,9 +221,14 @@ if(isset($_COOKIE['email'])){
             	<?php 
             		while($row = mysqli_fetch_assoc($sql)){
                         $id = $row['id'];
-                        $sql3 = mysqli_query($con,"SELECT * FROM cart WHERE user = '$user' AND item_id = $id AND type = 'Parts'");
-                        $row3 = mysqli_fetch_array($sql3);
-                        $quantity = $row['quantity']-$row3['quantity'];
+                        if(isset($_COOKIE['email'])){
+                            $sql3 = mysqli_query($con,"SELECT * FROM cart WHERE user = '$user' AND item_id = $id AND type = 'Parts'");
+                            $row3 = mysqli_fetch_array($sql3);
+                            $quantity = $row['quantity']-$row3['quantity'];
+                        }
+                        else{
+                            $quantity = $row['quantity'];
+                        }
                         $avail = '';
                         $class = '';
                         if($quantity < 1){

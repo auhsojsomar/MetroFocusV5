@@ -168,9 +168,14 @@ if(isset($_GET['item'])){
 								include '../includes/db.php';
 								$id = $_GET['item'];
 								$sql = mysqli_query($con,"SELECT * FROM parts WHERE id = $id");
-								$sql2 = mysqli_query($con,"SELECT * FROM cart WHERE user='$user' AND type = 'Parts' AND item_id = $id");
 								$row = mysqli_fetch_array($sql);
-								$row2 = mysqli_fetch_array($sql2);
+								if(isset($_COOKIE['email'])){
+									$sql2 = mysqli_query($con,"SELECT * FROM cart WHERE user='$user' AND type = 'Parts' AND item_id = $id");
+									$row2 = mysqli_fetch_array($sql2);
+								}
+								else{
+									$row2['quantity'] = 0;
+								}
 								?>
 								<style>
 									input{
