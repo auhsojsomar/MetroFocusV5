@@ -116,7 +116,7 @@ else{
 	</section>
 	<div class="hero-body">
 		<div class="container">
-			<div class="columns is-mobile is-multiline is-centered">
+			<div class="columns is-multiline is-centered">
 				<div class="column is-half">
 					<form method="POST" name="loginform" id="loginform" onsubmit="return Verify();">
 						<h1 style="color: white" class="has-text-centered title is-cursor-pointer is-size-1-touch">
