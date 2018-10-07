@@ -165,7 +165,9 @@
                         include '../includes/db.php';
                         $id = $_GET['item'];
                         $sql = mysqli_query($con,"SELECT * FROM accessories WHERE id = $id");
+                        $sql2 = mysqli_query($con,"SELECT * FROM cart WHERE user = '$user' AND type = 'Accessories' AND item_id = $id");
                         $row = mysqli_fetch_array($sql);
+                        $row2 = mysqli_fetch_array($sql2);
                          ?>
                          <style>
                            input{
@@ -197,7 +199,7 @@
                             color: white;
                            }
                          </style>
-                        <input readonly id="quantity" name="quantity" type="number" min="1" max="<?php echo $row['quantity'] ?>" value="1" style="width: 4ch;">
+                        <input readonly id="quantity" name="quantity" type="number" min="1" max="<?php echo $row['quantity']-$row2['quantity'] ?>" value="1" style="width: 4ch;">
                         <!-- <button>+</button> -->
                         <!-- <button>-</button> -->
                       </div>
@@ -395,7 +397,7 @@
           $('#price').html("&#8369;"+'<?php echo number_format($row[5],2,'.',',') ?>');
           $('#image').append('<img src="../../Admin/php/accessories/upload/'+'<?php echo $row[1] ?>'+'" alt="image">');
           <?php
-          $num = $row[6];
+          $num = $row[6]-$row2['quantity'];
           if($num < 1){
             ?>
             $('#avail').html('Out of stock');

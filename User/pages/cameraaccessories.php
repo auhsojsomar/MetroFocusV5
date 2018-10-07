@@ -189,7 +189,10 @@ if(isset($_COOKIE['email'])){
             <div class="row">
                 <?php 
                 while($row = mysqli_fetch_assoc($sql)){
-                    $quantity = $row['quantity'];
+                    $id = $row['id'];
+                    $sql3 = mysqli_query($con,"SELECT * FROM cart WHERE user = '$user' AND type = 'Accessories' AND item_id = $id");
+                    $row3 = mysqli_fetch_array($sql3);
+                    $quantity = $row['quantity']-$row3['quantity'];
                     $avail = '';
                     $class = '';
                     if($quantity == 0){
