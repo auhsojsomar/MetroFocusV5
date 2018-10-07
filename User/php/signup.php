@@ -8,9 +8,10 @@
 	$cn = $_POST['cnum'];
 	$password = md5($_POST['password']);
 	$rand = rand(100000,999999);
+	$_SESSION['user'] = $email;
 	if($sql = mysqli_query($con,"INSERT INTO loginform (firstname,lastname,username,password,cnumber,created,verification)VALUES('$fname','$lname','$email','$password','$cn','$date','$rand')")){
 		$_SESSION['user'] = $email;
-		include 'code.php';
 		echo "Success";
+		include_once 'code.php';
 	}
  ?>

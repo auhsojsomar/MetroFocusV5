@@ -159,7 +159,7 @@ else{
 		$row = mysqli_fetch_assoc($sql);
 		$cn = $row['cnumber'];
 		$rand = $row['verification'];
-		include '../php/code.php';
+		include_once '../php/code.php';
 		?>
 		swal('Check your phone', '', 'success', {
 			closeOnClickOutside: false
