@@ -134,7 +134,7 @@ if(isset($_GET['item'])){
 							<ul>
 								<li><a href="cameraparts.php">Camera Parts</a></li>
 								<li><a href="#" id="brandbread">Brand</a></li>
-								<li id="itemname"><a href="#">Item Name</a></li>
+								<li class="is-active"><a href="#" id="itemname">Item Name</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -399,7 +399,7 @@ if(isset($_GET['item'])){
 		?>
 		$('#uid').val('<?php echo $row[0] ?>');
 		$('#partsname').html('<?php echo $row[2] ?>');
-		$('#itemname').html('<?php echo "&nbsp;&nbsp;&nbsp;".$row[2] ?>');
+		$('#itemname').html('<?php echo $row[2] ?>');
 		$('#brandname').html('<?php echo $row[3] ?>');
 		$('#title').html("MetroFocus | " + '<?php echo $row[3] ?>');
 		$('#brandbread').html('<?php echo $row[3] ?>');

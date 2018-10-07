@@ -398,7 +398,7 @@ $num = mysqli_fetch_array($sql);
 		?>
 		$('#uid').val('<?php echo $row[0] ?>');
 		$('#partsname').html('<?php echo $row[2] ?>');
-		$('#itemname').html('<?php echo "&nbsp;&nbsp;&nbsp;".$row[2] ?>');
+		$('#itemname').html('<?php echo $row[2] ?>');
 		$('#brandname').html('<?php echo $row[3] ?>');
 		$('#title').html("MetroFocus | " + '<?php echo $row[3] ?>');
 		$('#brandbread').html('<?php echo $row[3] ?>');
