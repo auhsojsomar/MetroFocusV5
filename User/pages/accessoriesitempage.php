@@ -153,18 +153,16 @@ $num = mysqli_fetch_array($sql);
 					</div>
 					<form id="vform2" method="POST" class="control">
 						<div class="column">
-							<h2 class="title" id="partsname" name="itemname">Item Name</h2>
-							<p class="subtitle" id="brandname">Brand Name</p>
+							<h2 class="title" id="partsname" name="itemname"></h2>
+							<p class="subtitle" id="brandname"></p>
 							<div class="item-description">
-								<p class="has-text-black-bis" id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Beatae quod error, quasi incidunt officia voluptatem odit aperiam eveniet ab voluptatibus, dolores
-									facilis! Sunt facilis sed soluta accusantium veniam aliquid rem. </p>
+								<p class="has-text-black-bis" id="description"></p>
 								<br>
 							</div>
 							<div class="field">
 								<br>
-								<p class="title has-text-danger" id="price">$99.99</p>
-								<p class="subtitle" id="avail">On stock</p>
+								<p class="title has-text-danger" id="price"></p>
+								<p class="subtitle" id="avail"></p>
 								<div class="nice-number">
 								<?php 
 								include '../includes/db.php';
