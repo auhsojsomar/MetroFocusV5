@@ -20,7 +20,6 @@
       <link rel="stylesheet" href="../css/footer.css">
       <title>MetroFocus | Forgot Password</title>
 
-
     <section class="hero is-fullheight login-hero">
       <section class="hero is-dark">
           <div class="hero-head" style="background: #071425;">
