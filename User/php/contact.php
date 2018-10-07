@@ -7,6 +7,6 @@
         echo "Exist";
     }
     else{
-        echo "Success";
+        echo "Not Exist";
     }
 ?>

@@ -7215,7 +7215,7 @@ a.navbar-item:hover {
     }
 
     .navbar-menu.is-active {
-        display: block
+        display: block;
     }
 
     .navbar.is-fixed-bottom-touch,

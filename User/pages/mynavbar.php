@@ -115,7 +115,6 @@
                     <a href="#" class="navbar-item" style="background: none !important;">
 						<span style="font-weight: bold;">Metro</span><span style="color: #FF7100;font-weight: bold;">Focus</span>
 					</a>
-
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

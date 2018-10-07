@@ -256,15 +256,15 @@ if(isset($_COOKIE['username'])){
 				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
 				cnumber_err.textContent = "Enter your contact number";
 			}
-			else if(data == "Exist"){
-				$('#cnumber').addClass('is-danger');
-				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
-				cnumber_err.textContent = "Contact number is already used";
-			}
 			else if(cnumber.value.length < 11 || !cnum.test(cnumber.value)){
 				$('#cnumber').addClass('is-danger');
 				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
 				cnumber_err.textContent = "Enter a vaild contact number";
+			}
+			else if(data == "Exist"){
+				$('#cnumber').addClass('is-danger');
+				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
+				cnumber_err.textContent = "Contact number is already used";
 			}
 			else {
 				$('#cnumber').removeClass('is-danger');
@@ -325,7 +325,7 @@ if(isset($_COOKIE['username'])){
 			$('#lnamemessage').html('Invalid format');
 			$('#lname').addClass('is-danger');
 		}
-		else if((fname.value != "")&&(lname.value != "")&&(email.value != '')&&(username.test(email.value))&&(password.value.length != 0)&&(password.value.length > 7)&&(cpassword.value.length != 0)&&(cpassword.value == password.value)&&(exist != "Exist")&&(!namereg.test(lname.value))&&(!namereg.test(fname.value))&&(!nameregdot.test(fname.value))&&(!nameregdot.test(lname.value))&&(cnumber.value.length > 10)&&(cnum.test(cnumber.value))&&(email.value.length > 5)&&cexist != "Exist"){
+		else if((fname.value != "")&&(lname.value != "")&&(email.value != '')&&(username.test(email.value))&&(password.value.length != 0)&&(password.value.length > 7)&&(cpassword.value.length != 0)&&(cpassword.value == password.value)&&(exist != "Exist")&&(!namereg.test(lname.value))&&(!namereg.test(fname.value))&&(!nameregdot.test(fname.value))&&(!nameregdot.test(lname.value))&&(cnumber.value.length > 10)&&(cnum.test(cnumber.value))&&(email.value.length > 5)&&(cexist != "Exist")){
 	    	$.ajax({
 	    		data:$('#signupform').serialize(),
 	    		method:"POST",
