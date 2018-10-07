@@ -128,11 +128,11 @@ else{
 						</h1>
 						<div class="box">
 							<div class="field">
-								<label>Email Address</label>
+								<label>Username</label>
 								<p class="control has-icons-left has-icons-right">
-									<input class="input is-rounded" id="email" name="email" type="text" placeholder="youremail@example.com">
+									<input class="input is-rounded" id="email" name="email" type="text" placeholder="Username">
 									<span class="icon is-small is-left">
-										<i class="fal fa-envelope"></i>
+										<i class="fal fa-user"></i>
 									</span>
 									<span class="icon is-small is-right">
 										<i id="emailicon" class=""></i>
@@ -153,11 +153,12 @@ else{
 <script src="../js/sweetalert.min.js"></script>
 <script src="../js/navbar-burger.js"></script>
 <script>
-	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	// var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
 
-	function Validate() {
+	function Forgot() {
 		if ($('#email').val() == '') {
-			$('#emailmessage').html('Enter your email');
+			$('#emailmessage').html('Enter your username');
 		}
 		if (regex.test($('#email').val())) {
 			$('#email').removeClass('is-danger');
@@ -169,30 +170,29 @@ else{
 		return false;
 		}
 	$('#email').bind('input', function () {
-		$.post('../php/email.php', {
-			email: $('#email').val()
-		}, function (data) {
+		$.post('../php/email.php', {email: $('#email').val()}, function(data) {
 			if ($('#email').val() == '') {
-				$('#emailmessage').html('Enter your email');
+				$('#emailmessage').html('Enter your username');
 				$('#email').addClass('is-danger');
 				$('#emailicon').addClass('fal fa-exclamation-triangle');
 			}
-			if (regex.test($('#email').val())) {
+			else if (regex.test($('#email').val())) {
 				$('#email').removeClass('is-danger');
 				$('#emailicon').removeClass('fal fa-exclamation-triangle');
 				$('#emailmessage').html('');
 				if (data == "Exist") {
-
+					$('#email').addClass('is-success');
+					$('#emailicon').addClass('fal fa-check');
 				}
 				if (data == "Not Exist") {
 					$('#email').addClass('is-danger');
 					$('#emailicon').addClass('fal fa-exclamation-triangle');
-					$('#emailmessage').html('Email does not exist');
+					$('#emailmessage').html('Username does not exist');
 				}
 			} else {
 				$('#email').addClass('is-danger');
 				$('#emailicon').addClass('fal fa-exclamation-triangle');
-				$('#emailmessage').html('Invalid Email');
+				$('#emailmessage').html('Invalid Username');
 			}
 		});
 	});
