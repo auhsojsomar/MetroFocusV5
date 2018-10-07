@@ -133,8 +133,7 @@ if(isset($_COOKIE['email'])){
     </section>
 
     <section class="hero">
-
-        <div class="hero-body is-hidden-mobile">
+        <div class="hero-body is-hidden-mobile"style="margin:0px -25px">
             <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
                 <div class='carousel-container'>
                     <div class='carousel-item has-background is-active'>
@@ -154,7 +153,7 @@ if(isset($_COOKIE['email'])){
                         <div class="title">Life</div>
                     </div>
                 </div>
-                <div class="carousel-navigation is-centered">
+                <div class="carousel-navigation is-overlay">
                     <div class="carousel-nav-left">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </div>
