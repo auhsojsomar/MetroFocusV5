@@ -55,3 +55,7 @@
 #pane-2 .table-wrapper {
     margin-top: 1rem !important;
 }
+
+#schedule {
+    cursor: pointer;
+}
