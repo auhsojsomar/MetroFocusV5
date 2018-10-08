@@ -218,6 +218,9 @@ $number = mysqli_num_rows($sql4);
 	                        <span class="icon is-small is-right">
 	                            <i id="scheduleicon" class=""></i>
 	                        </span>
+							<span class="icon is-left">
+								<i class="fas fa-calendar-alt" style="font-size:22px;margin-left:10px"></i>
+							</span>
 	                        <p class="help is-danger" id="schedulemessage"></p>
 	                    </div>
 	            </div>
