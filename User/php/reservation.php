@@ -5,7 +5,7 @@
 	$user = $_COOKIE['email'];
 	$quantity = $_POST['quantity'];
 	date_default_timezone_set('Asia/Manila');
-	$datee = date('m/d/Y H:i');
+	$datee = date('m/d/Y h:i A');
 	$d = $_POST['rdate'];
 	$category = $_POST['category'];
 	$type = $_POST['categtype'];
