@@ -11,7 +11,7 @@ $pending = mysqli_query($con,"SELECT COUNT(*) FROM reservation,appointment WHERE
 $pending2 = mysqli_fetch_array($pending);
 $total = $parts2[0]+$accessories2[0];
 if($_COOKIE['role'] == 'Admin'){
-    ?>
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -29,9 +29,7 @@ if($_COOKIE['role'] == 'Admin'){
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 </head>
-
 <body>
     <div class="main-wrapper">
         <div class="app" id="app">
@@ -67,18 +65,17 @@ if($_COOKIE['role'] == 'Admin'){
                             <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
                                 <ul class="notifications-container">
                                     <!-- <li>
-                     <a href="" class="notification-item">
-                      <div class="img-col">
-                       <div class="img" style="background-image: url('http://localhost/metroFocusv5/User/assets/img/METRO%20FOCUS.jpg')"></div>
-                      </div>
-                      <div class="body-col">
-                       <p>
-                        <span class="accent">Zack Alien</span> pushed new commit:
-                        <span class="accent">Fix page load performance issue</span>. </p>
-                      </div>
-                     </a>
-                    </li>
-                    <li> -->
+                                        <a href="" class="notification-item">
+                                            <div class="img-col">
+                                                <div class="img" style="background-image: url('http://localhost/metroFocusv5/User/assets/img/METRO%20FOCUS.jpg')"></div>
+                                            </div>
+                                            <div class="body-col">
+                                                <p>
+                                                    <span class="accent">Zack Alien</span> pushed new commit:
+                                                    <span class="accent">Fix page load performance issue</span>. </p>
+                                            </div>
+                                        </a>
+                                    </li> -->
                                     <li>
                                         <a href="" class="notification-item">
                                             <div class="img-col">
@@ -121,14 +118,11 @@ if($_COOKIE['role'] == 'Admin'){
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-alt fa-lm"></i>
-                                <!-- <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')"> </div> -->
                                 <span class="name"> Admin </span>
                             </a>
                             <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <a class="dropdown-item" href="../User/pages/profile.php">
                                     <i class="fa fa-user icon"></i> Profile </a>
-                                <!-- <a class="dropdown-item" href="#">
-                    <i class="fa fa-gear icon"></i> Settings </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../User/pages/logout.php">
                                     <i class="fa fa-power-off icon"></i> Logout </a>
@@ -218,13 +212,6 @@ if($_COOKIE['role'] == 'Admin'){
             <article class="content dashboard-page animated bounceInLeft">
                 <section class="info-tiles">
                     <div class="tile is-ancestor has-text-centered">
-                        <!-- <div class="tile is-parent">
-       					<article class="tile is-child box is-danger">
-	     					     <p class="title"><?php echo $total ?></p>
-              		<p class="subtitle"><span class="icon is-small"><i class="fal fa-archive"></i></span> Sales</p>
-
-     					     </article>
-        			</div> -->
                         <div class="tile is-parent">
                             <article class="tile is-child box" style="background: #0078D7;">
                                 <p class="title" style="color: #fff;">
@@ -270,11 +257,8 @@ if($_COOKIE['role'] == 'Admin'){
                                     Registered Users</p>
                             </article>
                         </div>
-
                     </div>
-
                 </section>
-
                 <section class="section">
                     <div class="columns is-multiline is-mobile">
                         <div class="column is-6">
@@ -293,21 +277,17 @@ if($_COOKIE['role'] == 'Admin'){
                                     Top Items
                                 </p>
                                 <a class="panel-block is-active">
-
                                 </a>
                             </nav>
                         </div>
                     </div>
                 </section>
-
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <div id="chartContainer" style="height: 450px; width: 100%;"></div>
                     </article>
                 </div>
             </article>
-
-
             <div class="sidebar-overlay" id="sidebar-overlay"></div>
             <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
             <div class="mobile-menu-handle"></div>
@@ -389,10 +369,6 @@ if($_COOKIE['role'] == 'Admin'){
 <?php
 }
 else{
-    header('Location: ../User/');
+header('Location: ../User/');
 }
-
- ?>
-
-
-<!--  -->
+?>
