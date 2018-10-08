@@ -76,7 +76,7 @@ if($_COOKIE['role'] == 'Admin'){
                                         </a>
                                     </li> -->
                                     <li>
-                                        <a href="" class="notification-item">
+                                        <a href="#" class="notification-item">
                                             <div class="img-col">
                                                 <div class="img" style="background-image: url('http://localhost/metroFocusv5/User/assets/img/METRO%20FOCUS.jpg')"></div>
                                             </div>
@@ -90,7 +90,7 @@ if($_COOKIE['role'] == 'Admin'){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="notification-item">
+                                        <a href="#" class="notification-item">
                                             <div class="img-col">
                                                 <div class="img" style="background-image: url('assets/faces/5.jpg')"></div>
                                             </div>
@@ -107,7 +107,7 @@ if($_COOKIE['role'] == 'Admin'){
                                 <footer>
                                     <ul>
                                         <li>
-                                            <a href=""> View All </a>
+                                            <a href="#"> View All </a>
                                         </li>
                                     </ul>
                                 </footer>
