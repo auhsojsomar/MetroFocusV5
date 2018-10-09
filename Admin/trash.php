@@ -12,8 +12,8 @@ if($_COOKIE['role'] == 'Admin'){
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="icon" href="../icon.ico">
             <link rel="apple-touch-icon" href="apple-touch-icon.png">
-            <link rel="stylesheet" href="result/vendor.css">
-            <link rel="stylesheet" href="result/app-blue.css">
+            <link rel="stylesheet" href="css/vendor.css">
+            <link rel="stylesheet" href="css/app-blue.css">
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/bulma.min.css">
             <link rel="stylesheet" href="css/datatables.min.css">
@@ -49,6 +49,24 @@ if($_COOKIE['role'] == 'Admin'){
                         </div>
                         <div class="header-block header-block-nav">
                             <ul class="nav-profile">
+                                <li class="notifications new">
+                                    <a data-toggle="dropdown" aria-expanded="false" id="bell">
+                                        <i class="fas fa-bell"></i>
+                                        <sup>
+                                            <span class="counter" id="count"></span>
+                                        </sup>
+                                    </a>
+                                    <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <ul class="notifications-container" id='notifto'></ul>
+                                        <!-- <footer>
+                                            <ul>
+                                                <li>
+                                                    <a href="#"> View All </a>
+                                                </li>
+                                            </ul>
+                                        </footer> -->
+                                    </div>
+                                </li>
                                 <li class="profile dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-user-alt fa-lm"></i>
@@ -370,6 +388,24 @@ if($_COOKIE['role'] == 'Admin'){
                 setInterval(function(){
                     dtclient.ajax.reload(null,false);
                 },1000);
+                setInterval(function(){
+                    notifandcount();
+                },1000);
+                function notifandcount(view = ''){
+                    $.ajax({
+                        url:'php/notification.php',
+                        method:'POST',
+                        data:{view:view},
+                        dataType:'json',
+                        success:function(data){
+                            $('#notifto').html(data.notification);
+                            $('#count').html(data.count);
+                        }
+                    })
+                }
+                $('#bell').click(function(){
+                    notifandcount('hotdog');
+                });
                 var dtbrand = $('#brandtable').DataTable({
                     "order":[],
                     "ajax":{
