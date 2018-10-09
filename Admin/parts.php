@@ -421,7 +421,7 @@ if($_COOKIE['role'] == 'Admin'){
                     notifandcount('hotdog');
                 });
                 var dataTable = $('#partstable').DataTable({
-                    "order":[],
+                    // "order":[],
                     "ajax":{
                     url:"php/parts/partsfetch.php",
                     type:"POST"
