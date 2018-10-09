@@ -199,13 +199,15 @@ if(isset($_COOKIE['email'])){
         	var space = /^[A-z]/;
         	$('#schedule').datetimepicker({
         	    defaultDate:'+1970/01/02',
-        		minDate:'+1970/01/02',
-        		minTime:'8:00',
-        		maxDate:new Date().setMonth(new Date().getMonth() + 1),
-        		maxTime:'20:00',
-        		step:30,
-        		format:'m/d/Y h:i A',
-        		defaultTime:'8:00',
+				minDate:'+1970/01/02',
+				minTime:'8:00',
+				maxDate:new Date().setMonth(new Date().getMonth() + 1),
+				maxTime:'20:00',
+				step:30,
+				format:'n/j/Y g:i A',
+				formatTime:'g:i A',
+				defaultTime:'8:00',
+				validateOnBlur:false
         	});
         	var concern = document.forms['vform']['concern'];
         	var concern_err = document.getElementById('concernmessage');
