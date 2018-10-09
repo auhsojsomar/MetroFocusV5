@@ -297,6 +297,9 @@ if($_COOKIE['role'] == 'Admin'){
     <script src="js/app.js"></script>
     <script src="js/canvasjs.min.js"></script>
     <script>
+        setInterval(function(){
+            notifandcount();
+        },1000);
         function notifandcount(){
             $.ajax({
                 url:'php/notification.php',
@@ -307,10 +310,8 @@ if($_COOKIE['role'] == 'Admin'){
                 }
             })
         }
-        $(document).ready(function(){
-            notifandcount();
-        });
         window.onload = function () {
+            notifandcount();
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 title: {
