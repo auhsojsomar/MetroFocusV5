@@ -228,9 +228,9 @@ if($_COOKIE['role'] == 'Admin'){
                                     <label for="" class="label">Contact Number</label>
                                     <input id="cnumber" type="input" class="input" readonly>
                                 </div>
-                                <div class="field" id="rem">
+                                <div class="field">
                                     <label for="" class="label">Remarks</label>
-                                    <!-- <textarea id="remarks" type="input" class="textarea" readonly></textarea> -->
+                                    <textarea id="remarks" type="input" class="textarea" readonly></textarea>
                                 </div>
                                 </form>
                             </section>
@@ -331,7 +331,7 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#cnumber').val(data.cnumber);
                         $('#status').val(data.status);
                         $('#user_id').val(user_id);
-                        $('#rem').html('<label for="" class="label">Remarks</label>'+data.remarks);
+                        $('#remarks').html(data.remarks);
                     }
                 })
             });
