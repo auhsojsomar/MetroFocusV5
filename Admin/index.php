@@ -64,48 +64,7 @@ if($_COOKIE['role'] == 'Admin'){
                                 </sup>
                             </a>
                             <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <ul class="notifications-container" id='notifto'>
-                                    <!-- <li>
-                                        <a href="" class="notification-item">
-                                            <div class="img-col">
-                                                <div class="img" style="background-image: url('http://localhost/metroFocusv5/User/assets/img/METRO%20FOCUS.jpg')"></div>
-                                            </div>
-                                            <div class="body-col">
-                                                <p>
-                                                    <span class="accent">Zack Alien</span> pushed new commit:
-                                                    <span class="accent">Fix page load performance issue</span>. </p>
-                                            </div>
-                                        </a>
-                                    </li> -->
-                                    <!-- <li>
-                                        <a href="#" class="notification-item">
-                                            <div class="img-col">
-                                                <div class="img" style="background-image: url('')"></div>
-                                            </div>
-                                            <div class="body-col">
-                                                <p>
-                                                    <span class="accent">Zack Alien</span><br />
-                                                    <span>Reservation pending</span><br />
-                                                    <span>10-08-2018</span> <span>11:00 AM</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="notification-item">
-                                            <div class="img-col">
-                                                <div class="img" style="background-image: url('')"></div>
-                                            </div>
-                                            <div class="body-col">
-                                                <p>
-                                                    <span class="accent">Amaya Hatsumi</span><br />
-                                                    <span>Appointment pending</span><br />
-                                                    <span>10-09-2018</span> <span>3:00 PM</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li> -->
-                                </ul>
+                                <ul class="notifications-container" id='notifto'></ul>
                                 <!-- <footer>
                                     <ul>
                                         <li>
