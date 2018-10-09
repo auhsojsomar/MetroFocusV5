@@ -186,7 +186,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                             <th>Contact Number</th>
                                                             <th>Remarks</th>
                                                             <th>Status</th>
-                                                            <th style="text-align: center;width: 20%">Action</th>
+                                                            <th style="width: 15%">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
