@@ -220,7 +220,7 @@ if($_COOKIE['role'] == 'Admin'){
                     </div>
                 </section>
                 <section class="section">
-                    <div class="columns is-multiline is-mobile">
+                    <div class="columns is-multiline">
                         <div class="column is-6">
                             <nav class="panel">
                                 <p class="panel-heading">
