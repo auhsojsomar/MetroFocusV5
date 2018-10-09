@@ -259,7 +259,7 @@ if($_COOKIE['role'] == 'Admin'){
     <script src="js/canvasjs.min.js"></script>
     <script>
         setInterval(function(){
-            // notifandcount();
+            notifandcount();
         },1000);
         function notifandcount(view = ''){
             $.ajax({
