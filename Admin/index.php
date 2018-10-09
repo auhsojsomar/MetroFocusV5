@@ -5,7 +5,7 @@ $parts = mysqli_query($con,"SELECT SUM(quantity) FROM parts");
 $parts2 = mysqli_fetch_array($parts);
 $accessories = mysqli_query($con,"SELECT SUM(quantity) FROM accessories");
 $accessories2 = mysqli_fetch_array($accessories);
-$user = mysqli_query($con,"SELECT COUNT(*) FROM loginform WHERE status = 'User'");
+$user = mysqli_query($con,"SELECT COUNT(*) FROM loginform WHERE status = 'User' AND deleted = 0");
 $user2 = mysqli_fetch_array($user);
 $pending = mysqli_query($con,"SELECT COUNT(*) FROM reservation,appointment WHERE reservation.status = 'Pending' AND appointment.status = 'Pending'");
 $pending2 = mysqli_fetch_array($pending);
@@ -58,11 +58,11 @@ if($_COOKIE['role'] == 'Admin'){
                             <a href="" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-bell"></i>
                                 <sup>
-                                    <span class="counter">2</span>
+                                    <span class="counter" id="count">2</span>
                                 </sup>
                             </a>
                             <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <ul class="notifications-container">
+                                <ul class="notifications-container" id='notifto'>
                                     <!-- <li>
                                         <a href="" class="notification-item">
                                             <div class="img-col">
@@ -75,7 +75,7 @@ if($_COOKIE['role'] == 'Admin'){
                                             </div>
                                         </a>
                                     </li> -->
-                                    <li>
+                                    <!-- <li>
                                         <a href="#" class="notification-item">
                                             <div class="img-col">
                                                 <div class="img" style="background-image: url('')"></div>
@@ -102,7 +102,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </p>
                                             </div>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <footer>
                                     <ul>
@@ -297,6 +297,19 @@ if($_COOKIE['role'] == 'Admin'){
     <script src="js/app.js"></script>
     <script src="js/canvasjs.min.js"></script>
     <script>
+        function notifandcount(){
+            $.ajax({
+                url:'php/notification.php',
+                dataType:'json',
+                success:function(data){
+                    $('#notifto').html(data.notification);
+                    $('#count').html(data.count);
+                }
+            })
+        }
+        $(document).ready(function(){
+            notifandcount();
+        });
         window.onload = function () {
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
