@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 04, 2018 at 01:42 PM
+-- Generation Time: Oct 09, 2018 at 03:59 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `accessories` (
   `category` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `date_deleted` varchar(255) DEFAULT NULL,
   `status` varchar(255) NOT NULL,
   `deleted` int(11) NOT NULL DEFAULT '0',
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `accessories` (
 --
 
 INSERT INTO `accessories` (`id`, `image`, `name`, `brand`, `category`, `price`, `quantity`, `description`, `date_deleted`, `status`, `deleted`) VALUES
-(1, '20462.jpeg', 'Accessories 1', 'Nikon', 'Card Slot', 200, 50, 'Accessories Description 1', NULL, 'Active', 0);
+(1, '20462.jpeg', 'Accessories 1', 'Nikon', 'Card Slot', 200, 5, 'Accessories Description 1', NULL, 'Active', 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `activitylogs` (
   `user` varchar(255) NOT NULL,
   `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activitylogs`
@@ -99,7 +99,43 @@ INSERT INTO `activitylogs` (`id`, `name`, `action`, `quantity`, `datemod`, `type
 (21, 'auhsojsomar', 'Reject', NULL, '10/3/2018 3:12 AM', 'Appointment', 'admin', NULL),
 (22, 'auhsojsomar', 'Reject', NULL, '10/3/2018 3:16 AM', 'Appointment', 'admin', NULL),
 (23, 'auhsojsomar', 'Edited', NULL, '10/3/2018 3:21 AM', 'User', 'admin', NULL),
-(24, 'Parts 1', 'Done', 1, '10/4/2018 9:41 PM', 'Parts', 'admin', 'Reservation');
+(24, 'Parts 1', 'Done', 1, '10/4/2018 9:41 PM', 'Parts', 'admin', 'Reservation'),
+(25, 'Parts 1', 'Done', 1, '10/5/2018 2:40 AM', 'Parts', 'admin', 'Reservation'),
+(26, 'Accessories 1', 'Done', 1, '10/5/2018 2:40 AM', 'Accessories', 'admin', 'Reservation'),
+(27, 'auhsojsomar', 'Confirm', NULL, '10/5/2018 2:41 AM', 'Appointment', 'admin', NULL),
+(28, 'auhsojsomar', 'Confirm', NULL, '10/5/2018 3:27 PM', 'Appointment', 'admin', NULL),
+(29, 'auhsojsomar', 'Confirm', NULL, '10/5/2018 3:27 PM', 'Appointment', 'admin', NULL),
+(30, 'auhsojsomar', 'Confirm', NULL, '10/5/2018 3:27 PM', 'Appointment', 'admin', NULL),
+(31, 'Sony', 'Edited', NULL, '10/5/2018 3:31 PM', 'Brand', 'admin', NULL),
+(32, 'Parts 1', 'Updated', NULL, '10/5/2018 6:14 PM', 'Parts', 'admin', NULL),
+(33, 'Parts 1', 'Updated', NULL, '10/6/2018 7:17 AM', 'Parts', 'admin', NULL),
+(34, 'Parts 1', 'Updated', NULL, '10/6/2018 7:17 AM', 'Parts', 'admin', NULL),
+(35, 'Parts 1', 'Updated', NULL, '10/6/2018 7:18 AM', 'Parts', 'admin', NULL),
+(36, 'Parts 1', 'Updated', NULL, '10/6/2018 7:19 AM', 'Parts', 'admin', NULL),
+(37, 'Parts 1', 'Updated', NULL, '10/6/2018 7:19 AM', 'Parts', 'admin', NULL),
+(38, 'Parts 1', 'Updated', NULL, '10/6/2018 7:20 AM', 'Parts', 'admin', NULL),
+(39, 'Parts 1', 'Updated', NULL, '10/6/2018 7:21 AM', 'Parts', 'admin', NULL),
+(40, 'Parts 1', 'Updated', NULL, '10/6/2018 7:24 AM', 'Parts', 'admin', NULL),
+(41, '', 'Deleted', NULL, '10/7/2018 1:52 PM', 'User', 'admin', NULL),
+(42, 'qweqweqweqweqwe', 'Deleted', NULL, '10/7/2018 1:52 PM', 'User', 'admin', NULL),
+(43, 'qweoiqhkjashd', 'Deleted', NULL, '10/7/2018 1:52 PM', 'User', 'admin', NULL),
+(44, 'qweqweqwe', 'Deleted', NULL, '10/7/2018 1:52 PM', 'User', 'admin', NULL),
+(45, 'e', 'Deleted', NULL, '10/7/2018 1:52 PM', 'User', 'admin', NULL),
+(46, 'johndoe', 'Deleted', NULL, '10/7/2018 1:53 PM', 'User', 'admin', NULL),
+(47, 'auhsojsomar', 'Edited', NULL, '10/7/2018 3:19 PM', 'User', 'admin', NULL),
+(48, 'MoGago', 'Deleted', NULL, '10/7/2018 8:13 PM', 'User', 'admin', NULL),
+(49, 'alskjdalksdjlakj', 'Deleted', NULL, '10/7/2018 8:13 PM', 'User', 'admin', NULL),
+(50, 'Parts 1', 'Add Stocks', 10, '10/7/2018 8:14 PM', 'Parts', 'admin', NULL),
+(51, 'Parts 1', 'Add Stocks', 5, '10/7/2018 9:53 PM', 'Parts', 'admin', NULL),
+(52, 'Accessories 1', 'Add Stocks', 5, '10/7/2018 9:53 PM', 'Accessories', 'admin', NULL),
+(53, 'Parts 1', 'Add Stocks', 5, '10/7/2018 10:01 PM', 'Parts', 'admin', NULL),
+(54, 'Accessories 1', 'Add Stocks', 5, '10/7/2018 10:01 PM', 'Accessories', 'admin', NULL),
+(55, 'Parts 1', 'Add Stocks', 10, '10/7/2018 10:02 PM', 'Parts', 'admin', NULL),
+(56, 'Accessories 1', 'Add Stocks', 10, '10/7/2018 10:02 PM', 'Accessories', 'admin', NULL),
+(57, 'auhsojsomar', 'Deleted', NULL, '10/9/2018 7:05 PM', 'User', 'admin', NULL),
+(58, 'Parts 1', 'Deleted', NULL, '10/9/2018 7:06 PM', 'Parts', 'admin', NULL),
+(59, 'Parts 1', 'Add Stocks', 5, '10/9/2018 10:17 PM', 'Parts', 'admin', NULL),
+(60, 'Accessories 1', 'Add Stocks', 5, '10/9/2018 10:17 PM', 'Accessories', 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -114,20 +150,27 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `concern` varchar(255) NOT NULL,
   `schedule` varchar(200) NOT NULL,
   `cnumber` varchar(255) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
+  `remarks` text NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
   `deleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `schedule` (`schedule`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`id`, `username`, `concern`, `schedule`, `cnumber`, `remarks`, `status`, `deleted`) VALUES
-(1, 'auhsojsomar', 'What the fuck', '10/03/2018 08:00', '09484406141', 'Are you doing?', 'Pending', 0),
-(2, 'auhsojsomar', 'you\'re', '10/03/2018 09:30', '09484406141', 'road', 'Pending', 0);
+(31, 'auhsojsomar', 'a', '10/10/2018 10:30 AM', '09484406141', 'awd', 'Pending', 0),
+(32, 'auhsojsomar', 'wqe', '10/12/2018 9:30 AM', '09484406141', 'qwe', 'Pending', 0),
+(30, 'auhsojsomar', 'qwe', '10/10/2018 10:00 AM', '09484406141', 'qweqweqwe', 'Pending', 0),
+(29, 'auhsojsomar', 'wer', '10/11/2018 9:00 AM', '09484406141', 'qweqweqwe', 'Pending', 0),
+(28, 'auhsojsomar', 'asd', '10/12/2018 10:00 AM', '09484406141', 'asd', 'Pending', 0),
+(27, 'auhsojsomar', 'asd', '10/19/2018 8:00 AM', '09484406141', 'asd', 'Pending', 0),
+(26, 'auhsojsomar', 'zasd', '10/10/2018 9:30 AM', '09484406141', 'asdasd', 'Pending', 0),
+(25, 'auhsojsomar', 'KALDJlkasjdlkasj', '10/12/2018 9:00 AM', '09484406141', 'alksjda', 'Pending', 0),
+(24, 'auhsojsomar', 'TANG INA MO', '10/10/2018 9:00 AM', '09484406141', 'GAGO', 'Pending', 0);
 
 -- --------------------------------------------------------
 
@@ -171,14 +214,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `type` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user`, `item_id`, `type`, `quantity`) VALUES
-(244, 'user@gmail.com', 5, 'Parts', 28);
+) ENGINE=MyISAM AUTO_INCREMENT=286 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -249,21 +285,48 @@ CREATE TABLE IF NOT EXISTS `loginform` (
   `status` varchar(255) NOT NULL DEFAULT 'User',
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
-  `cnumber` varchar(255) DEFAULT NULL,
+  `cnumber` varchar(20) DEFAULT NULL,
   `created` varchar(255) NOT NULL,
   `date_deleted` varchar(255) DEFAULT NULL,
+  `verification` varchar(20) DEFAULT NULL,
   `deleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `cnumber` (`cnumber`)
+) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `loginform`
 --
 
-INSERT INTO `loginform` (`id`, `username`, `password`, `status`, `firstname`, `lastname`, `cnumber`, `created`, `date_deleted`, `deleted`) VALUES
-(1, 'admin', 'b26986ceee60f744534aaab928cc12df', 'Admin', 'Joshua', 'Ramos', '09484406141', 'August 22, 2018', NULL, 0),
-(23, 'auhsojsomar', 'b26986ceee60f744534aaab928cc12df', 'User', 'Joshua', 'Ramos', '09484406141', 'September 25, 2018', NULL, 0);
+INSERT INTO `loginform` (`id`, `username`, `password`, `status`, `firstname`, `lastname`, `cnumber`, `created`, `date_deleted`, `verification`, `deleted`) VALUES
+(1, 'admin', 'b26986ceee60f744534aaab928cc12df', 'Admin', 'Joshua', 'Ramos', '09647375868', 'August 22, 2018', NULL, 'Verified', 0),
+(23, 'auhsojsomar', 'b26986ceee60f744534aaab928cc12df', 'User', 'Joshua', 'Ramos', '09484406141', 'September 25, 2018', NULL, 'Verified', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(255) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `date_time` varchar(50) NOT NULL,
+  `view` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `user`, `type`, `description`, `date_time`, `view`) VALUES
+(34, 'admin', 'Reservation', '1', '10/9/2018 11:46:55 PM', 1),
+(33, 'admin', 'Reservation', '1', '10/9/2018 11:46:35 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -280,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `parts` (
   `category` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `date_deleted` varchar(255) DEFAULT NULL,
   `deleted` int(11) NOT NULL DEFAULT '0',
   `status` varchar(255) NOT NULL,
@@ -293,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `parts` (
 --
 
 INSERT INTO `parts` (`id`, `image`, `name`, `brand`, `category`, `price`, `quantity`, `description`, `date_deleted`, `deleted`, `status`) VALUES
-(1, '10601.jpeg', 'Parts 1', 'Kodak', 'Card Slot', 100, 10, 'Parts Description 1', NULL, 0, 'Active');
+(1, '10601.jpeg', 'Parts 1', 'Kodak', 'Card Slot', 100, 2, 'we', NULL, 0, 'Active');
 
 -- --------------------------------------------------------
 
@@ -312,15 +375,23 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
   `deleted` int(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`id`, `username`, `reservationdate`, `itemid`, `category`, `itemquantity`, `status`, `deleted`) VALUES
-(1, 'auhsojsomar', '10/03/2018 08:00', 1, 'Parts', 1, 'Done', 0),
-(2, 'auhsojsomar', '10/03/2018 08:00', 1, 'Accessories', 1, 'Done', 0);
+(27, 'auhsojsomar', '10/10/2018 7:30 PM', 1, 'Parts', 1, 'Pending', 0),
+(28, 'auhsojsomar', '10/10/2018 9:00 AM', 1, 'Parts', 1, 'Pending', 0),
+(29, 'auhsojsomar', '10/10/2018 9:00 AM', 1, 'Accessories', 2, 'Pending', 0),
+(30, 'auhsojsomar', '10/10/2018 10:30 AM', 1, 'Parts', 1, 'Pending', 0),
+(31, 'auhsojsomar', '10/10/2018 9:00 AM', 1, 'Accessories', 1, 'Pending', 0),
+(32, 'auhsojsomar', '1/12/2019 6:30 PM', 1, 'Parts', 1, 'Pending', 0),
+(33, 'auhsojsomar', '1/12/2019 6:30 PM', 1, 'Accessories', 1, 'Pending', 0),
+(34, 'auhsojsomar', '10/10/2018 9:30 AM', 1, 'Parts', 1, 'Pending', 0),
+(35, 'admin', '10/10/2018 9:30 AM', 1, 'Parts', 1, 'Pending', 0),
+(36, 'admin', '10/10/2018 9:00 AM', 1, 'Parts', 1, 'Pending', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
