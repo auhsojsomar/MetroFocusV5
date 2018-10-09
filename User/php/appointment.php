@@ -11,7 +11,7 @@
 	$remarks = $_POST['remarks'];
 	include '../includes/db.php';
 	if(mysqli_query($con,"INSERT INTO appointment (username,concern,schedule,cnumber,remarks)VALUES('$user','$concern','$schedule','$row[0]','$remarks')")){
-		mysqli_query($con,"INSERT INTO notifications (user,type,date_time)VALUES('$user','Appointment','$datee')");
+		mysqli_query($con,"INSERT INTO notifications (user,type,description,date_time)VALUES('$user','Appointment','$schedule','$datee')");
 		echo "Success";
 	}
 	else{

@@ -13,13 +13,13 @@
 	{
 		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity)VALUES('$user','$d',$itemid,'Parts',$quantity)");
 		mysqli_query($con,"UPDATE parts SET quantity = quantity - $quantity WHERE id = $itemid");
-		mysqli_query($con,"INSERT INTO notifications (user,type,date_time)VALUES('$user','Reservation','$datee')");
+		mysqli_query($con,"INSERT INTO notifications (user,type,description,date_time)VALUES('$user','Reservation','1','$datee')");
 	}
 	else if($category == 'Accessories')
 	{
 		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity)VALUES('$user','$d',$itemid,'Accessories',$quantity)");
 		mysqli_query($con,"UPDATE accessories SET quantity = quantity - $quantity WHERE id = $itemid");
-		mysqli_query($con,"INSERT INTO notifications (user,type,date_time)VALUES('$user','Reservation','$datee')");
+		mysqli_query($con,"INSERT INTO notifications (user,type,description,date_time)VALUES('$user','Reservation','1','$datee')");
 	}
 	else if($category == 'Cart')
 	{
