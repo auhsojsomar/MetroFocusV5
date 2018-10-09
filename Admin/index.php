@@ -313,7 +313,6 @@ if($_COOKIE['role'] == 'Admin'){
             })
         }
         $('#bell').click(function(){
-            $('#count').html('');
             notifandcount('hotdog');
         });
         window.onload = function () {
