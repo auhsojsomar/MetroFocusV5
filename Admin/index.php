@@ -237,6 +237,19 @@ if($_COOKIE['role'] == 'Admin'){
                                     Top Items
                                 </p>
                                 <a class="panel-block is-active">
+                                	CANON POWERSHOT A1000
+                                </a>
+                                <a class="panel-block is-active">
+                                	Sony A7 II ILCE-7M2
+                                </a>
+                                <a class="panel-block is-active">
+                                	CANON SPEEDLITE 430EX	
+                                </a>
+                                <a class="panel-block is-active">
+                                    FujiFilm FinePix S4000
+                                </a>
+                                <a class="panel-block is-active">
+                                	Nikon D50
                                 </a>
                             </nav>
                         </div>
