@@ -1,19 +1,16 @@
 <?php
 include '../../../User/includes/db.php';
-if(isset($_POST["user_id"]))
-{
-	$output = array();
-	$id = $_POST['user_id'];
-	$query = mysqli_query($con,"SELECT * FROM appointment WHERE id = $id");
-	while($row = mysqli_fetch_assoc($query))
-	{
-		$output["username"] = $row["username"];
-		$output["concern"] = $row["concern"];
-		$output["schedule"] = $row["schedule"];
-		$output["cnumber"] = $row["cnumber"];
-		$output["remarks"] = $row["remarks"];
-		$output["status"] = $row["status"];
-	}
-	echo json_encode($output);
+$id = $_POST['user_id'];
+$sql = mysqli_query($con,"SELECT * FROM appointment WHERE id = $id");
+while($row = mysqli_fetch_array($sql)){
+	$output = array(
+		"username" => $row['username'],
+		"concern" => $row['concern'],
+		"schedule" => $row['schedule'],
+		"cnumber" => $row['cnumber'],
+		"remarks" => $row['remarks'],
+		"status" => $row['status']
+	);
 }
+echo json_encode($output);
 ?>
