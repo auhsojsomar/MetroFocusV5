@@ -188,7 +188,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
                                                             <th>Status</th>
-                                                            <th style="width: 15%;text-align: center;">Action</th>
+                                                            <th style="width: 11%;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
@@ -218,7 +218,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
                                                             <th>Status</th>
-                                                            <th style="width: 15%;text-align: center;">Action</th>
+                                                            <th style="width: 11%;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
@@ -302,7 +302,7 @@ if($_COOKIE['role'] == 'Admin'){
             },
                 "columnDefs": [
                    {
-                       "targets": [0,1,2,3,4],
+                       "targets": [0,1,2,3,4,5],
                        "className": 'dt-center'
                    },
                    {
@@ -378,7 +378,7 @@ if($_COOKIE['role'] == 'Admin'){
             },
                 "columnDefs": [
                    {
-                       "targets": [0,1,2,3,4],
+                       "targets": [0,1,2,3,4,5],
                        "className": 'dt-center'
                    },
                    {
