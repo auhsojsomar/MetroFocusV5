@@ -213,7 +213,7 @@ $number = mysqli_num_rows($sql4);
 	            <form method="POST" id="vform" onsubmit="return Validate();">
 	            <div class="field">
 	                <label class="label">Schedule</label>
-	                    <div class="control has-icons-right has-icons-leftt">
+	                    <div class="control has-icons-right has-icons-left">
 	                        <input readonly maxlength="200" class="input" type="text" id="schedule" name="schedule">
 	                        <span class="icon is-small is-right">
 	                            <i id="scheduleicon" class=""></i>
@@ -308,7 +308,7 @@ $number = mysqli_num_rows($sql4);
 		  maxDate:new Date().setMonth(new Date().getMonth() + 1),
 		  maxTime:'20:00',
 		  step:30,
-		  format:'m/d/Y H:i',
+		  format:'m/d/Y h:i A',
 		  defaultTime:'8:00',
 		});
 		function schedulevalid(){

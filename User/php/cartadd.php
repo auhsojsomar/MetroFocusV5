@@ -11,7 +11,7 @@
 	for ($i=0; $i < $num; $i++) { 
 		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity)VALUES('$email','$d',$itemid[$i],'$category[$i]',$quan[$i])");
 		mysqli_query($con,"DELETE FROM cart WHERE user = '$email'");
-		mysqli_query($con,"INSERT INTO notifications (user,type,date_time)VALUES('$user','Reservation','$datee')");
+		mysqli_query($con,"INSERT INTO notifications (user,type,date_time)VALUES('$email','Reservation','$datee')");
 		if($category[$i] == 'Parts'){
 			mysqli_query($con,"UPDATE parts SET quantity = quantity - $quan[$i] WHERE id = $itemid[$i]");
 		}
