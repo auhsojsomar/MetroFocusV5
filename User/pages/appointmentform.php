@@ -262,7 +262,7 @@ if(isset($_COOKIE['email'])){
                         success: function(data){
                             if(data == 'Success'){
                         	    swal({
-                        	      title: "Added Successfully",
+                        	      title: "Wait for the confirmation",
                         	      text: "",
                         	      icon: "success",
                         	      closeOnClickOutside: false,
