@@ -213,7 +213,7 @@ $number = mysqli_num_rows($sql4);
 	            <form method="POST" id="vform" onsubmit="return Validate();">
 	            <div class="field">
 	                <label class="label">Schedule</label>
-	                    <div class="control has-icons-right">
+	                    <div class="control has-icons-right has-icons-leftt">
 	                        <input readonly maxlength="200" class="input" type="text" id="schedule" name="schedule">
 	                        <span class="icon is-small is-right">
 	                            <i id="scheduleicon" class=""></i>
@@ -292,23 +292,6 @@ $number = mysqli_num_rows($sql4);
 			$('.button.reserve').prop('disabled',false);
 			
 		}
-		// $('.button.reserve').click(function(){
-		//      var vform = $('#fer').serialize();
-		//      $.ajax({
-		//         url:'../php/cartadd.php',
-		//         method:'POST',
-		//         data:vform,
-		//         success:function(data){
-		//             swal('Wait for the confirmation','','success',{
-		//                 closeOnClickOutside:false,
-		//             })
-		//             .then((value) => {
-		//                 window.location = '../';
-		//             });
-		//         }
-		//      });
-		// });
-
 		$('#showReserveModal').click(function(){
 			$('.modal').addClass('is-active');
 		});

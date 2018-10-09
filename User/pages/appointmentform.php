@@ -148,11 +148,14 @@ if(isset($_COOKIE['email'])){
 	                    		</div>
 	                    		<div class="field">
 	                        		<label class="label">Schedule</label>
-		                            	<div class="control has-icons-right">
+		                            	<div class="control has-icons-right has-icons-left">
 		                                	<input readonly maxlength="200" class="input" type="text" id="schedule" name="schedule">
 		                                    <span class="icon is-small is-right">
 		                                        <i id="scheduleicon" class=""></i>
 		                                    </span>
+											<span class="icon is-left">
+												<i class="fas fa-calendar-alt" style="font-size:22px;margin-left:10px"></i>
+											</span>
 		                                    <p class="help is-danger" id="schedulemessage"></p>
 		                            	</div>
 	                    		</div>
@@ -201,7 +204,7 @@ if(isset($_COOKIE['email'])){
         		maxDate:new Date().setMonth(new Date().getMonth() + 1),
         		maxTime:'20:00',
         		step:30,
-        		format:'m/d/Y H:i',
+        		format:'m/d/Y h:i A',
         		defaultTime:'8:00',
         	});
         	var concern = document.forms['vform']['concern'];

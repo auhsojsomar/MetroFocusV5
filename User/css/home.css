@@ -539,6 +539,7 @@ footer .column {
         margin-top: 80px;
     }
 }
+
 .primary-background {
     background-color: #071425;
     color: #fff;
@@ -582,4 +583,8 @@ footer .column {
 
 .is-size-5 {
     font-size: 1.25rem !important;
+}
+
+.button.is-huge.is-text {
+    cursor: default;
 }
