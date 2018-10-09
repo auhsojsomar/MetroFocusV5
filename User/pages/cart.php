@@ -214,7 +214,7 @@ $number = mysqli_num_rows($sql4);
 	            <div class="field">
 	                <label class="label">Schedule</label>
 	                    <div class="control has-icons-right has-icons-left">
-	                        <input readonly maxlength="200" class="input" type="text" id="schedule" name="schedule">
+	                        <input readonly class="input" type="text" id="schedule" name="schedule">
 	                        <span class="icon is-small is-right">
 	                            <i id="scheduleicon" class=""></i>
 	                        </span>
@@ -237,7 +237,8 @@ $number = mysqli_num_rows($sql4);
 	<script src="../js/navbar-burger.js"></script>
 	<script src="../js/jquery.nice-number.js"></script>
 	<script src="../js/sweetalert.min.js"></script>
-	<script src="../js/jquery.datetimepicker.full.min.js"></script>
+	<!-- <script src="../js/jquery.datetimepicker.full.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js" integrity="sha256-RwTJwLtruVfpQ/9COgOgOoFtDQoDY92EqysD/ZMidS8=" crossorigin="anonymous"></script>
 	<?php include('../includes/footer.php'); ?>
 	<script>
 		<?php 
@@ -308,8 +309,10 @@ $number = mysqli_num_rows($sql4);
 		  maxDate:new Date().setMonth(new Date().getMonth() + 1),
 		  maxTime:'20:00',
 		  step:30,
-		  format:'m/d/Y h:i A',
+		  format:'n/j/Y g:i A',
+		  formatTime:'g:i A',
 		  defaultTime:'8:00',
+		  validateOnBlur:false
 		});
 		function schedulevalid(){
 		  if($('#schedule').val() == ""){
