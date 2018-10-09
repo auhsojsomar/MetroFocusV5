@@ -3,7 +3,7 @@
 	$num = $_POST['cart_count'];
 	$email = $_COOKIE['email'];
 	date_default_timezone_set('Asia/Manila');
-	$datee = date('n/j/Y g:i A');
+	$datee = date('n/j/Y g:i:s A');
 	$d = $_POST['rdate'];
 	$itemid = $_POST['item_id'];
 	$category = $_POST['categ'];

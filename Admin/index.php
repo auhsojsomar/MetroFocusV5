@@ -7,8 +7,10 @@ $accessories = mysqli_query($con,"SELECT SUM(quantity) FROM accessories");
 $accessories2 = mysqli_fetch_array($accessories);
 $user = mysqli_query($con,"SELECT COUNT(*) FROM loginform WHERE status = 'User' AND deleted = 0");
 $user2 = mysqli_fetch_array($user);
-$pending = mysqli_query($con,"SELECT COUNT(*) FROM reservation,appointment WHERE reservation.status = 'Pending' AND appointment.status = 'Pending'");
-$pending2 = mysqli_fetch_array($pending);
+$reserve = mysqli_query($con,"SELECT COUNT(*) FROM reservation WHERE status = 'Pending'");
+$reserve2 = mysqli_fetch_array($reserve);
+$appointment = mysqli_query($con,"SELECT COUNT(*) FROM appointment WHERE status = 'Pending'");
+$appointment2 = mysqli_fetch_array($appointment);
 $total = $parts2[0]+$accessories2[0];
 if($_COOKIE['role'] == 'Admin'){
 ?>
@@ -104,13 +106,13 @@ if($_COOKIE['role'] == 'Admin'){
                                         </a>
                                     </li> -->
                                 </ul>
-                                <footer>
+                                <!-- <footer>
                                     <ul>
                                         <li>
                                             <a href="#"> View All </a>
                                         </li>
                                     </ul>
-                                </footer>
+                                </footer> -->
                             </div>
                         </li>
                         <li class="profile dropdown">
@@ -214,7 +216,7 @@ if($_COOKIE['role'] == 'Admin'){
                         <div class="tile is-parent">
                             <article class="tile is-child box" style="background: #0078D7;">
                                 <p class="title" style="color: #fff;">
-                                    <?php echo $pending2[0] ?>
+                                    <?php echo $appointment2[0] ?>
                                 </p>
                                 <p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-chart-bar"></i></span>
                                     Pending Appointments</p>
@@ -223,7 +225,7 @@ if($_COOKIE['role'] == 'Admin'){
                         <div class="tile is-parent">
                             <article class="tile is-child box" style="background: red;">
                                 <p class="title" style="color: #fff;">
-                                    <?php echo $pending2[0] ?>
+                                    <?php echo $reserve2[0] ?>
                                 </p>
                                 <p class="subtitle" style="color: #fff;"><span class="icon is-small"><i class="fal fa-chart-bar"></i></span>
                                     Pending Reservation</p>

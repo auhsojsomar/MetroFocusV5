@@ -5,7 +5,7 @@
 	$sql = mysqli_query($con,"SELECT cnumber FROM loginform WHERE username = '$user'");
 	$row = mysqli_fetch_array($sql);
 	date_default_timezone_set('Asia/Manila');
-	$datee = date('m/d/Y h:i A');
+	$datee = date('n/j/Y g:i:s A');
 	$concern = $_POST['concern'];
 	$schedule = $_POST['schedule'];
 	$remarks = $_POST['remarks'];
