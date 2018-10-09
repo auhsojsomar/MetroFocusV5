@@ -58,7 +58,7 @@ if($_COOKIE['role'] == 'Admin'){
                             <a href="" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-bell"></i>
                                 <sup>
-                                    <span class="counter" id="count">2</span>
+                                    <span class="counter" id="count"></span>
                                 </sup>
                             </a>
                             <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
