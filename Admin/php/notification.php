@@ -2,6 +2,9 @@
     include '../../User/includes/db.php';
     $sql = mysqli_query($con,"SELECT * FROM notifications");
     $output = '';
+    if($_POST['view'] != ''){
+        mysqli_query($con,"UPDATE notifications SET view = 1 WHERE view = 0");
+    }
     while($row3 = mysqli_fetch_assoc($sql)){
         $user = $row3['user'];
         $sql2 = mysqli_query($con,"SELECT * FROM loginform WHERE username = '$user'");
@@ -33,10 +36,16 @@
     }
     $sql4 = mysqli_query($con,"SELECT * FROM notifications WHERE view = 0");
     $row4 = mysqli_num_rows($sql4);
+    if($row4 < 1){
+        $count = null;
+    }
+    else{
+        $count = $row4;
+    }
 
     $finaloutput = array(
         "notification" => $output,
-        "count" => $row4
+        "count" => $count
     );
 
     echo json_encode($finaloutput);

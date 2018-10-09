@@ -54,8 +54,8 @@ if($_COOKIE['role'] == 'Admin'){
                 </div>
                 <div class="header-block header-block-nav">
                     <ul class="nav-profile">
-                        <li class="notifications new" id="notif">
-                            <a href="" data-toggle="dropdown" aria-expanded="false">
+                        <li class="notifications new">
+                            <a data-toggle="dropdown" aria-expanded="false" id="bell">
                                 <i class="fas fa-bell"></i>
                                 <sup>
                                     <span class="counter" id="count"></span>
@@ -300,9 +300,11 @@ if($_COOKIE['role'] == 'Admin'){
         setInterval(function(){
             notifandcount();
         },1000);
-        function notifandcount(){
+        function notifandcount(view = ''){
             $.ajax({
                 url:'php/notification.php',
+                method:'POST',
+                data:{view:view},
                 dataType:'json',
                 success:function(data){
                     $('#notifto').html(data.notification);
@@ -310,6 +312,10 @@ if($_COOKIE['role'] == 'Admin'){
                 }
             })
         }
+        $('#bell').click(function(){
+            $('#count').html('');
+            notifandcount('hotdog');
+        });
         window.onload = function () {
             notifandcount();
             var chart = new CanvasJS.Chart("chartContainer", {
