@@ -187,93 +187,7 @@ if(isset($_COOKIE['email'])){
         </div>
         <section class="container-fluid">
             <div class="row">
-                <?php 
-                while($row = mysqli_fetch_assoc($sql)){
-                    $id = $row['id'];
-                    if(isset($_COOKIE['email'])){
-                        $sql3 = mysqli_query($con,"SELECT * FROM cart WHERE user = '$user' AND type = 'Accessories' AND item_id = $id");
-                        $row3 = mysqli_fetch_array($sql3);
-                        $quantity = $row['quantity']-$row3['quantity'];
-                    }
-                    else{
-                        $quantity = $row['quantity'];
-                    }
-                    $avail = '';
-                    $class = '';
-                    if($quantity == 0){
-                    $avail = 'Out of stock';
-                    $class = 'has-text-danger';
-                    }
-                    else{
-                    $avail = 'Available';
-                    $class = 'has-text-success';
-                }
-                ?>
-                <div class="column is-3 is-narrow">
-                    <form method="GET" id="vform" name="vform" onsubmit="return Validate()">
-                        <div class="card" style="min-width: 151px;">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="../../Admin/php/accessories/upload/<?php echo $row['image'] ?>" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-content">
-                                        <p style="
-                                        overflow: hidden;
-                                        display: -webkit-box;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        height: 50px;
-                                        max-width: 200px;
-                                        margin-top: -15px;
-                                        "
-                                            class="title is-4">
-                                            <?php echo $row['name'] ?>
-                                        </p>
-                                        <p style="padding-top: 5;
-                                        overflow: hidden;
-                                        display: -webkit-box;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        height: 50px;
-                                        max-width: 200px;"
-                                            class="subtitle is-6">
-                                            <?php echo $row['brand'] ?>
-                                        </p>
-                                        <p class="<?php echo $class ?>" style="margin-top: -40;
-                                        overflow: hidden;
-                                        display: -webkit-box;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        max-width: 200px;"
-                                            id="<?php echo $row['id'] ?>" name="availabilty">
-                                            <?php echo $avail ?>
-                                        </p>
-                                        <p class="subtitle has-text-danger" style="margin-top: -10px;
-                                        overflow: hidden;
-                                        display: -webkit-box;
-                                        -webkit-line-clamp: 2;
-                                        -webkit-box-orient: vertical;
-                                        max-width: 200px;">&#8369;
-                                            <?php echo number_format($row['price'],2,'.',',') ?>
-                                        </p>
-                                        <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
-                                        <!-- <button style="margin-top: -15" class="button is-warning" name="reserve" id=<?php echo $row['id'] ?> type="button">View Details</button> -->
-                                        <a class="button button is-warning" href="accessoriesitempage.php?item=<?php echo $row['id'] ?>">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <?php
-                }
-                ?>
-                <input type="hidden" name="user_id" id="user_id"></input>
-                <input type="hidden" name="name" id="name"></input>
-                </form>
+                
             </div>
         </section>
     </div>
@@ -285,11 +199,20 @@ if(isset($_COOKIE['email'])){
 <script src="../node_modules/bulma-extensions/bulma-carousel/dist/js/bulma-carousel.min.js"></script>
 <script>
     setInterval(function () {
-        $('.container-fluid').load(' .row');
+        // $('.container-fluid').load(' .row');
     }, 1000);
     // setInterval(function(){
     //     $('.menu').load(' .menu-list');
     // },1000);
+    function load(){
+        $.ajax({
+            url:'../php/accessoriesfetch.php',
+            dataType:'json',
+            success:function(data){
+                $('.row').html(data.accessories);
+            }
+        })
+    }
     <?php 
     if(isset($_COOKIE['username'])){
         if($badge[0] < 1){
@@ -342,6 +265,7 @@ if(isset($_COOKIE['email'])){
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        load();
         // Get all document sliders
         var sliders = document.querySelectorAll('input[type="range"].slider');
         [].forEach.call(sliders, function (slider) {
