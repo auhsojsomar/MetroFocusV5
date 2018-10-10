@@ -170,18 +170,7 @@ if(isset($_COOKIE['email'])){
                     Brand
                 </p>
                 <ul class="menu-list">
-                    <?php 
-                    $sql2 = mysqli_query($con,"SELECT * FROM brand WHERE deleted = 0 ORDER BY id DESC");
-                    while ($row = mysqli_fetch_assoc($sql2)) {
-                    ?>
-                    <div class="field">
-                        <input class="is-checkradio" id="<?php echo $row['brand'] ?>" type="checkbox">
-                        <label for="<?php echo $row['brand'] ?>">
-                            <?php echo $row['brand'] ?></label>
-                    </div>
-                    <?php
-                    }
-                    ?>
+                
                 </ul>
             </aside>
         </div>
@@ -199,7 +188,7 @@ if(isset($_COOKIE['email'])){
 <script src="../node_modules/bulma-extensions/bulma-carousel/dist/js/bulma-carousel.min.js"></script>
 <script>
     setInterval(function () {
-        // $('.container-fluid').load(' .row');
+        load();
     }, 1000);
     // setInterval(function(){
     //     $('.menu').load(' .menu-list');
@@ -213,6 +202,15 @@ if(isset($_COOKIE['email'])){
             }
         })
     }
+    function brand(){
+            $.ajax({
+                url:'../php/brand.php',
+                dataType:'json',
+                success:function(data){
+                    $('ul.menu-list').html(data.brand);
+                }
+            })
+        }
     <?php 
     if(isset($_COOKIE['username'])){
         if($badge[0] < 1){
@@ -266,6 +264,7 @@ if(isset($_COOKIE['email'])){
 
     document.addEventListener('DOMContentLoaded', function () {
         load();
+        brand();
         // Get all document sliders
         var sliders = document.querySelectorAll('input[type="range"].slider');
         [].forEach.call(sliders, function (slider) {
