@@ -219,41 +219,41 @@ if(isset($_COOKIE['email'])){
         	function concernvalid(){
         		if(concern.value == ""){
                     $('#concern').addClass('is-danger');
-                    $('#concernicon').addClass('fas fa-exclamation-triangle');
+                    $('#concernicon').addClass('fal fa-exclamation-triangle');
                     concern_err.textContent = "Enter your concern";
                 }
                 else if(!space.test(concern.value)){
                 	$('#concern').addClass('is-danger');
-                    $('#concernicon').addClass('fas fa-exclamation-triangle');
+                    $('#concernicon').addClass('fal fa-exclamation-triangle');
                     concern_err.textContent = "Invalid format";
                 }
                 else {
                     $('#concern').removeClass('is-danger');
-                    $('#concernicon').removeClass('fas fa-exclamation-triangle');
+                    $('#concernicon').removeClass('fal fa-exclamation-triangle');
                     concern_err.textContent = "";
                 }
         	}
         	function schedulevalid(){
         		if(schedule.value == ""){
                     $('#schedule').addClass('is-danger');
-                    $('#scheduleicon').addClass('fas fa-exclamation-triangle');
+                    $('#scheduleicon').addClass('fal fa-exclamation-triangle');
                     schedule_err.textContent = "Select your schedule";
                 }
                 else {
                     $('#schedule').removeClass('is-danger');
-                    $('#scheduleicon').removeClass('fas fa-exclamation-triangle');
+                    $('#scheduleicon').removeClass('fal fa-exclamation-triangle');
                     schedule_err.textContent = "";
                 }
         	}
         	function remarksvalid(){
         		if(remarks.value == ""){
                     $('#remarks').addClass('is-danger');
-                    $('#remarksicon').addClass('fas fa-exclamation-triangle');
+                    $('#remarksicon').addClass('fal fa-exclamation-triangle');
                     remarks_err.textContent = "What is the problem?";
                 }
                 else {
                     $('#remarks').removeClass('is-danger');
-                    $('#remarksicon').removeClass('fas fa-exclamation-triangle');
+                    $('#remarksicon').removeClass('fal fa-exclamation-triangle');
                     remarks_err.textContent = "";
                 }
         	}

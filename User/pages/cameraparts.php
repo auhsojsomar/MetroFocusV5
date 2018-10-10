@@ -131,20 +131,24 @@ if(isset($_COOKIE['email'])){
             <div class='carousel carousel-animated carousel-animate-slide' data-autoplay="true">
                 <div class='carousel-container'>
                     <div class='carousel-item has-background is-active'>
-                        <img class="is-background" src="https://wikiki.github.io/images/merry-christmas.jpg" alt="" width="640" height="310" />
-                        <div class="title">Merry Christmas</div>
+                        <img class="is-background" src="../assets/img/METRO FOCUS.jpg" alt="" width="640" height="310" />
+                        <div class="title">Metro Focus</div>
                     </div>
-                    <div class='carousel-item has-background'>
+                    <!-- <div class='carousel-item has-background'>
                         <img class="is-background" src="https://wikiki.github.io/images/singer.jpg" alt="" width="640" height="310" />
                         <div class="title">Original Gift: Offer a song with <a href="https://lasongbox.com" target="_blank">La Song Box</a></div>
+                    </div> -->
+                    <div class='carousel-item has-background'>
+                        <img class="is-background" src="../assets/img/REPAIR.jpg" alt="" width="640" height="310" />
+                        <div class="title">Camera Repair</div>
                     </div>
                     <div class='carousel-item has-background'>
-                        <img class="is-background" src="https://wikiki.github.io/images/sushi.jpg" alt="" width="640" height="310" />
-                        <div class="title">Sushi time</div>
+                        <img class="is-background" src="../assets/img/APPOINTMENT.jpg" alt="" width="640" height="310" />
+                        <div class="title">Appointment Scheduling</div>
                     </div>
                     <div class='carousel-item has-background'>
-                        <img class="is-background" src="https://wikiki.github.io/images/life.jpg" alt="" width="640" height="310" />
-                        <div class="title">Life</div>
+                        <img class="is-background" src="../assets/img/RESERVATION.jpg" alt="" width="640" height="310" />
+                        <div class="title">Item Reservation</div>
                     </div>
                 </div>
                 <div class="carousel-navigation is-overlay">
