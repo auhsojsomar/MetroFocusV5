@@ -164,7 +164,7 @@ if(isset($_COOKIE['email'])){
     </section>
     <div class="main app-content" style="height: 100%;">
         <div class="columns is-mobile">
-            <div class="column is-one-quarter is-hidden-mobile">
+            <div class="column is-one-quarter is-hidden-mobile" style="height:auto">
                 <aside class="menu">
                     <p class="menu-label">
                         Brand
