@@ -244,7 +244,7 @@ header('Location: ../');
 		if(bday.value == ''){
 			$('#bday').addClass('is-danger');
 			$('#bdayicon').addClass('fal fa-exclamation-triangle');
-			$('#bdaymessage').html('Enter your birthday');
+			$('#bdaymessage').html('Enter your Birthday');
 		}
 		else{
 			$('#bday').removeClass('is-danger');
@@ -261,11 +261,11 @@ header('Location: ../');
 			if (cnumber.value == "") {
 				$('#cnumber').addClass('is-danger');
 				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
-				cnumber_err.textContent = "Enter your contact number";
+				cnumber_err.textContent = "Enter your Contact number";
 			} else if (cnumber.value.length < 11 || !cnum.test(cnumber.value)) {
 				$('#cnumber').addClass('is-danger');
 				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
-				cnumber_err.textContent = "Enter a vaild contact number";
+				cnumber_err.textContent = "Enter a vaild Contact number";
 			} else if (data == "Exist") {
 				$('#cnumber').addClass('is-danger');
 				$('#cnumbericon').addClass('fal fa-exclamation-triangle');
@@ -286,7 +286,7 @@ header('Location: ../');
 		}, function (data) {
 			exist = data;
 			if (email.value == '') {
-				$('#emailmessage').html('Enter your username');
+				$('#emailmessage').html('Enter your Username');
 				$('#email').addClass('is-danger');
 				$('#emailicon').addClass('fal fa-exclamation-triangle');
 			} else if (email.value.length < 6) {
@@ -311,7 +311,7 @@ header('Location: ../');
 
 	function passwordvalid() {
 		if (password.value.length == 0) {
-			$('#passwordmessage').html('Enter your password');
+			$('#passwordmessage').html('Enter your Password');
 			$('#password').addClass('is-danger');
 			$('#passwordicon').addClass('fal fa-exclamation-triangle');
 		} else if (password.value.length < 8) {
@@ -327,7 +327,7 @@ header('Location: ../');
 
 	function cpasswordvalid() {
 		if (cpassword.value.length == 0) {
-			$('#cpasswordmessage').html('Enter your password');
+			$('#cpasswordmessage').html('Enter your Password');
 			$('#cpassword').addClass('is-danger');
 			$('#cpasswordicon').addClass('fal fa-exclamation-triangle');
 		} else if (cpassword.value.length < 8) {
@@ -335,7 +335,7 @@ header('Location: ../');
 			$('#cpasswordicon').addClass('fal fa-exclamation-triangle');
 			$('#cpasswordmessage').html('Password must be more than 8 characters!');
 		} else if (cpassword.value != password.value) {
-			$('#cpasswordmessage').html('Confirm your password');
+			$('#cpasswordmessage').html('Confirm your Password');
 			$('#cpassword').addClass('is-danger');
 			$('#cpasswordicon').addClass('fal fa-exclamation-triangle');
 		} else {
