@@ -275,7 +275,7 @@ header('Location: ../');
 				$('#cnumbericon').removeClass('fal fa-exclamation-triangle');
 				cnumber_err.textContent = "";
 			}
-			newval = $('#cnumber').val().replace(/[^0-9.]/g, "");
+			newval = $('#cnumber').val().replace(/[^0-9]/g, "");
 			$('#cnumber').val(newval);
 		});
 	}
