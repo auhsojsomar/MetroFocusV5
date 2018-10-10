@@ -1,5 +1,8 @@
 <?php
-	include '../includes/db.php';
+    include '../includes/db.php';
+    if(isset($_COOKIE['email'])){
+        $user = $_COOKIE['email'];
+    }
 	$sql = mysqli_query($con,"SELECT * FROM parts WHERE status = 'Active' AND deleted = 0 ORDER BY id DESC");
 	$output = '';
 	while($row = mysqli_fetch_array($sql)){
