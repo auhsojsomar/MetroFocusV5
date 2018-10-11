@@ -18,6 +18,7 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
+            <link rel="stylesheet" href="../User/css/jquery.datetimepicker.min.css">
         </head>
         <body>
             <div class="main-wrapper">
@@ -236,13 +237,16 @@ if($_COOKIE['role'] == 'Admin'){
                                 </div>
                         </div>
                         <div class="field">
-                            <label class="label">Username</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" class="input" id="email" name="email" placeholder="Username">
-                                        <span class="icon is-small is-right">
-                                            <i id="emailicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="emailmessage"></p>
+                            <label class="label">Date of Birth</label>
+                                <div class="control has-icons-right has-icons-left">
+                                    <input readonly maxlength="200" class="input" type="text" id="bday" name="bday" style="cursor:pointer">
+                                    <span class="icon is-small is-right">
+                                        <i id="bdayicon" class=""></i>
+                                    </span>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-calendar-alt" style="font-size:22px;margin-left:10px"></i>
+                                    </span>
+                                    <p class="help is-danger" id="bdaymessage"></p>
                                 </div>
                         </div>
                         <div class="field">
@@ -253,6 +257,16 @@ if($_COOKIE['role'] == 'Admin'){
                                             <i id="cnumbericon" class=""></i>
                                         </span>
                                         <p class="help is-danger" id="cnumbermessage"></p>
+                                </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Username</label>
+                                <div class="control has-icons-right">
+                                    <input maxlength="200" class="input" id="email" name="email" placeholder="Username">
+                                        <span class="icon is-small is-right">
+                                            <i id="emailicon" class=""></i>
+                                        </span>
+                                        <p class="help is-danger" id="emailmessage"></p>
                                 </div>
                         </div>
                         <div class="field">
@@ -291,6 +305,7 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
+            <script src="../User/js/jquery.datetimepicker.full.min.js"></script>
             <script>
                 setInterval(function(){
                     dataTable.ajax.reload(null,false);
@@ -313,6 +328,12 @@ if($_COOKIE['role'] == 'Admin'){
                 $('#bell').click(function(){
                     notifandcount('hotdog');
                 });
+                $('#bday').datetimepicker({
+                    timepicker:false,
+                    format:'n/j/Y',
+                    maxDate:'2010/12/31',
+                    startDate:'2010/1/1',
+                });
                 // var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 var regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
                 var num = /^09/;
@@ -324,6 +345,7 @@ if($_COOKIE['role'] == 'Admin'){
                 var fname_err = document.getElementById('fnamemessage');
                 var lname = document.forms['vform']['lname'];
                 var lname_err = document.getElementById('lnamemessage');
+                var bday = document.forms['vform']['bday'];
                 var email = document.forms['vform']['email'];
                 var email_err = document.getElementById('emailmessage');
                 var cnumber = document.forms['vform']['cnumber'];
@@ -338,17 +360,17 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#fname').val(newval);
                     if(fname.value == ""){
                         $('#fname').addClass('is-danger');
-                        $('#fnameicon').addClass('fas fa-exclamation-triangle');
+                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
                         fname_err.textContent = "Enter your Firstname";
                     }
                     else if(space.test(fname.value) || dot.test(fname.value)){
                         $('#fname').addClass('is-danger');
-                        $('#fnameicon').addClass('fas fa-exclamation-triangle');
+                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
                         fname_err.textContent = "Invalid Format";
                     }
                     else{
                         $('#fname').removeClass('is-danger');
-                        $('#fnameicon').removeClass('fas fa-exclamation-triangle');
+                        $('#fnameicon').removeClass('fal fa-exclamation-triangle');
                         fname_err.textContent = "";
                     }
                 }
@@ -357,18 +379,30 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#lname').val(newval);
                     if(lname.value == ""){
                         $('#lname').addClass('is-danger');
-                        $('#lnameicon').addClass('fas fa-exclamation-triangle');
+                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
                         lname_err.textContent = "Enter your Lastname";
                     }
                     else if(space.test(lname.value) || dot.test(lname.value)){
                         $('#lname').addClass('is-danger');
-                        $('#lnameicon').addClass('fas fa-exclamation-triangle');
+                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
                         lname_err.textContent = "Invalid Format";
                     }
                     else{
                         $('#lname').removeClass('is-danger');
-                        $('#lnameicon').removeClass('fas fa-exclamation-triangle');
+                        $('#lnameicon').removeClass('fal fa-exclamation-triangle');
                         lname_err.textContent = "";
+                    }
+                }
+                function bdayvalid(){
+                    if(bday.value == ''){
+                        $('#bday').addClass('is-danger');
+                        $('#bdayicon').addClass('fal fa-exclamation-triangle');
+                        $('#bdaymessage').html('Enter your Birthday');
+                    }
+                    else{
+                        $('#bday').removeClass('is-danger');
+                        $('#bdayicon').removeClass('fal fa-exclamation-triangle');
+                        $('#bdaymessage').html('');
                     }
                 }
                 function cnumbervalid(){
@@ -376,22 +410,22 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#cnumber').val(newval);
                     if(cnumber.value == ""){
                         $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fas fa-exclamation-triangle');
+                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
                         cnumber_err.textContent = "Enter your Contact number";
                     }
                     else if(!num.test(cnumber.value)){
                         $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fas fa-exclamation-triangle');
+                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
                         cnumber_err.textContent = "Invalid Contact number";
                     }
                     else if(cnumber.value.length < 11){
                         $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fas fa-exclamation-triangle');
+                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
                         cnumber_err.textContent = "Invalid Contact number";
                     }
                     else{
                         $('#cnumber').removeClass('is-danger');
-                        $('#cnumbericon').removeClass('fas fa-exclamation-triangle');
+                        $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
                         cnumber_err.textContent = "";
                     }
                 }
@@ -399,63 +433,68 @@ if($_COOKIE['role'] == 'Admin'){
                     $.post('../User/php/email.php', {'email' : email.value}, function(data) {
                         exist = data;
                         if(email.value == ''){
-                            $('#emailmessage').html('Enter your email');
+                            $('#emailmessage').html('Enter your Username');
                             $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fas fa-exclamation-triangle');
+                            $('#emailicon').addClass('fal fa-exclamation-triangle');
+                        }
+                        else if (email.value.length < 6) {
+                            $('#email').addClass('is-danger');
+                            $('#emailicon').addClass('fal fa-exclamation-triangle');
+                            $('#emailmessage').html('Username must be more than 6 characters!');
                         }
                         else if(data == "Exist"){
                             $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fas fa-exclamation-triangle');
+                            $('#emailicon').addClass('fal fa-exclamation-triangle');
                             $('#emailmessage').html('Username is already used');
                         }
                         else if(regex.test(email.value)){
                             $('#email').removeClass('is-danger');
-                            $('#emailicon').removeClass('fas fa-exclamation-triangle');
+                            $('#emailicon').removeClass('fal fa-exclamation-triangle');
                             $('#emailmessage').html('');
                         }
                         else {
                             $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fas fa-exclamation-triangle');
-                            $('#emailmessage').html('Invalid username');
+                            $('#emailicon').addClass('fal fa-exclamation-triangle');
+                            $('#emailmessage').html('Invalid Username');
                         }
                     });
                 }
                 function passwordvalid(){
                     if (password.value.length == 0){
-                        $('#passwordmessage').html('Enter your password');
+                        $('#passwordmessage').html('Enter your Password');
                         $('#password').addClass('is-danger');
-                        $('#passwordicon').addClass('fas fa-exclamation-triangle');
+                        $('#passwordicon').addClass('fal fa-exclamation-triangle');
                     }
                     else if(password.value.length < 8){
                         $('#password').addClass('is-danger');
-                        $('#passwordicon').addClass('fas fa-exclamation-triangle');
+                        $('#passwordicon').addClass('fal fa-exclamation-triangle');
                         $('#passwordmessage').html('Password must be more than 8 characters!');
                     }
                     else {
                         $('#password').removeClass('is-danger');
-                        $('#passwordicon').removeClass('fas fa-exclamation-triangle');
+                        $('#passwordicon').removeClass('fal fa-exclamation-triangle');
                         $('#passwordmessage').html('');
                     }
                 }
                 function cpasswordvalid(){
                     if (cpassword.value.length == 0){
-                        $('#cpasswordmessage').html('Enter your password');
+                        $('#cpasswordmessage').html('Enter your Password');
                         $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fas fa-exclamation-triangle');
+                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
                     }
                     else if(cpassword.value.length < 8){
                         $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fas fa-exclamation-triangle');
+                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
                         $('#cpasswordmessage').html('Password must be more than 8 characters!');
                     }
                     else if(cpassword.value != password.value){
-                        $('#cpasswordmessage').html('Confirm your password');
+                        $('#cpasswordmessage').html('Confirm your Password');
                         $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fas fa-exclamation-triangle');
+                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
                     }
                     else {
                         $('#cpassword').removeClass('is-danger');
-                        $('#cpasswordicon').removeClass('fas fa-exclamation-triangle');
+                        $('#cpasswordicon').removeClass('fal fa-exclamation-triangle');
                         $('#cpasswordmessage').html('');
                     }
                 }
@@ -463,15 +502,15 @@ if($_COOKIE['role'] == 'Admin'){
                     if($('#operation').val() == 'Add'){
                         if(space2.test(fname.value)){
                             $('#fname').addClass('is-danger');
-                            $('#fnameicon').addClass('fas fa-exclamation-triangle');
+                            $('#fnameicon').addClass('fal fa-exclamation-triangle');
                             fname_err.textContent = "Invalid Format";
                         }
                         if(space2.test(lname.value)){
                             $('#lname').addClass('is-danger');
-                            $('#lnameicon').addClass('fas fa-exclamation-triangle');
+                            $('#lnameicon').addClass('fal fa-exclamation-triangle');
                             lname_err.textContent = "Invalid Format";
                         }
-                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && (password.value != "") && (cpassword.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && exist != "Exist" && password.value.length > 7 && cpassword.value.length > 7 && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value)){
+                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && (password.value != "") && (cpassword.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && exist != "Exist" && password.value.length > 7 && cpassword.value.length > 7 && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value) && (email.value.length > 5)){
                             var form = $('#vform').serialize();
                             $.ajax({
                                 data:form,
@@ -495,18 +534,18 @@ if($_COOKIE['role'] == 'Admin'){
                     if($('#operation').val() == 'Edit'){
                         if(space2.test(fname.value)){
                             $('#fname').addClass('is-danger');
-                            $('#fnameicon').addClass('fas fa-exclamation-triangle');
+                            $('#fnameicon').addClass('fal fa-exclamation-triangle');
                             fname_err.textContent = "Invalid Format";
                         }
                         if(space2.test(lname.value)){
                             $('#lname').addClass('is-danger');
-                            $('#lnameicon').addClass('fas fa-exclamation-triangle');
+                            $('#lnameicon').addClass('fal fa-exclamation-triangle');
                             lname_err.textContent = "Invalid Format";
                         }
                         if(password.value.length > 0 && password.value.length < 8){
                             passwordvalid();
                         }
-                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value)){
+                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value) && (bday.value != '')){
                             var form = $('#vform').serialize();
                             $.ajax({
                                 data:form,
@@ -543,22 +582,22 @@ if($_COOKIE['role'] == 'Admin'){
                     email.value = "";
                     cnumber.value = "";
                     $('#fname').removeClass('is-danger');
-                    $('#fnameicon').removeClass('fas fa-exclamation-triangle');
+                    $('#fnameicon').removeClass('fal fa-exclamation-triangle');
                     fname_err.textContent = "";
                     $('#lname').removeClass('is-danger');
-                    $('#lnameicon').removeClass('fas fa-exclamation-triangle');
+                    $('#lnameicon').removeClass('fal fa-exclamation-triangle');
                     lname_err.textContent = "";
                     $('#email').removeClass('is-danger');
-                    $('#emailicon').removeClass('fas fa-exclamation-triangle');
+                    $('#emailicon').removeClass('fal fa-exclamation-triangle');
                     $('#emailmessage').html('');
                     $('#cnumber').removeClass('is-danger');
-                    $('#cnumbericon').removeClass('fas fa-exclamation-triangle');
+                    $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
                     cnumber_err.textContent = "";
                     $('#password').removeClass('is-danger');
-                    $('#passwordicon').removeClass('fas fa-exclamation-triangle');
+                    $('#passwordicon').removeClass('fal fa-exclamation-triangle');
                     $('#passwordmessage').html('');
                     $('#cpassword').removeClass('is-danger');
-                    $('#cpasswordicon').removeClass('fas fa-exclamation-triangle');
+                    $('#cpasswordicon').removeClass('fal fa-exclamation-triangle');
                     $('#cpasswordmessage').html('');
                 }
                 function Validate(){
@@ -598,6 +637,9 @@ if($_COOKIE['role'] == 'Admin'){
                 });
                 $('#lname').blur(function(){
                     lnamevalid();
+                });
+                $('#bday').blur(function(){
+                    bdayvalid();
                 });
                 $('#email').blur(function(){
                     emailvalid();
