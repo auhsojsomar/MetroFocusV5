@@ -180,7 +180,7 @@ if($_COOKIE['role'] == 'Admin'){
                                             </div>
                                             <section class="example">
                                                 <div class="table-responsive">
-                                                    <table id="partstable" class="table table-bordered table-striped table-hover" style="width:100%">
+                                                    <table id="partstable" class="table table-bordered table-striped table-hover nowrap" style="width:100%">
                                                     <thead>
                                                         <tr >
                                                             <th>Username</th>
@@ -210,7 +210,7 @@ if($_COOKIE['role'] == 'Admin'){
                                             </div>
                                             <section class="example">
                                                 <div class="table-responsive">
-                                                    <table id="accessoriestable" class="table table-bordered table-striped table-hover" style="width:100%">
+                                                    <table id="accessoriestable" class="table table-bordered table-striped table-hover nowrap" style="width:100%">
                                                     <thead>
                                                         <tr >
                                                             <th>Username</th>

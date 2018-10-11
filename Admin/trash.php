@@ -204,9 +204,9 @@ if($_COOKIE['role'] == 'Admin'){
                                                         <table id="brandtable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
-                                                                <th style="width: 40%">Name</th>
-                                                                <th style="width: 43%">Date Deleted</th>
-                                                                <th style="width: 17%;text-align: center;">Action</th>
+                                                                <th>Name</th>
+                                                                <th>Date Deleted</th>
+                                                                <th>Action</th>
                                                         </thead>
                                                         <tbody></tbody>
                                                         </table>
@@ -477,7 +477,11 @@ if($_COOKIE['role'] == 'Admin'){
                         },
                         {
                             "targets":[0,1],
-                            "className":'dt-left',
+                            "className":'dt-center',
+                        },
+                        {
+                            "targets":[2],
+                            "width":'100px',
                         },
                     ],
                 });
