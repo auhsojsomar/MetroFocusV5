@@ -236,9 +236,11 @@ if(isset($_COOKIE['email'])){
                 }
             })
         }
-        function brand(){
+        function brand(br = 'Parts'){
             $.ajax({
                 url:'../php/brand.php',
+                method:'POST',
+                data:{br : br},
                 dataType:'json',
                 success:function(data){
                     $('ul.menu-list').html(data.brand);
