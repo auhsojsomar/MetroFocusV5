@@ -19,6 +19,14 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
         </head>
+        <style>
+            .section.t{
+                display:none;
+            }
+            .section.t.active{
+                display:block;
+            }
+        </style>
         <body>
             <div class="main-wrapper">
                 <div class="app" id="app">
@@ -170,7 +178,20 @@ if($_COOKIE['role'] == 'Admin'){
                             <div class="title-block">
                                 <h1 class="title"> Trash</h1>
                             </div>
-                            <section class="section" style="padding-top:0px;">
+                            <div class="section" style="padding-top:0px;">
+                                <div class="select">
+                                    <select name="show-table" id="show-table">
+                                        <option value="Brand">Brand</option>
+                                        <option value="Category">Category</option>
+                                        <option value="Parts">Parts</option>
+                                        <option value="Accessories">Accessories</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Registered Users">Registered Users</option>
+                                        <option value="FAQ">FAQ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <section id="sec1" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -180,7 +201,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="brandtable" class="table table-bordered table-striped table-hover">
+                                                        <table id="brandtable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -196,7 +217,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec2" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -206,7 +227,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="categorytable" class="table table-bordered table-striped table-hover">
+                                                        <table id="categorytable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -222,7 +243,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec3" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -232,7 +253,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="partstable" class="table table-bordered table-striped table-hover">
+                                                        <table id="partstable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -248,7 +269,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec4" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -258,7 +279,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="accessoriestable" class="table table-bordered table-striped table-hover">
+                                                        <table id="accessoriestable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -274,7 +295,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec5" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -284,7 +305,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="admintable" class="table table-bordered table-striped table-hover">
+                                                        <table id="admintable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -300,7 +321,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec6" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -310,7 +331,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="clienttable" class="table table-bordered table-striped table-hover">
+                                                        <table id="clienttable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -326,7 +347,7 @@ if($_COOKIE['role'] == 'Admin'){
                                     </div>
                                 </div>
                             </section>
-                            <section class="section" style="padding-top:0px;margin-top: -70px;">
+                            <section id="sec7" class="section t" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -336,7 +357,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 </div>
                                                 <section class="example">
                                                     <div class="table-responsive">
-                                                        <table id="faqtable" class="table table-bordered table-striped table-hover">
+                                                        <table id="faqtable" class="table table-bordered table-striped table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 40%">Name</th>
@@ -365,8 +386,41 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
-
             <script>
+                window.onload = function(){
+                    $('#sec1').addClass('active');
+                }
+                $('#show-table').change(function(){
+                    var t = $(this).val();
+                    if(t == 'Brand'){
+                        $('.section.t').removeClass('active');
+                        $('#sec1').addClass('active');
+                    }
+                    else if(t == 'Category'){
+                        $('.section.t').removeClass('active');
+                        $('#sec2').addClass('active');
+                    }
+                    else if(t == 'Parts'){
+                        $('.section.t').removeClass('active');
+                        $('#sec3').addClass('active');
+                    }
+                    else if(t == 'Accessories'){
+                        $('.section.t').removeClass('active');
+                        $('#sec4').addClass('active');
+                    }
+                    else if(t == 'Admin'){
+                        $('.section.t').removeClass('active');
+                        $('#sec5').addClass('active');
+                    }
+                    else if(t == 'Registered Users'){
+                        $('.section.t').removeClass('active');
+                        $('#sec6').addClass('active');
+                    }
+                    else if(t == 'FAQ'){
+                        $('.section.t').removeClass('active');
+                        $('#sec7').addClass('active');
+                    }
+                });
                 setInterval(function(){
                     dtbrand.ajax.reload(null,false);
                 },1000);

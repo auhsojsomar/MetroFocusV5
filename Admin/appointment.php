@@ -177,7 +177,7 @@ if($_COOKIE['role'] == 'Admin'){
                                         <div class="card-block">
                                             <section class="example">
                                                 <div class="table-responsive">
-                                                    <table id="tabledit" class="table table-bordered table-striped table-hover">
+                                                    <table id="tabledit" class="table table-bordered table-striped table-hover" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th>Username</th>
