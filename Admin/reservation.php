@@ -295,6 +295,15 @@ if($_COOKIE['role'] == 'Admin'){
                 notifandcount('hotdog');
             });
             var dataTable = $('#partstable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    }
+                ],
                 "order":[],
                 "ajax":{
                 url:"php/reservation/reservationfetch.php",
@@ -372,6 +381,15 @@ if($_COOKIE['role'] == 'Admin'){
                 });
             });
             var dataTable2 = $('#accessoriestable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    }
+                ],
                 "ajax":{
                 url:"php/reservation/accessoriesfetch.php",
                 type:"POST"

@@ -295,6 +295,15 @@ if($_COOKIE['role'] == 'Admin'){
                 notifandcount('hotdog');
             });
             var dataTable = $('#tabledit').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4,5]
+                        }
+                    }
+                ],
                 "order":[],
                 "ajax":{
                 url:"php/appointment/appointmentfetch.php",

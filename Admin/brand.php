@@ -18,6 +18,7 @@ if($_COOKIE['role'] == 'Admin'){
             <link rel="stylesheet" href="fontawesome/css/all.css">
             <link rel="stylesheet" href="css/datatables.min.css">
             <link rel="stylesheet" href="css/animate.min.css">
+            <!-- <link rel="stylesheet" href="css/button.css"> -->
         </head>
         <body>
             <div class="main-wrapper">
@@ -238,6 +239,8 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
             <script src="js/ellipsis.js"></script>
+            <!-- <script src="js/button.js"></script>
+            <script src="js/print.js"></script> -->
             <script>
             setInterval(function(){
                 dataTable.ajax.reload(null,false);
@@ -261,10 +264,19 @@ if($_COOKIE['role'] == 'Admin'){
                 notifandcount('hotdog');
             });
             var dataTable = $('#brandtable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                           columns: [0]
+                        }
+                    }
+                ],
                 "order":[],
                 "ajax":{
                 url:"php/brand/brandfetch.php",
-                type:"POST"
+                type:"POST",
             },
                 "columnDefs":[
                     {

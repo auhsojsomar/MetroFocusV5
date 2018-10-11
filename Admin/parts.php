@@ -421,6 +421,15 @@ if($_COOKIE['role'] == 'Admin'){
                     notifandcount('hotdog');
                 });
                 var dataTable = $('#partstable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [1,2,3,4]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                     url:"php/parts/partsfetch.php",

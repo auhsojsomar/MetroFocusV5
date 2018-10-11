@@ -366,6 +366,15 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#faqmodal').removeClass('is-active');
                 });
                 var dataTable = $('#faqtable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [0,1]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                         url:'php/faq/faqfetch.php',

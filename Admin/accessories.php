@@ -420,6 +420,15 @@ if($_COOKIE['role'] == 'Admin'){
                     notifandcount('hotdog');
                 });
                 var dataTable = $('#accessoriestable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [1,2,3,4]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                     url:"php/accessories/accessoriesfetch.php",

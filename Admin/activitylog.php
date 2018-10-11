@@ -241,6 +241,15 @@ if($_COOKIE['role'] == 'Admin'){
                     notifandcount('hotdog');
                 });
                 var dataTable = $('#table').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [0,1,2,3,4,5,6]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                         url:'php/activitylog/activitylogfetch.php',

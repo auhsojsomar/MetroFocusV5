@@ -663,6 +663,15 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#adminmodal').removeClass('is-active');
                 });
                 var dataTable = $('#admintable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [0,1,2,3,4]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                     url:"php/admin/adminfetch.php",

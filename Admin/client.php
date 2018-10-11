@@ -621,6 +621,15 @@ if($_COOKIE['role'] == 'Admin'){
                     $('#clientmodal').removeClass('is-active');
                 });
                 var dataTable = $('#clienttable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                            columns: [0,1,2,3,4]
+                            }
+                        }
+                    ],
                     "order":[],
                     "ajax":{
                     url:"php/client/clientfetch.php",
