@@ -364,7 +364,7 @@ if($_COOKIE['role'] == 'Admin'){
 				type: "POST"
 			},
 			"columnDefs": [{
-					"targets": [2],
+					"targets": [0,2],
 					"orderable": false,
 				},
 				{
