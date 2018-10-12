@@ -278,6 +278,37 @@ if($_COOKIE['role'] == 'Admin'){
 		$('#reasoncancel').click(function(){
 			$('#reasonmodal').removeClass('is-active');
 		});
+		$("#checkall").click(function () {
+			$('input:checkbox').not(this).prop('checked', this.checked);
+		});
+		$(document).on('click', 'button[name="delete"]', function () {
+			ReasonClear();
+			var id = $(this).attr('id');
+			$('#reasonaction').val('Delete');
+			$('#reasonmodal').addClass('is-active');
+			$('#reasonid').val(id);
+		});
+		$('#deleteselected').click(function () {
+			ReasonClear();
+			var id = [];
+			$(':checkbox:checked').each(function (i) {
+				id[i] = $(this).val();
+			});
+			if (id.length === 0) {
+				swal('Please select atleast one checkbox', '', 'error', {
+					closeOnClickOutside: false
+				});
+			} else {
+				$('#reasonmodal').addClass('is-active');
+				$('#reasonaction').val('DeleteAll');
+				$('#reasonid').val(id);
+			}
+		});
+		function ReasonClear(){
+			$('#reason').removeClass('is-danger');
+			$('#reasonicon').removeClass('fal fa-exclamation-triangle');
+			$('#reasonmessage').html('');
+		}
 		function Reason(){
 			if($('#reason').val() == ''){
 				$('#reason').addClass('is-danger');
@@ -285,9 +316,6 @@ if($_COOKIE['role'] == 'Admin'){
 				$('#reasonmessage').html('Please provide a reason.');
 			}
 			else{
-				$('#reason').removeClass('is-danger');
-				$('#reasonicon').removeClass('fal fa-exclamation-triangle');
-				$('#reasonmessage').html('');
 				var form = $('#reasonform').serialize();
 				$.ajax({
 					url:'php/brand/branddelete.php',
@@ -309,9 +337,6 @@ if($_COOKIE['role'] == 'Admin'){
 		setInterval(function () {
 			notifandcount();
 		}, 1000);
-		$("#checkall").click(function () {
-			$('input:checkbox').not(this).prop('checked', this.checked);
-		});
 		function notifandcount(view = '') {
 			$.ajax({
 				url: 'php/notification.php',
@@ -334,7 +359,7 @@ if($_COOKIE['role'] == 'Admin'){
 			buttons: [{
 				extend: 'print',
 				exportOptions: {
-					columns: [0]
+					columns: [1]
 				}
 			}],
 			"order": [],
@@ -378,27 +403,6 @@ if($_COOKIE['role'] == 'Admin'){
 					$('#operation').val("Edit");
 				}
 			})
-		});
-		$(document).on('click', 'button[name="delete"]', function () {
-			var id = $(this).attr('id');
-			$('#reasonaction').val('Delete');
-			$('#reasonmodal').addClass('is-active');
-			$('#reasonid').val(id);
-		});
-		$('#deleteselected').click(function () {
-			var id = [];
-			$(':checkbox:checked').each(function (i) {
-				id[i] = $(this).val();
-			});
-			if (id.length === 0) {
-				swal('Please select atleast one checkbox', '', 'error', {
-					closeOnClickOutside: false
-				});
-			} else {
-				$('#reasonmodal').addClass('is-active');
-				$('#reasonaction').val('DeleteAll');
-				$('#reasonid').val(id);
-			}
 		});
 		var br = document.forms['vform']['brand'];
 		var br_error = document.getElementById('brandmessage');
