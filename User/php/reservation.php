@@ -11,13 +11,19 @@
 	$type = $_POST['categtype'];
 	if($category == 'Parts')
 	{
-		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity)VALUES('$user','$d',$itemid,'Parts',$quantity)");
+		$sql = mysqli_query($con,"SELECT reservationid FROM reservation ORDER BY reservationid DESC");
+		$row = mysqli_fetch_array($sql);
+		$new = $row[0]+1;
+		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity,reservationid)VALUES('$user','$d',$itemid,'Parts',$quantity,$new)");
 		mysqli_query($con,"UPDATE parts SET quantity = quantity - $quantity WHERE id = $itemid");
 		mysqli_query($con,"INSERT INTO notifications (user,type,description,date_time)VALUES('$user','Reservation','1','$datee')");
 	}
 	else if($category == 'Accessories')
 	{
-		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity)VALUES('$user','$d',$itemid,'Accessories',$quantity)");
+		$sql = mysqli_query($con,"SELECT reservationid FROM reservation ORDER BY reservationid DESC");
+		$row = mysqli_fetch_array($sql);
+		$new = $row[0]+1;
+		mysqli_query($con,"INSERT INTO reservation (username,reservationdate,itemid,category,itemquantity,reservationid)VALUES('$user','$d',$itemid,'Accessories',$quantity,$new)");
 		mysqli_query($con,"UPDATE accessories SET quantity = quantity - $quantity WHERE id = $itemid");
 		mysqli_query($con,"INSERT INTO notifications (user,type,description,date_time)VALUES('$user','Reservation','1','$datee')");
 	}
