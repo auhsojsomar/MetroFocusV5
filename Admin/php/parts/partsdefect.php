@@ -4,10 +4,17 @@
     $user = $_COOKIE['email'];
     $desc = $_POST['problem'];
     $quan = $_POST['defect'];
+    $type = $_POST['typedr'];
     date_default_timezone_set('Asia/Manila');
     $date = date('n/j/Y g:i A');
     $sql = mysqli_query($con,"SELECT * FROM parts WHERE id = $id");
     $row = mysqli_fetch_array($sql);
-    mysqli_query($con,"INSERT INTO activitylogs (name,action,quantity,datemod,type,user,description)VALUES('$row[2]','Defect',$quan,'$date','Parts','$user','$desc')");
-    mysqli_query($con,"UPDATE parts SET quantity = quantity - $quan WHERE id = $id");
+    if($type == 'Defect'){
+        mysqli_query($con,"INSERT INTO activitylogs (name,action,quantity,datemod,type,user,description)VALUES('$row[2]','Defect',$quan,'$date','Parts','$user','$desc')");
+        mysqli_query($con,"UPDATE parts SET quantity = quantity - $quan WHERE id = $id");
+    }
+    else if($type == 'Return'){
+        mysqli_query($con,"INSERT INTO activitylogs (name,action,quantity,datemod,type,user,description)VALUES('$row[2]','Return',$quan,'$date','Parts','$user','$desc')");
+        mysqli_query($con,"UPDATE parts SET quantity = quantity + $quan WHERE id = $id");
+    }
 ?>

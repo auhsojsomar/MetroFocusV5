@@ -356,7 +356,7 @@ if($_COOKIE['role'] == 'Admin'){
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
-                        <h1 class="modal-card-title" id="modaltitle">Defect</h1>
+                        <h1 class="modal-card-title" id="modaltitledr">Defect</h1>
                     </header>
                     <section class="modal-card-body">
                         <form method="POST" name="vform3" id="vform3" onsubmit="return Defect();">
@@ -372,9 +372,9 @@ if($_COOKIE['role'] == 'Admin'){
                                 </label>
                             </div>
                             <div class="field">
-                                <label class="label">Problem
+                                <label class="label">Reason
                                     <div class="control has-icons-right">
-                                        <textarea type="text" class="textarea" maxlength="200" name="problem" id="problem" placeholder="Problem"></textarea>
+                                        <textarea type="text" class="textarea" maxlength="200" name="problem" id="problem" placeholder="Reason"></textarea>
                                         <span class="icon is-small is-right">
                                             <i id="problemicon" class=""></i>
                                         </span>
@@ -387,6 +387,7 @@ if($_COOKIE['role'] == 'Admin'){
                         <button class="button is-success" id="btnDefect" type="submit" name="bntDefect">Save</button>
                         <button class="button" id="defectcancel" type="button">Cancel</button>
                         <input type="hidden" name="user_id3" id="user_id3"></input>
+                        <input type="hidden" name="typedr" id="typedr"></input>
                     </form>
                     </footer>
                 </div>
@@ -540,6 +541,22 @@ if($_COOKIE['role'] == 'Admin'){
                     });
                 });
                 $(document).on('click','button[name="defect"]',function(){
+                    $('#typedr').val('Defect');
+                    $('#modaltitledr').html('Defect');
+                    $('#defect').val('');
+                    $('#defect').removeClass('is-danger');
+                    $('#defecticon').removeClass('fas fa-exclamation-triangle');
+                    $('#defectmessage').html('');
+                    $('#problem').val('');
+                    $('#problem').removeClass('is-danger');
+                    $('#problemicon').removeClass('fas fa-exclamation-triangle');
+                    $('#problemmessage').html('');
+                    $('#defectmodal').addClass('is-active');
+                    $('#user_id3').val($(this).attr('id'));
+                });
+                $(document).on('click','button[name="return"]',function(){
+                    $('#typedr').val('Return');
+                    $('#modaltitledr').html('Return');
                     $('#defect').val('');
                     $('#defect').removeClass('is-danger');
                     $('#defecticon').removeClass('fas fa-exclamation-triangle');
