@@ -2,6 +2,7 @@
 	include '../../../User/includes/db.php';
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
+	$bday = $_POST['bday'];
 	// $email = $_POST['email'];
 	$cnumber = $_POST['cnumber'];
 	$id = $_POST['user_id'];
@@ -20,7 +21,7 @@
 	else{
 		$email = $_POST['email'];
 	}
-	if(mysqli_query($con,"UPDATE loginform SET firstname = '$fname',lastname = '$lname',username = '$email',cnumber = '$cnumber',password = '$password' WHERE id = $id")){
+	if(mysqli_query($con,"UPDATE loginform SET firstname = '$fname',lastname = '$lname',username = '$email',cnumber = '$cnumber',password = '$password',bday = '$bday' WHERE id = $id")){
 		echo "Success";
 	}
 	else{
