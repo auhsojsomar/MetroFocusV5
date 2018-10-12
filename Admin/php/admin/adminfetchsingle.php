@@ -1,18 +1,16 @@
 <?php
 include '../../../User/includes/db.php';
-if(isset($_POST["user_id"]))
-{
-	$output = array();
-	$id = $_POST['user_id'];
-	$query = mysqli_query($con,"SELECT * FROM loginform WHERE id = $id");
-	while($row = mysqli_fetch_assoc($query))
-	{
-		$output["firstname"] = $row["firstname"];
-		$output["lastname"] = $row["lastname"];
-		$output["username"] = $row["username"];
-		$output["cnumber"] = $row["cnumber"];
-		$output["password"] = $row["password"];
-	}
-	echo json_encode($output);
+$id = $_POST['user_id'];
+$sql = mysqli_query($con,"SELECT * FROM loginform WHERE id = $id");
+while($row = mysqli_fetch_array($sql)){
+	$output = array(
+		'firstname' => $row['firstname'],
+		'lastname' => $row['lastname'],
+		'bday' => $row['bday'],
+		'username' => $row['username'],
+		'cnumber' => $row['cnumber'],
+		'password' => $row['password']
+	);
 }
+echo json_encode($output);
 ?>

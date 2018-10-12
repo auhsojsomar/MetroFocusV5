@@ -2,796 +2,805 @@
 session_start();
 if($_COOKIE['role'] == 'Admin'){
     ?>
-    <!doctype html>
-    <html class="no-js" lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="x-ua-compatible" content="ie=edge">
-            <title> MetroFocus </title>
-            <meta name="description" content="">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="icon" href="../icon.ico">
-            <link rel="apple-touch-icon" href="apple-touch-icon.png">
-            <link rel="stylesheet" href="css/vendor.css">
-            <link rel="stylesheet" href="css/app-blue.css">
-            <link rel="stylesheet" href="css/bulma.min.css">
-            <link rel="stylesheet" href="fontawesome/css/all.css">
-            <link rel="stylesheet" href="css/datatables.min.css">
-            <link rel="stylesheet" href="css/animate.min.css">
-            <link rel="stylesheet" href="../User/css/jquery.datetimepicker.min.css">
-        </head>
-        <body>
-            <div class="main-wrapper">
-                <div class="app" id="app">
-                    <header class="header">
-                        <div class="header-block header-block-collapse d-lg-none d-xl-none">
-                            <button class="collapse-btn" id="sidebar-collapse-btn">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                        </div>
-                        <div class="header-block">
-                            <nav class="breadcrumb" aria-label="breadcrumbs">
-                                <ul>
-                                    <li style="margin-left: 20px;">
-                                        <a href="./">
-                                            <span class="icon is-small">
-                                                <i class="fal fa-home" aria-hidden="true"></i>
-                                            </span>
-                                            <span> Dashboard</span>
-                                        </a>
-                                    </li>
-                                    <li class="is-active">
-                                        <a href="#">
-                                            User Management
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="header-block header-block-nav">
-                            <ul class="nav-profile">
-                                <li class="notifications new">
-                                    <a data-toggle="dropdown" aria-expanded="false" id="bell">
-                                        <i class="fas fa-bell"></i>
-                                        <sup>
-                                            <span class="counter" id="count"></span>
-                                        </sup>
-                                    </a>
-                                    <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <ul class="notifications-container" id='notifto'></ul>
-                                        <!-- <footer>
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> MetroFocus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../icon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app-blue.css">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="../User/css/jquery.datetimepicker.min.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="app" id="app">
+            <header class="header">
+                <div class="header-block header-block-collapse d-lg-none d-xl-none">
+                    <button class="collapse-btn" id="sidebar-collapse-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="header-block">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li style="margin-left: 20px;">
+                                <a href="./">
+                                    <span class="icon is-small">
+                                        <i class="fal fa-home" aria-hidden="true"></i>
+                                    </span>
+                                    <span> Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="is-active">
+                                <a href="#">
+                                    User Management
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-block header-block-nav">
+                    <ul class="nav-profile">
+                        <li class="notifications new">
+                            <a data-toggle="dropdown" aria-expanded="false" id="bell">
+                                <i class="fas fa-bell"></i>
+                                <sup>
+                                    <span class="counter" id="count"></span>
+                                </sup>
+                            </a>
+                            <div class="dropdown-menu notifications-dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <ul class="notifications-container" id='notifto'></ul>
+                                <!-- <footer>
                                             <ul>
                                                 <li>
                                                     <a href="#"> View All </a>
                                                 </li>
                                             </ul>
                                         </footer> -->
-                                    </div>
-                                </li>
-                                <li class="profile dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-user-alt fa-lm"></i>
-                                        <!-- <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')"> </div> -->
-                                        <span class="name"> Admin </span>
-                                    </a>
-                                    <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <a class="dropdown-item" href="../User/pages/profile.php">
-                                            <i class="fa fa-user icon"></i> Profile </a>
-                                        <!-- <a class="dropdown-item" href="#">
+                            </div>
+                        </li>
+                        <li class="profile dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-alt fa-lm"></i>
+                                <!-- <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')"> </div> -->
+                                <span class="name"> Admin </span>
+                            </a>
+                            <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <a class="dropdown-item" href="../User/pages/profile.php">
+                                    <i class="fa fa-user icon"></i> Profile </a>
+                                <!-- <a class="dropdown-item" href="#">
                                             <i class="fa fa-bell icon"></i> Notifications </a>
                                         <a class="dropdown-item" href="#">
                                             <i class="fa fa-gear icon"></i> Settings </a> -->
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../User/pages/logout.php">
-                                            <i class="fa fa-power-off icon"></i> Logout </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </header>
-                    <aside class="sidebar">
-                        <div class="sidebar-container">
-                            <div class="sidebar-header">
-                                <div class="brand">
-                                    <div style="text-align: center;margin-left: -30px;"><span style="font-size: 25px;font-weight: bold;">Metro</span><span style="font-size: 25px;color: #FF7100;font-weight:bold;">Focus</span></div>
-                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../User/pages/logout.php">
+                                    <i class="fa fa-power-off icon"></i> Logout </a>
                             </div>
-                            <nav class="menu">
-                                <ul class="sidebar-menu metismenu" id="sidebar-menu">
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <aside class="sidebar">
+                <div class="sidebar-container">
+                    <div class="sidebar-header">
+                        <div class="brand">
+                            <div style="text-align: center;margin-left: -30px;"><span style="font-size: 25px;font-weight: bold;">Metro</span><span
+                                    style="font-size: 25px;color: #FF7100;font-weight:bold;">Focus</span></div>
+                        </div>
+                    </div>
+                    <nav class="menu">
+                        <ul class="sidebar-menu metismenu" id="sidebar-menu">
+                            <li>
+                                <a href="./">
+                                    <i class="fal fa-home"></i> Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fal fa-camera-retro"></i> Products
+                                    <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
                                     <li>
-                                        <a href="./">
-                                            <i class="fal fa-home"></i> Dashboard
-                                        </a>
+                                        <a href="brand.php"> Brand</a>
                                     </li>
                                     <li>
-                                        <a href="">
-                                            <i class="fal fa-camera-retro"></i> Products
-                                            <i class="fa arrow"></i>
-                                        </a>
-                                        <ul class="sidebar-nav">
-                                            <li>
-                                                <a href="brand.php"> Brand</a>
-                                            </li>
-                                            <li>
-                                                <a href="category.php"> Category</a>
-                                            </li>
-                                            <li>
-                                                <a href="parts.php"> Parts</a>
-                                            </li>
-                                            <li>
-                                                <a href="accessories.php"> Accessories</a>
-                                            </li>
-                                        </ul>
+                                        <a href="category.php"> Category</a>
                                     </li>
                                     <li>
-                                        <a href="reservation.php">
-                                            <i class="fal fa-calendar-alt"></i> Reservation
-                                        </a>
+                                        <a href="parts.php"> Parts</a>
                                     </li>
                                     <li>
-                                        <a href="appointment.php">
-                                            <i class="fal fa-calendar-check"></i> Appointment
-                                        </a>
-                                    </li>
-                                    <li class="active open">
-                                        <a href="">
-                                            <i class="fal fa-id-card"></i> User Management
-                                            <i class="fa arrow"></i>
-                                        </a>
-                                        <ul class="sidebar-nav">
-                                            <li class="active">
-                                                <a href="#"> Admin</a>
-                                            </li>
-                                            <li>
-                                                <a href="client.php"> Registered Users</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="faq.php">
-                                            <i class="fal fa-question-circle"></i> FAQ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="activitylog.php">
-                                            <i class="fal fa-pen"></i> Activity Logs
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="trash.php">
-                                            <i class="fal fa-trash"></i> Trash
-                                        </a>
+                                        <a href="accessories.php"> Accessories</a>
                                     </li>
                                 </ul>
-                            </nav>
-                        </div>  
-                    </aside>
-                    <article class="content animated bounceInLeft">
-                        <div class="title-block">
-                            <h1 class="title"> Admin</h1>
-                            <button type="button" class="button is-success" id="adminadd">
-                                <span class="icon is-small">
-                                      <i class="fal fa-plus-circle"></i>
-                                    </span>
-                                    <span> Add Admin</span>
-                            </button>
-                        </div>
-                        <section class="section" style="padding-top:0px;">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-block">
-                                            <section class="example">
-                                                <div class="table-responsive">
-                                                    <table id="admintable" class="table table-bordered table-striped table-hover nowrap" style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>First&nbspName</th>
-                                                            <th>Last&nbspName</th>
-                                                            <th>Username</th>
-                                                            <th>Contact&nbspNumber</th>
-                                                            <th>Date&nbspcreated</th>
-                                                            <th style="text-align: center;width: 15%;">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody></tbody>
-                                                    </table>
-                                                </div>
-                                            </section>
+                            </li>
+                            <li>
+                                <a href="reservation.php">
+                                    <i class="fal fa-calendar-alt"></i> Reservation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="appointment.php">
+                                    <i class="fal fa-calendar-check"></i> Appointment
+                                </a>
+                            </li>
+                            <li class="active open">
+                                <a href="">
+                                    <i class="fal fa-id-card"></i> User Management
+                                    <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li class="active">
+                                        <a href="#"> Admin</a>
+                                    </li>
+                                    <li>
+                                        <a href="client.php"> Registered Users</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="faq.php">
+                                    <i class="fal fa-question-circle"></i> FAQ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="activitylog.php">
+                                    <i class="fal fa-pen"></i> Activity Logs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="trash.php">
+                                    <i class="fal fa-trash"></i> Trash
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <article class="content animated bounceInLeft">
+                <div class="title-block">
+                    <h1 class="title"> Admin</h1>
+                    <button type="button" class="button is-success" id="adminadd">
+                        <span class="icon is-small">
+                            <i class="fal fa-plus-circle"></i>
+                        </span>
+                        <span> Add Admin</span>
+                    </button>
+                </div>
+                <section class="section" style="padding-top:0px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-block">
+                                    <section class="example">
+                                        <div class="table-responsive">
+                                            <table id="admintable" class="table table-bordered table-striped table-hover nowrap"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>First&nbspName</th>
+                                                        <th>Last&nbspName</th>
+                                                        <th>Username</th>
+                                                        <th>Contact&nbspNumber</th>
+                                                        <th>Date&nbspcreated</th>
+                                                        <th style="text-align: center;width: 15%;">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
                                         </div>
-                                    </div>
+                                    </section>
                                 </div>
                             </div>
-                        </section>
-                    </article>
-                    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-                    <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
-                    <div class="mobile-menu-handle"></div> 
-                </div>
-                <div class="modal" id="adminmodal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <h1 class="modal-card-title" id="admintitle">Add Admin</h1>
-                    </header>
-                    <section class="modal-card-body">
-                        <form method="POST" name="vform" id="vform" onsubmit="return Validate();" enctype="multipart/form-data">
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+            <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
+            <div class="mobile-menu-handle"></div>
+        </div>
+        <div class="modal" id="adminmodal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <h1 class="modal-card-title" id="admintitle">Add Admin</h1>
+                </header>
+                <section class="modal-card-body">
+                    <form method="POST" name="vform" id="vform" onsubmit="return Validate();" enctype="multipart/form-data">
                         <div class="field">
                             <label class="label">First Name</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" class="input" id="fname" name="fname" placeholder="First Name">
-                                        <span class="icon is-small is-right">
-                                            <i id="fnameicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="fnamemessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="200" class="input" id="fname" name="fname" placeholder="First Name">
+                                <span class="icon is-small is-right">
+                                    <i id="fnameicon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="fnamemessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Last Name</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" class="input" id="lname" name="lname" placeholder="Last Name">
-                                        <span class="icon is-small is-right">
-                                            <i id="lnameicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="lnamemessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="200" class="input" id="lname" name="lname" placeholder="Last Name">
+                                <span class="icon is-small is-right">
+                                    <i id="lnameicon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="lnamemessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Date of Birth</label>
-                                <div class="control has-icons-right has-icons-left">
-                                    <input readonly maxlength="200" class="input" type="text" id="bday" name="bday" style="cursor:pointer">
-                                    <span class="icon is-small is-right">
-                                        <i id="bdayicon" class=""></i>
-                                    </span>
-                                    <span class="icon is-left">
-                                        <i class="fas fa-calendar-alt" style="font-size:22px;margin-left:10px"></i>
-                                    </span>
-                                    <p class="help is-danger" id="bdaymessage"></p>
-                                </div>
+                            <div class="control has-icons-right has-icons-left">
+                                <input readonly maxlength="200" class="input" type="text" id="bday" name="bday" style="cursor:pointer">
+                                <span class="icon is-small is-right">
+                                    <i id="bdayicon" class=""></i>
+                                </span>
+                                <span class="icon is-left">
+                                    <i class="fas fa-calendar-alt" style="font-size:22px;margin-left:10px"></i>
+                                </span>
+                                <p class="help is-danger" id="bdaymessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Contact Number</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="11" class="input" id="cnumber" name="cnumber" placeholder="e.g. 09123456789">
-                                        <span class="icon is-small is-right">
-                                            <i id="cnumbericon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="cnumbermessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="11" class="input" id="cnumber" name="cnumber" placeholder="e.g. 09123456789">
+                                <span class="icon is-small is-right">
+                                    <i id="cnumbericon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="cnumbermessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Username</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" class="input" id="email" name="email" placeholder="Username">
-                                        <span class="icon is-small is-right">
-                                            <i id="emailicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="emailmessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="200" class="input" id="email" name="email" placeholder="Username">
+                                <span class="icon is-small is-right">
+                                    <i id="emailicon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="emailmessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Password</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" type="password" class="input" id="password" name="password" placeholder="Password">
-                                        <span class="icon is-small is-right">
-                                            <i id="passwordicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="passwordmessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="200" type="password" class="input" id="password" name="password"
+                                    placeholder="Password">
+                                <span class="icon is-small is-right">
+                                    <i id="passwordicon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="passwordmessage"></p>
+                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Confirm Password</label>
-                                <div class="control has-icons-right">
-                                    <input maxlength="200" type="password" class="input" id="cpassword" name="cpassword" placeholder="Confirm Password">
-                                        <span class="icon is-small is-right">
-                                            <i id="cpasswordicon" class=""></i>
-                                        </span>
-                                        <p class="help is-danger" id="cpasswordmessage"></p>
-                                </div>
+                            <div class="control has-icons-right">
+                                <input maxlength="200" type="password" class="input" id="cpassword" name="cpassword"
+                                    placeholder="Confirm Password">
+                                <span class="icon is-small is-right">
+                                    <i id="cpasswordicon" class=""></i>
+                                </span>
+                                <p class="help is-danger" id="cpasswordmessage"></p>
+                            </div>
                         </div>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" id="save" type="submit" name="btnSave">Save</button>
-                        <button class="button" id="cancel" type="button">Cancel</button>
-                        <input type="hidden" name="user_id" id="user_id"></input>
-                        <input type="hidden" name="operation" id="operation"></input>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="save" type="submit" name="btnSave">Save</button>
+                    <button class="button" id="cancel" type="button">Cancel</button>
+                    <input type="hidden" name="user_id" id="user_id"></input>
+                    <input type="hidden" name="operation" id="operation"></input>
                     </form>
-                    </footer>
-                </div>
+                </footer>
             </div>
-            <script src="js/jquery.min.js"></script>
-            <script src="js/sweetalert.min.js"></script>
-            <script src="js/vendor.js"></script>
-            <script src="js/app.js"></script>
-            <script src="js/datatables.min.js"></script>
-            <script src="js/ellipsis.js"></script>
-            <script src="../User/js/jquery.datetimepicker.full.min.js"></script>
-            <script>
-                setInterval(function(){
-                    dataTable.ajax.reload(null,false);
-                },1000);
-                setInterval(function(){
-                    notifandcount();
-                },1000);
-                function notifandcount(view = ''){
-                    $.ajax({
-                        url:'php/notification.php',
-                        method:'POST',
-                        data:{view:view},
-                        dataType:'json',
-                        success:function(data){
-                            $('#notifto').html(data.notification);
-                            $('#count').html(data.count);
-                        }
-                    })
-                }
-                $('#bell').click(function(){
-                    notifandcount('hotdog');
-                });
-                $('#bday').datetimepicker({
-                    timepicker:false,
-                    format:'n/j/Y',
-                    maxDate:'2010/12/31',
-                    startDate:'2010/1/1',
-                });
-                // var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                var regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-                var num = /^09/;
-                var space = /^ /;
-                var space2 = / $/;
-                var dot = /^\./;
-                var exist = "";
-                var fname = document.forms['vform']['fname'];
-                var fname_err = document.getElementById('fnamemessage');
-                var lname = document.forms['vform']['lname'];
-                var lname_err = document.getElementById('lnamemessage');
-                var bday = document.forms['vform']['bday'];
-                var email = document.forms['vform']['email'];
-                var email_err = document.getElementById('emailmessage');
-                var cnumber = document.forms['vform']['cnumber'];
-                var cnumber_err = document.getElementById('cnumbermessage');
-                var password = document.forms['vform']['password'];
-                var password_err = document.getElementById('passwordmessage');
-                var cpassword = document.forms['vform']['cpassword'];
-                var cpassword_err = document.getElementById('cpasswordmessage');
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/vendor.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/datatables.min.js"></script>
+        <script src="js/ellipsis.js"></script>
+        <script src="../User/js/jquery.datetimepicker.full.min.js"></script>
+        <script>
+            setInterval(function () {
+                notifandcount();
+            }, 1000);
 
-                function fnamevalid(){
-                    newval = $('#fname').val().replace(/[^A-z.\s]/g, "");
-                    $('#fname').val(newval);
-                    if(fname.value == ""){
-                        $('#fname').addClass('is-danger');
-                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
-                        fname_err.textContent = "Enter your Firstname";
+            function notifandcount(view = '') {
+                $.ajax({
+                    url: 'php/notification.php',
+                    method: 'POST',
+                    data: {
+                        view: view
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#notifto').html(data.notification);
+                        $('#count').html(data.count);
                     }
-                    else if(space.test(fname.value) || dot.test(fname.value)){
-                        $('#fname').addClass('is-danger');
-                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
-                        fname_err.textContent = "Invalid Format";
-                    }
-                    else{
-                        $('#fname').removeClass('is-danger');
-                        $('#fnameicon').removeClass('fal fa-exclamation-triangle');
-                        fname_err.textContent = "";
-                    }
-                }
-                function lnamevalid(){
-                    newval = $('#lname').val().replace(/[^A-z.\s]/g, "");
-                    $('#lname').val(newval);
-                    if(lname.value == ""){
-                        $('#lname').addClass('is-danger');
-                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
-                        lname_err.textContent = "Enter your Lastname";
-                    }
-                    else if(space.test(lname.value) || dot.test(lname.value)){
-                        $('#lname').addClass('is-danger');
-                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
-                        lname_err.textContent = "Invalid Format";
-                    }
-                    else{
-                        $('#lname').removeClass('is-danger');
-                        $('#lnameicon').removeClass('fal fa-exclamation-triangle');
-                        lname_err.textContent = "";
-                    }
-                }
-                function bdayvalid(){
-                    if(bday.value == ''){
-                        $('#bday').addClass('is-danger');
-                        $('#bdayicon').addClass('fal fa-exclamation-triangle');
-                        $('#bdaymessage').html('Enter your Birthday');
-                    }
-                    else{
-                        $('#bday').removeClass('is-danger');
-                        $('#bdayicon').removeClass('fal fa-exclamation-triangle');
-                        $('#bdaymessage').html('');
-                    }
-                }
-                function cnumbervalid(){
-                    newval = $('#cnumber').val().replace(/[^0-9]/g, "");
-                    $('#cnumber').val(newval);
-                    if(cnumber.value == ""){
-                        $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
-                        cnumber_err.textContent = "Enter your Contact number";
-                    }
-                    else if(!num.test(cnumber.value)){
-                        $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
-                        cnumber_err.textContent = "Invalid Contact number";
-                    }
-                    else if(cnumber.value.length < 11){
-                        $('#cnumber').addClass('is-danger');
-                        $('#cnumbericon').addClass('fal fa-exclamation-triangle');
-                        cnumber_err.textContent = "Invalid Contact number";
-                    }
-                    else{
-                        $('#cnumber').removeClass('is-danger');
-                        $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
-                        cnumber_err.textContent = "";
-                    }
-                }
-                function emailvalid(){
-                    $.post('../User/php/email.php', {'email' : email.value}, function(data) {
-                        exist = data;
-                        if(email.value == ''){
-                            $('#emailmessage').html('Enter your Username');
-                            $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fal fa-exclamation-triangle');
-                        }
-                        else if (email.value.length < 6) {
-                            $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fal fa-exclamation-triangle');
-                            $('#emailmessage').html('Username must be more than 6 characters!');
-                        }
-                        else if(data == "Exist"){
-                            $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fal fa-exclamation-triangle');
-                            $('#emailmessage').html('Username is already used');
-                        }
-                        else if(regex.test(email.value)){
-                            $('#email').removeClass('is-danger');
-                            $('#emailicon').removeClass('fal fa-exclamation-triangle');
-                            $('#emailmessage').html('');
-                        }
-                        else {
-                            $('#email').addClass('is-danger');
-                            $('#emailicon').addClass('fal fa-exclamation-triangle');
-                            $('#emailmessage').html('Invalid Username');
-                        }
-                    });
-                }
-                function passwordvalid(){
-                    if (password.value.length == 0){
-                        $('#passwordmessage').html('Enter your Password');
-                        $('#password').addClass('is-danger');
-                        $('#passwordicon').addClass('fal fa-exclamation-triangle');
-                    }
-                    else if(password.value.length < 8){
-                        $('#password').addClass('is-danger');
-                        $('#passwordicon').addClass('fal fa-exclamation-triangle');
-                        $('#passwordmessage').html('Password must be more than 8 characters!');
-                    }
-                    else {
-                        $('#password').removeClass('is-danger');
-                        $('#passwordicon').removeClass('fal fa-exclamation-triangle');
-                        $('#passwordmessage').html('');
-                    }
-                }
-                function cpasswordvalid(){
-                    if (cpassword.value.length == 0){
-                        $('#cpasswordmessage').html('Enter your Password');
-                        $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
-                    }
-                    else if(cpassword.value.length < 8){
-                        $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
-                        $('#cpasswordmessage').html('Password must be more than 8 characters!');
-                    }
-                    else if(cpassword.value != password.value){
-                        $('#cpasswordmessage').html('Confirm your Password');
-                        $('#cpassword').addClass('is-danger');
-                        $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
-                    }
-                    else {
-                        $('#cpassword').removeClass('is-danger');
-                        $('#cpasswordicon').removeClass('fal fa-exclamation-triangle');
-                        $('#cpasswordmessage').html('');
-                    }
-                }
-                function ValidateAll(){
-                    if($('#operation').val() == 'Add'){
-                        if(space2.test(fname.value)){
-                            $('#fname').addClass('is-danger');
-                            $('#fnameicon').addClass('fal fa-exclamation-triangle');
-                            fname_err.textContent = "Invalid Format";
-                        }
-                        if(space2.test(lname.value)){
-                            $('#lname').addClass('is-danger');
-                            $('#lnameicon').addClass('fal fa-exclamation-triangle');
-                            lname_err.textContent = "Invalid Format";
-                        }
-                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && (password.value != "") && (cpassword.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && exist != "Exist" && password.value.length > 7 && cpassword.value.length > 7 && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value) && (email.value.length > 5)){
-                            var form = $('#vform').serialize();
-                            $.ajax({
-                                data:form,
-                                method:'POST',
-                                url:'php/admin/adminadd.php',
-                                success:function(data){
-                                    $('#adminmodal').removeClass('is-active');
-                                       swal({
-                                         title: "Added Successfully",
-                                         text: "",
-                                         icon: "success",
-                                         closeOnClickOutside: false,
-                                       })
-                                       .then((value) => {
-                                        dataTable.ajax.reload()
-                                   });
-                                }
-                            });
-                        }
-                    }
-                    if($('#operation').val() == 'Edit'){
-                        if(space2.test(fname.value)){
-                            $('#fname').addClass('is-danger');
-                            $('#fnameicon').addClass('fal fa-exclamation-triangle');
-                            fname_err.textContent = "Invalid Format";
-                        }
-                        if(space2.test(lname.value)){
-                            $('#lname').addClass('is-danger');
-                            $('#lnameicon').addClass('fal fa-exclamation-triangle');
-                            lname_err.textContent = "Invalid Format";
-                        }
-                        if(password.value.length > 0 && password.value.length < 8){
-                            passwordvalid();
-                        }
-                        else if((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value != "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email.value) && cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value) && (bday.value != '')){
-                            var form = $('#vform').serialize();
-                            $.ajax({
-                                data:form,
-                                method:'POST',
-                                url:'php/admin/adminupdate.php',
-                                success:function(data){
-                                    if(data == "Success"){
-                                         $('#adminmodal').removeClass('is-active');
-                                            swal({
-                                              title: "Edit Successfully",
-                                              text: "",
-                                              icon: "success",
-                                              closeOnClickOutside: false,
-                                            })
-                                            .then((value) => {
-                                             dataTable.ajax.reload()
-                                        });
-                                    }
-                                    else{
-                                        swal(data + ' is already exist','','error',{
-                                            closeOnClickOutside:false,
-                                        });
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-                function clear(){
-                    fname.value = "";
-                    lname.value = "";
-                    password.value = "";
-                    cpassword.value = "";
-                    email.value = "";
-                    cnumber.value = "";
+                })
+            }
+            $('#bell').click(function () {
+                notifandcount('hotdog');
+            });
+            $('#bday').datetimepicker({
+                timepicker: false,
+                format: 'n/j/Y',
+                maxDate: '2010/12/31',
+                startDate: '2010/1/1',
+            });
+            // var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+            var num = /^09/;
+            var space = /^ /;
+            var space2 = / $/;
+            var dot = /^\./;
+            var exist = "";
+            var fname = document.forms['vform']['fname'];
+            var fname_err = document.getElementById('fnamemessage');
+            var lname = document.forms['vform']['lname'];
+            var lname_err = document.getElementById('lnamemessage');
+            var bday = document.forms['vform']['bday'];
+            var email = document.forms['vform']['email'];
+            var email_err = document.getElementById('emailmessage');
+            var cnumber = document.forms['vform']['cnumber'];
+            var cnumber_err = document.getElementById('cnumbermessage');
+            var password = document.forms['vform']['password'];
+            var password_err = document.getElementById('passwordmessage');
+            var cpassword = document.forms['vform']['cpassword'];
+            var cpassword_err = document.getElementById('cpasswordmessage');
+
+            function fnamevalid() {
+                newval = $('#fname').val().replace(/[^A-z.\s]/g, "");
+                $('#fname').val(newval);
+                if (fname.value == "") {
+                    $('#fname').addClass('is-danger');
+                    $('#fnameicon').addClass('fal fa-exclamation-triangle');
+                    fname_err.textContent = "Enter your Firstname";
+                } else if (space.test(fname.value) || dot.test(fname.value)) {
+                    $('#fname').addClass('is-danger');
+                    $('#fnameicon').addClass('fal fa-exclamation-triangle');
+                    fname_err.textContent = "Invalid Format";
+                } else {
                     $('#fname').removeClass('is-danger');
                     $('#fnameicon').removeClass('fal fa-exclamation-triangle');
                     fname_err.textContent = "";
+                }
+            }
+
+            function lnamevalid() {
+                newval = $('#lname').val().replace(/[^A-z.\s]/g, "");
+                $('#lname').val(newval);
+                if (lname.value == "") {
+                    $('#lname').addClass('is-danger');
+                    $('#lnameicon').addClass('fal fa-exclamation-triangle');
+                    lname_err.textContent = "Enter your Lastname";
+                } else if (space.test(lname.value) || dot.test(lname.value)) {
+                    $('#lname').addClass('is-danger');
+                    $('#lnameicon').addClass('fal fa-exclamation-triangle');
+                    lname_err.textContent = "Invalid Format";
+                } else {
                     $('#lname').removeClass('is-danger');
                     $('#lnameicon').removeClass('fal fa-exclamation-triangle');
                     lname_err.textContent = "";
-                    $('#email').removeClass('is-danger');
-                    $('#emailicon').removeClass('fal fa-exclamation-triangle');
-                    $('#emailmessage').html('');
+                }
+            }
+
+            function bdayvalid() {
+                if (bday.value == '') {
+                    $('#bday').addClass('is-danger');
+                    $('#bdayicon').addClass('fal fa-exclamation-triangle');
+                    $('#bdaymessage').html('Enter your Birthday');
+                } else {
+                    $('#bday').removeClass('is-danger');
+                    $('#bdayicon').removeClass('fal fa-exclamation-triangle');
+                    $('#bdaymessage').html('');
+                }
+            }
+
+            function cnumbervalid() {
+                newval = $('#cnumber').val().replace(/[^0-9]/g, "");
+                $('#cnumber').val(newval);
+                if (cnumber.value == "") {
+                    $('#cnumber').addClass('is-danger');
+                    $('#cnumbericon').addClass('fal fa-exclamation-triangle');
+                    cnumber_err.textContent = "Enter your Contact number";
+                } else if (!num.test(cnumber.value)) {
+                    $('#cnumber').addClass('is-danger');
+                    $('#cnumbericon').addClass('fal fa-exclamation-triangle');
+                    cnumber_err.textContent = "Invalid Contact number";
+                } else if (cnumber.value.length < 11) {
+                    $('#cnumber').addClass('is-danger');
+                    $('#cnumbericon').addClass('fal fa-exclamation-triangle');
+                    cnumber_err.textContent = "Invalid Contact number";
+                } else {
                     $('#cnumber').removeClass('is-danger');
                     $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
                     cnumber_err.textContent = "";
+                }
+            }
+
+            function emailvalid() {
+                $.post('../User/php/email.php', {
+                    'email': email.value
+                }, function (data) {
+                    exist = data;
+                    if (email.value == '') {
+                        $('#emailmessage').html('Enter your Username');
+                        $('#email').addClass('is-danger');
+                        $('#emailicon').addClass('fal fa-exclamation-triangle');
+                    } else if (email.value.length < 6) {
+                        $('#email').addClass('is-danger');
+                        $('#emailicon').addClass('fal fa-exclamation-triangle');
+                        $('#emailmessage').html('Username must be more than 6 characters!');
+                    } else if (data == "Exist") {
+                        $('#email').addClass('is-danger');
+                        $('#emailicon').addClass('fal fa-exclamation-triangle');
+                        $('#emailmessage').html('Username is already used');
+                    } else if (regex.test(email.value)) {
+                        $('#email').removeClass('is-danger');
+                        $('#emailicon').removeClass('fal fa-exclamation-triangle');
+                        $('#emailmessage').html('');
+                    } else {
+                        $('#email').addClass('is-danger');
+                        $('#emailicon').addClass('fal fa-exclamation-triangle');
+                        $('#emailmessage').html('Invalid Username');
+                    }
+                });
+            }
+
+            function passwordvalid() {
+                if (password.value.length == 0) {
+                    $('#passwordmessage').html('Enter your Password');
+                    $('#password').addClass('is-danger');
+                    $('#passwordicon').addClass('fal fa-exclamation-triangle');
+                } else if (password.value.length < 8) {
+                    $('#password').addClass('is-danger');
+                    $('#passwordicon').addClass('fal fa-exclamation-triangle');
+                    $('#passwordmessage').html('Password must be more than 8 characters!');
+                } else {
                     $('#password').removeClass('is-danger');
                     $('#passwordicon').removeClass('fal fa-exclamation-triangle');
                     $('#passwordmessage').html('');
+                }
+            }
+
+            function cpasswordvalid() {
+                if (cpassword.value.length == 0) {
+                    $('#cpasswordmessage').html('Enter your Password');
+                    $('#cpassword').addClass('is-danger');
+                    $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
+                } else if (cpassword.value.length < 8) {
+                    $('#cpassword').addClass('is-danger');
+                    $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
+                    $('#cpasswordmessage').html('Password must be more than 8 characters!');
+                } else if (cpassword.value != password.value) {
+                    $('#cpasswordmessage').html('Confirm your Password');
+                    $('#cpassword').addClass('is-danger');
+                    $('#cpasswordicon').addClass('fal fa-exclamation-triangle');
+                } else {
                     $('#cpassword').removeClass('is-danger');
                     $('#cpasswordicon').removeClass('fal fa-exclamation-triangle');
                     $('#cpasswordmessage').html('');
                 }
-                function Validate(){
-                    fnamevalid();
-                    lnamevalid();
-                    cnumbervalid();
-                    if($('#operation').val() == 'Add'){
-                        emailvalid();
-                        passwordvalid();
-                        cpasswordvalid();
+            }
+
+            function ValidateAll() {
+                if ($('#operation').val() == 'Add') {
+                    if (space2.test(fname.value)) {
+                        $('#fname').addClass('is-danger');
+                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
+                        fname_err.textContent = "Invalid Format";
                     }
-                    ValidateAll();
-                    return false;
-                }
-                $('#fname').bind('input',function(){
-                    fnamevalid();
-                });
-                $('#lname').bind('input',function(){
-                    lnamevalid();
-                });
-                $('#email').bind('input',function(){
-                    if($('#operation').val() == 'Add'){
-                        emailvalid();
-                    }
-                });
-                $('#cnumber').bind('input',function(){
-                    cnumbervalid();
-                });
-                $('#password').bind('input',function(){
-                    passwordvalid();
-                });
-                $('#cpassword').bind('input',function(){
-                    cpasswordvalid();
-                });
-                $('#fname').blur(function(){
-                    fnamevalid();
-                });
-                $('#lname').blur(function(){
-                    lnamevalid();
-                });
-                $('#bday').blur(function(){
-                    bdayvalid();
-                });
-                $('#email').blur(function(){
-                    emailvalid();
-                });
-                $('#cnumber').blur(function(){
-                    cnumbervalid();
-                });
-                $('#password').blur(function(){
-                    passwordvalid();
-                });
-                $('#cpassword').blur(function(){
-                    cpasswordvalid();
-                });
-                $('#adminadd').click(function(){
-                    clear();
-                    $('#adminmodal').addClass('is-active');
-                    $('#operation').val('Add');
-                    $('#admintitle').html('Add Admin');
-                });
-                $('#cancel').click(function(){
-                    $('#adminmodal').removeClass('is-active');
-                });
-                var dataTable = $('#admintable').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        {
-                            extend: 'print',
-                            exportOptions: {
-                            columns: [0,1,2,3,4]
+                    if (space2.test(lname.value)) {
+                        $('#lname').addClass('is-danger');
+                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
+                        lname_err.textContent = "Invalid Format";
+                    } else if ((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value !=
+                            "") && (password.value != "") && (cpassword.value != "") && !space.test(fname.value) && !
+                        dot.test(fname.value) && !space.test(lname.value) && !dot.test(lname.value) && regex.test(email
+                            .value) && exist != "Exist" && password.value.length > 7 && cpassword.value.length > 7 &&
+                        cnumber.value.length > 10 && password.value == cpassword.value && num.test(cnumber.value) && (
+                            email.value.length > 5) && (bday.value != '')) {
+                        var form = $('#vform').serialize();
+                        $.ajax({
+                            data: form,
+                            method: 'POST',
+                            url: 'php/admin/adminadd.php',
+                            success: function (data) {
+                                $('#adminmodal').removeClass('is-active');
+                                swal({
+                                        title: "Added Successfully",
+                                        text: "",
+                                        icon: "success",
+                                        closeOnClickOutside: false,
+                                    })
+                                    .then((value) => {
+                                        dataTable.ajax.reload()
+                                    });
                             }
-                        }
-                    ],
-                    "order":[],
-                    "ajax":{
-                    url:"php/admin/adminfetch.php",
-                    type:"POST"
+                        });
+                    }
+                }
+                if ($('#operation').val() == 'Edit') {
+                    if (space2.test(fname.value)) {
+                        $('#fname').addClass('is-danger');
+                        $('#fnameicon').addClass('fal fa-exclamation-triangle');
+                        fname_err.textContent = "Invalid Format";
+                    }
+                    if (space2.test(lname.value)) {
+                        $('#lname').addClass('is-danger');
+                        $('#lnameicon').addClass('fal fa-exclamation-triangle');
+                        lname_err.textContent = "Invalid Format";
+                    }
+                    if (password.value.length > 0 && password.value.length < 8) {
+                        passwordvalid();
+                    } else if ((fname.value != "") && (lname.value != "") && (email.value != "") && (cnumber.value !=
+                            "") && !space.test(fname.value) && !dot.test(fname.value) && !space.test(lname.value) && !
+                        dot.test(lname.value) && regex.test(email.value) && cnumber.value.length > 10 && password.value ==
+                        cpassword.value && num.test(cnumber.value) && (bday.value != '')) {
+                        var form = $('#vform').serialize();
+                        $.ajax({
+                            data: form,
+                            method: 'POST',
+                            url: 'php/admin/adminupdate.php',
+                            success: function (data) {
+                                if (data == "Success") {
+                                    $('#adminmodal').removeClass('is-active');
+                                    swal({
+                                            title: "Edit Successfully",
+                                            text: "",
+                                            icon: "success",
+                                            closeOnClickOutside: false,
+                                        })
+                                        .then((value) => {
+                                            dataTable.ajax.reload()
+                                        });
+                                } else {
+                                    swal(data + ' is already exist', '', 'error', {
+                                        closeOnClickOutside: false,
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+
+            function clear() {
+                fname.value = "";
+                lname.value = "";
+                password.value = "";
+                cpassword.value = "";
+                email.value = "";
+                cnumber.value = "";
+                $('#fname').removeClass('is-danger');
+                $('#fnameicon').removeClass('fal fa-exclamation-triangle');
+                fname_err.textContent = "";
+                $('#lname').removeClass('is-danger');
+                $('#lnameicon').removeClass('fal fa-exclamation-triangle');
+                lname_err.textContent = "";
+                $('#email').removeClass('is-danger');
+                $('#emailicon').removeClass('fal fa-exclamation-triangle');
+                $('#emailmessage').html('');
+                $('#cnumber').removeClass('is-danger');
+                $('#cnumbericon').removeClass('fal fa-exclamation-triangle');
+                cnumber_err.textContent = "";
+                $('#password').removeClass('is-danger');
+                $('#passwordicon').removeClass('fal fa-exclamation-triangle');
+                $('#passwordmessage').html('');
+                $('#cpassword').removeClass('is-danger');
+                $('#cpasswordicon').removeClass('fal fa-exclamation-triangle');
+                $('#cpasswordmessage').html('');
+            }
+
+            function Validate() {
+                fnamevalid();
+                lnamevalid();
+                cnumbervalid();
+                if ($('#operation').val() == 'Add') {
+                    emailvalid();
+                    passwordvalid();
+                    cpasswordvalid();
+                }
+                bdayvalid();
+                ValidateAll();
+                return false;
+            }
+            $('#fname').bind('input', function () {
+                fnamevalid();
+            });
+            $('#lname').bind('input', function () {
+                lnamevalid();
+            });
+            $('#email').bind('input', function () {
+                if ($('#operation').val() == 'Add') {
+                    emailvalid();
+                }
+            });
+            $('#cnumber').bind('input', function () {
+                cnumbervalid();
+            });
+            $('#password').bind('input', function () {
+                passwordvalid();
+            });
+            $('#cpassword').bind('input', function () {
+                cpasswordvalid();
+            });
+            $('#fname').blur(function () {
+                fnamevalid();
+            });
+            $('#lname').blur(function () {
+                lnamevalid();
+            });
+            $('#bday').blur(function () {
+                bdayvalid();
+            });
+            $('#email').blur(function () {
+                emailvalid();
+            });
+            $('#cnumber').blur(function () {
+                cnumbervalid();
+            });
+            $('#password').blur(function () {
+                passwordvalid();
+            });
+            $('#cpassword').blur(function () {
+                cpasswordvalid();
+            });
+            $('#adminadd').click(function () {
+                clear();
+                $('#adminmodal').addClass('is-active');
+                $('#operation').val('Add');
+                $('#admintitle').html('Add Admin');
+            });
+            $('#cancel').click(function () {
+                $('#adminmodal').removeClass('is-active');
+            });
+            var dataTable = $('#admintable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
+                }],
+                "order": [],
+                "ajax": {
+                    url: "php/admin/adminfetch.php",
+                    type: "POST"
                 },
-                    "columnDefs":[
-                        {
-                            "targets":[5],
-                            "orderable":false,
-                        },
-                        {
-                            "targets":[0,1,2,3,4],
-                            "render":$.fn.dataTable.render.ellipsis(25),
-                        },
-                        {
-                            "targets":[0,1,2,3,4],
-                            "className":'dt-center',
-                        },
-                    ],
-                });
-                $(document).on('click','button[name="update"]',function(){
+                "columnDefs": [{
+                        "targets": [5],
+                        "orderable": false,
+                    },
+                    {
+                        "targets": [0, 1, 2, 3, 4],
+                        "render": $.fn.dataTable.render.ellipsis(25),
+                    },
+                    {
+                        "targets": [0, 1, 2, 3, 4],
+                        "className": 'dt-center',
+                    },
+                ],
+            });
+            $(document).on('click', 'button[name="update"]', function () {
                 clear();
                 var user_id = $(this).attr("id");
                 $.ajax({
-                    url:"php/admin/adminfetchsingle.php",
-                    method:"POST",
-                    data:{user_id:user_id},
-                    dataType:"json",
-                    success:function(data)
-                    {
-                       $('#adminmodal').addClass('is-active');
-                       $('#fname').val(data.firstname);
-                       $('#lname').val(data.lastname);
-                       $('#email').val(data.username);
-                       $('#cnumber').val(data.cnumber);
-                       // $('#password').val(data.password);
-                       // $('#cpassword').val(data.password);
-                       $('#admintitle').html('Edit Admin');
-                       $('#user_id').val(user_id);
-                       $('#operation').val('Edit');
+                    url: "php/admin/adminfetchsingle.php",
+                    method: "POST",
+                    data: {
+                        user_id: user_id
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        $('#adminmodal').addClass('is-active');
+                        $('#fname').val(data.firstname);
+                        $('#lname').val(data.lastname);
+                        $('#bday').val(data.bday);
+                        $('#email').val(data.username);
+                        $('#cnumber').val(data.cnumber);
+                        // $('#password').val(data.password);
+                        // $('#cpassword').val(data.password);
+                        $('#admintitle').html('Edit Admin');
+                        $('#user_id').val(user_id);
+                        $('#operation').val('Edit');
                     }
                 })
-                });
-                $(document).on('click','button[name="delete"]',function(){
+            });
+            $(document).on('click', 'button[name="delete"]', function () {
                 swal({
-                  title: "Are you sure you want to delete?",
-                  icon: "warning",
-                  buttons: true,
-                  dangerMode: true,
-                })
-                .then((willDelete) => {
-                  if (willDelete) {
-                    var user_id = $(this).attr("id");
-                    $.ajax({
-                        url:"php/admin/admindelete.php",
-                        method:"POST",
-                        data:{user_id:user_id},
-                        success:function(data)
-                        {
-                            if(data == 'Error'){
-                                swal(data,'','error',{
-                                    closeOnClickOutside:false,
-                                });   
-                            }
-                            else{
-                                swal(data,'','success',{
-                                    closeOnClickOutside:false,
-                                });
-                            }
+                        title: "Are you sure you want to delete?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            var user_id = $(this).attr("id");
+                            $.ajax({
+                                url: "php/admin/admindelete.php",
+                                method: "POST",
+                                data: {
+                                    user_id: user_id
+                                },
+                                success: function (data) {
+                                    if (data == 'Error') {
+                                        swal(data, '', 'error', {
+                                            closeOnClickOutside: false,
+                                        });
+                                    } else {
+                                        swal(data, '', 'success', {
+                                            closeOnClickOutside: false,
+                                        });
+                                    }
+                                }
+                            });
+                        } else {
+                            return false;
                         }
                     });
-                  } else {
-                    return false;
-                  }
-                });
-                });
-                document.addEventListener('DOMContentLoaded',function(){
-                    var rootEl = document.documentElement;
-                    var $modals = getAll('.modal');
-                    var $modalButtons = getAll('.modal-button');
-                    var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete');
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var rootEl = document.documentElement;
+                var $modals = getAll('.modal');
+                var $modalButtons = getAll('.modal-button');
+                var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete');
 
-                    if ($modalButtons.length > 0) {
-                        $modalButtons.forEach(function ($el) {
-                          $el.addEventListener('click', function () {
+                if ($modalButtons.length > 0) {
+                    $modalButtons.forEach(function ($el) {
+                        $el.addEventListener('click', function () {
                             var target = $el.dataset.target;
                             var $target = document.getElementById(target);
                             rootEl.classList.add('is-clipped');
                             $target.classList.add('is-active');
-                          });
                         });
-                    }
-                    if ($modalCloses.length > 0) {
-                        $modalCloses.forEach(function ($el) {
-                          $el.addEventListener('click', function () {
-                            closeModals();
-                          });
-                        });
-                    }
-                    document.addEventListener('keydown', function (event) {
-                        var e = event || window.event;
-                        if (e.keyCode === 27) {
-                          closeModals();
-                        }
                     });
-                    function closeModals() {
-                        rootEl.classList.remove('is-clipped');
-                        $modals.forEach(function ($el) {
-                          $el.classList.remove('is-active');
+                }
+                if ($modalCloses.length > 0) {
+                    $modalCloses.forEach(function ($el) {
+                        $el.addEventListener('click', function () {
+                            closeModals();
                         });
+                    });
+                }
+                document.addEventListener('keydown', function (event) {
+                    var e = event || window.event;
+                    if (e.keyCode === 27) {
+                        closeModals();
                     }
-                    function getAll(selector) {
-                        return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
-                    }
-
                 });
-            </script>
-        </body>
-    </html>
-    <?php
+
+                function closeModals() {
+                    rootEl.classList.remove('is-clipped');
+                    $modals.forEach(function ($el) {
+                        $el.classList.remove('is-active');
+                    });
+                }
+
+                function getAll(selector) {
+                    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+                }
+
+            });
+        </script>
+</body>
+
+</html>
+<?php
 }
 else{
     header('Location: ../User/');
