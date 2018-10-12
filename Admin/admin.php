@@ -191,6 +191,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
+                                                        <th style="width:5%"><input type="checkbox" id="checkall"></th>
                                                         <th>First&nbspName</th>
                                                         <th>Last&nbspName</th>
                                                         <th>Username</th>
@@ -202,6 +203,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                 <tbody></tbody>
                                             </table>
                                         </div>
+                                        <button class="button is-danger" id="deleteselected">Delete Selected</button>
                                     </section>
                                 </div>
                             </div>
@@ -306,6 +308,33 @@ if($_COOKIE['role'] == 'Admin'){
                 </footer>
             </div>
         </div>
+        <div class="modal" id="reasonmodal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<form id="reasonform" onsubmit="return Reason()">
+					<header class="modal-card-head">
+						<h1 class="modal-card-title">Reason</h1>
+					</header>
+					<section class="modal-card-body">
+						<div class="field">
+							<div class="control has-icons-right">
+								<textarea name="reason" id="reason" class="textarea" placeholder="Reason"></textarea>
+								<span class="icon is-small is-right">
+									<i id="reasonicon" class=""></i>
+								</span>
+								<p class="help is-danger" id="reasonmessage"></p>
+							</div>
+						</div>
+					</section>
+					<footer class="modal-card-foot">
+						<button class="button is-danger" type="submit" name="btnDelete">Delete</button>
+						<button class="button" id="reasoncancel" type="button">Cancel</button>
+						<input type="hidden" name="reasonid" id="reasonid">
+						<input type="hidden" name="reasonaction" id="reasonaction">
+					</footer>
+				</form>
+			</div>
+		</div>
         <script src="js/jquery.min.js"></script>
         <script src="js/sweetalert.min.js"></script>
         <script src="js/vendor.js"></script>
@@ -314,6 +343,65 @@ if($_COOKIE['role'] == 'Admin'){
         <script src="js/ellipsis.js"></script>
         <script src="../User/js/jquery.datetimepicker.full.min.js"></script>
         <script>
+            $('#reasoncancel').click(function(){
+			    $('#reasonmodal').removeClass('is-active');
+            });
+            $("#checkall").click(function () {
+                $('input:checkbox').not(this).prop('checked', this.checked);
+            });
+            $(document).on('click', 'button[name="delete"]', function () {
+                ReasonClear();
+                var id = $(this).attr('id');
+                $('#reasonaction').val('Delete');
+                $('#reasonmodal').addClass('is-active');
+                $('#reasonid').val(id);
+            });
+            $('#deleteselected').click(function () {
+                ReasonClear();
+                var id = [];
+                $(':checkbox:checked').each(function (i) {
+                    id[i] = $(this).val();
+                });
+                if (id.length === 0) {
+                    swal('Please select atleast one checkbox', '', 'error', {
+                        closeOnClickOutside: false
+                    });
+                } else {
+                    $('#reasonmodal').addClass('is-active');
+                    $('#reasonaction').val('DeleteAll');
+                    $('#reasonid').val(id);
+                }
+            });
+            function ReasonClear(){
+                $('#reason').removeClass('is-danger');
+                $('#reasonicon').removeClass('fal fa-exclamation-triangle');
+                $('#reasonmessage').html('');
+            }
+            function Reason(){
+                if($('#reason').val() == ''){
+                    $('#reason').addClass('is-danger');
+                    $('#reasonicon').addClass('fal fa-exclamation-triangle');
+                    $('#reasonmessage').html('Please provide a reason.');
+                }
+                else{
+                    var form = $('#reasonform').serialize();
+                    $.ajax({
+                        url:'php/admin/admindelete.php',
+                        method:'POST',
+                        data:form,
+                        success:function(data){
+                            $('#reasonmodal').removeClass('is-active');
+                            swal('Data Deleted','','success',{
+                                closeOnClickOutside:false
+                            })
+                            .then((value) => {
+                                dataTable.ajax.reload();
+                            })
+                        }
+                    })
+                }
+                return false;
+            }
             setInterval(function () {
                 notifandcount();
             }, 1000);
@@ -683,15 +771,15 @@ if($_COOKIE['role'] == 'Admin'){
                     type: "POST"
                 },
                 "columnDefs": [{
-                        "targets": [5],
+                        "targets": [0,6],
                         "orderable": false,
                     },
                     {
-                        "targets": [0, 1, 2, 3, 4],
+                        "targets": [1, 2, 3, 4, 5],
                         "render": $.fn.dataTable.render.ellipsis(25),
                     },
                     {
-                        "targets": [0, 1, 2, 3, 4],
+                        "targets": [0, 1, 2, 3, 4, 5],
                         "className": 'dt-center',
                     },
                 ],
@@ -720,39 +808,6 @@ if($_COOKIE['role'] == 'Admin'){
                         $('#operation').val('Edit');
                     }
                 })
-            });
-            $(document).on('click', 'button[name="delete"]', function () {
-                swal({
-                        title: "Are you sure you want to delete?",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            var user_id = $(this).attr("id");
-                            $.ajax({
-                                url: "php/admin/admindelete.php",
-                                method: "POST",
-                                data: {
-                                    user_id: user_id
-                                },
-                                success: function (data) {
-                                    if (data == 'Error') {
-                                        swal(data, '', 'error', {
-                                            closeOnClickOutside: false,
-                                        });
-                                    } else {
-                                        swal(data, '', 'success', {
-                                            closeOnClickOutside: false,
-                                        });
-                                    }
-                                }
-                            });
-                        } else {
-                            return false;
-                        }
-                    });
             });
             document.addEventListener('DOMContentLoaded', function () {
                 var rootEl = document.documentElement;
