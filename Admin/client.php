@@ -294,7 +294,7 @@ if($_COOKIE['role'] == 'Admin'){
                 </footer>
             </div>
         </div>
-         <div class="modal" id="reasonmodal">
+        <div class="modal" id="reasonmodal">
 			<div class="modal-background"></div>
 			<div class="modal-card">
 				<form id="reasonform" onsubmit="return Reason()">
