@@ -18,7 +18,9 @@
 			$sql = mysqli_query($con,"SELECT category FROM category WHERE id = $newid");
 			$name = mysqli_fetch_array($sql);
 			mysqli_query($con,"UPDATE category SET deleted = 1, date_deleted = '$date' WHERE id = $newid");
-			mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Category','$user','$description')");
+			if($name != ''){
+				mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Brand','$user','$description')");
+			}
 		}
 	}
 ?>

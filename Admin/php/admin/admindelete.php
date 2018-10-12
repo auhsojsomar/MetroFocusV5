@@ -17,7 +17,6 @@ else{
 			$sql = mysqli_query($con,"SELECT username FROM loginform WHERE id = $id");
 			$name = mysqli_fetch_array($sql);
 			mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Admin','$user','$description')");
-			echo "Data Deleted";
 		}
 	}
 	else if($action == 'DeleteAll'){
@@ -26,8 +25,9 @@ else{
 			if(mysqli_query($con,"UPDATE loginform SET deleted = 1, date_deleted = '$date' WHERE id = $newid")){
 				$sql = mysqli_query($con,"SELECT username FROM loginform WHERE id = $newid");
 				$name = mysqli_fetch_array($sql);
-				mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Admin','$user','$description')");
-				echo "Data Deleted";
+				if($name != ''){
+					mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Brand','$user','$description')");
+				}
 			}
 		}
 	}

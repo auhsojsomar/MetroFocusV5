@@ -18,7 +18,9 @@ else if($action == 'DeleteAll'){
 		$sql = mysqli_query($con,"SELECT name FROM accessories WHERE id = $newid");
 		$name = mysqli_fetch_array($sql);
 		mysqli_query($con,"UPDATE accessories SET deleted = 1, date_deleted = '$date' WHERE id = $newid");
-		mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Accessories','$user','$description')");
+		if($name != ''){
+			mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Brand','$user','$description')");
+		}
 	}
 }
 ?>
