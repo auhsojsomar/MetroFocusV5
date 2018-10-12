@@ -21,5 +21,4 @@
 			mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$name[0]','Deleted','$date','Brand','$user','$description')");
 		}
 	}
-
- ?>
+?>
