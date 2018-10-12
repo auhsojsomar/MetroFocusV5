@@ -259,6 +259,7 @@ if($_COOKIE['role'] == 'Admin'){
 						<button class="button is-danger" type="submit" name="btnDelete">Delete</button>
 						<button class="button" id="reasoncancel" type="button">Cancel</button>
 						<input type="hidden" name="reasonid" id="reasonid">
+						<input type="hidden" name="reasonaction" id="reasonaction">
 					</footer>
 				</form>
 			</div>
@@ -296,6 +297,9 @@ if($_COOKIE['role'] == 'Admin'){
 						$('#reasonmodal').removeClass('is-active');
 						swal('Data Deleted','','success',{
 							closeOnClickOutside:false
+						})
+						.then((value) => {
+							dataTable.ajax.reload();
 						})
 					}
 				})
@@ -377,6 +381,7 @@ if($_COOKIE['role'] == 'Admin'){
 		});
 		$(document).on('click', 'button[name="delete"]', function () {
 			var id = $(this).attr('id');
+			$('#reasonaction').val('Delete');
 			$('#reasonmodal').addClass('is-active');
 			$('#reasonid').val(id);
 		});
@@ -390,29 +395,9 @@ if($_COOKIE['role'] == 'Admin'){
 					closeOnClickOutside: false
 				});
 			} else {
-				swal('Are you sure you want to delete?', '', 'warning', {
-						buttons: true,
-						dangerMode: true,
-					})
-					.then((value) => {
-						if (value) {
-							$.ajax({
-								url: 'php/brand/brandmul',
-								method: 'POST',
-								data: {
-									id: id
-								},
-								success: function (data) {
-									swal('Data Deleted', '', 'success', {
-											closeOnClickOutside: false
-										})
-										.then((value) => {
-											dataTable.ajax.reload();
-										})
-								}
-							})
-						}
-					})
+				$('#reasonmodal').addClass('is-active');
+				$('#reasonaction').val('DeleteAll');
+				$('#reasonid').val(id);
 			}
 		});
 		var br = document.forms['vform']['brand'];
