@@ -182,7 +182,8 @@ if($_COOKIE['role'] == 'Admin'){
                                                 <div class="table-responsive">
                                                     <table id="partstable" class="table table-bordered table-striped table-hover nowrap" style="width:100%">
                                                     <thead>
-                                                        <tr >
+                                                        <tr>
+                                                            <th>Reservation ID</th>
                                                             <th>Username</th>
                                                             <th>Reservation Date</th>
                                                             <th>Item Name</th>
@@ -213,7 +214,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                     <table id="accessoriestable" class="table table-bordered table-striped table-hover nowrap" style="width:100%">
                                                     <thead>
                                                         <tr >
-                                                            <th>Username</th>
+                                                            <th>Reservation ID</th>
                                                             <th>Reservation Date</th>
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
