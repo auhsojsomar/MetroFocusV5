@@ -355,7 +355,7 @@ if($_COOKIE['role'] == 'Admin'){
 			buttons: [{
 				extend: 'print',
 				exportOptions: {
-					columns: [0]
+					columns: [1]
 				}
 			}],
 			"order": [],
