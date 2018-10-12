@@ -182,7 +182,7 @@ $sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user' OR
                                 <td><?php echo $row['schedule'] ?></td>
                                 <td><?php echo $row['status'] ?></td>
                                 <?php
-                                if($row['status'] != 'Canceled'  && $row['status'] != 'Done'){
+                                if($row['status'] != 'Canceled'  && $row['status'] != 'Done' && $row['status'] != 'Reject' && $row['status'] != 'Confirmed'){
                                     echo '<td><button id="'.$row["id"].'" name="cancel" class="button is-danger" type="button">Cancel</button></td>';
                                 }
                                 ?>
@@ -227,7 +227,7 @@ $sql2 = mysqli_query($con,"SELECT * FROM reservation WHERE username = '$user' OR
 								<td><?php echo $row['reservationdate'] ?></td>
 								<td><?php echo $row['status'] ?></td>
 								<?php
-								if($row['status'] != 'Canceled' && $row['status'] != 'Done'){
+								if($row['status'] != 'Canceled' && $row['status'] != 'Done' && $row['status'] != 'Reject' && $row['status'] != 'Confirmed' ){
 									echo '<td><button id="'.$row["id"].'" name="cancel2" class="button is-danger" type="button">Cancel</button></td>';
 								}
 								?>

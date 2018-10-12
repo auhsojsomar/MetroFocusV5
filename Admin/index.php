@@ -222,17 +222,29 @@ if($_COOKIE['role'] == 'Admin'){
                 <section class="section">
                     <div class="columns is-multiline">
                         <div class="column is-6">
-                            <nav class="panel">
+                            <nav class="panel" style="background-color: rgb(255,255,255, 0.9);">
                                 <p class="panel-heading">
                                     Recent Activities
                                 </p>
                                 <a class="panel-block is-active">
-                                    <strong>Admin1 </strong>&nbsp;added CANON PIXMA to Camera Parts
+                                    <strong>Admin </strong>&nbsp;added CANON PIXMA to Camera Parts
+                                </a>
+                                <a class="panel-block is-active">
+                                    <strong>Admin </strong>&nbsp;added Canon EOS 5D Mark II 5D 2 to Camera Parts
+                                </a>
+                                <a class="panel-block is-active">
+                                    <strong>Admin </strong>&nbsp;added Canon 5D Mark to Camera Accessories
+                                </a>
+                                <a class="panel-block is-active">
+                                    <strong>Admin </strong>&nbsp;added Fuji XA10 to Camera Accessories
+                                </a>
+                                <a class="panel-block is-active">
+                                    <strong>Admin </strong>&nbsp;added Nikon SB700 to Camera Parts
                                 </a>
                             </nav>
                         </div>
                         <div class="column is-6">
-                            <nav class="panel">
+                            <nav class="panel" style="background-color: rgb(255,255,255, 0.9);">
                                 <p class="panel-heading">
                                     Top Items
                                 </p>
