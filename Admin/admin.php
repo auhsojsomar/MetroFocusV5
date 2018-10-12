@@ -391,12 +391,18 @@ if($_COOKIE['role'] == 'Admin'){
                         data:form,
                         success:function(data){
                             $('#reasonmodal').removeClass('is-active');
-                            swal('Data Deleted','','success',{
-                                closeOnClickOutside:false
-                            })
-                            .then((value) => {
-                                dataTable.ajax.reload();
-                            })
+                            if(data == 'Error'){
+                                swal('Error','','error',{
+                                    closeOnClickOutside:false
+                                })
+                            }else{
+                                swal('Data Deleted','','success',{
+                                    closeOnClickOutside:false
+                                })
+                                .then((value) => {
+                                    dataTable.ajax.reload();
+                                })
+                            }
                         }
                     })
                 }
