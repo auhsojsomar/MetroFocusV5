@@ -221,6 +221,7 @@ if($_COOKIE['role'] == 'Admin'){
                                                     <tbody></tbody>
                                                 </table>
                                             </div>
+                                            <button type="button" class="button is-warning" id="restoreselected">Restore Selected</button>
                                             <button type="button" class="button is-danger" id="deleteselected">Delete Selected</button>
                                         </section>
                                     </div>
@@ -304,7 +305,7 @@ if($_COOKIE['role'] == 'Admin'){
             $.ajax({
                 url:'php/trash/restore.php',
                 method:'POST',
-                data:{id : id,type : $('#reasontype').val()},
+                data:{id : id,type : 'Brand',restoreaction : 'Restore'},
                 success:function(data){
                     swal('Data Recovered','','success',{
                         closeOnClickOutside:false
@@ -325,7 +326,19 @@ if($_COOKIE['role'] == 'Admin'){
                     closeOnClickOutside: false
                 });
             } else {
-                
+                $.ajax({
+                url:'php/trash/restore.php',
+                method:'POST',
+                data:{id : id,type : 'Brand',restoreaction : 'RestoreAll'},
+                success:function(data){
+                    swal('Data Recovered','','success',{
+                        closeOnClickOutside:false
+                    })
+                    .then((value) => {
+                        dataTable.ajax.reload();
+                    })
+                }
+            })
             }
         });
         function ReasonClear() {
