@@ -160,10 +160,34 @@ if($_COOKIE['role'] == 'Admin'){
                                     <i class="fal fa-pen"></i> Activity Logs
                                 </a>
                             </li>
-                            <li class="active">
-                                <a href="#">
+                            <li class="active open">
+                                <a href="">
                                     <i class="fal fa-trash"></i> Trash
+                                    <i class="fa arrow"></i>
                                 </a>
+                                <ul class="sidebar-nav">
+                                    <li class="active">
+                                        <a href="#"> Brand</a>
+                                    </li>
+                                    <li>
+                                        <a href="categorytrash.php"> Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="partstrash.php"> Parts</a>
+                                    </li>
+                                    <li>
+                                        <a href="accessoriestrash.php"> Accessories</a>
+                                    </li>
+                                    <li>
+                                        <a href="admintrash.php"> Admin</a>
+                                    </li>
+                                    <li>
+                                        <a href="clienttrash.php"> Registered Users</a>
+                                    </li>
+                                    <li>
+                                        <a href="faqtrash.php"> FAQ</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </nav>
@@ -290,6 +314,19 @@ if($_COOKIE['role'] == 'Admin'){
                     })
                 }
             })
+        });
+        $('#restoreselected').click(function () {
+            var id = [];
+            $(':checkbox:checked').each(function (i) {
+                id[i] = $(this).val();
+            });
+            if (id.length === 0) {
+                swal('Please select atleast one checkbox', '', 'error', {
+                    closeOnClickOutside: false
+                });
+            } else {
+                
+            }
         });
         function ReasonClear() {
             $('#reason').removeClass('is-danger');
