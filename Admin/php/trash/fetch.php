@@ -1,0 +1,19 @@
+<?php
+    include '../../../User/includes/db.php';
+    $type = $_POST['type'];
+    if($type == 'Brand'){
+        $sql = mysqli_query($con,"SELECT * FROM brand WHERE deleted = 1 ORDER BY id DESC");
+        $output = array('data' => array());
+        while($row = mysqli_fetch_array($sql)){
+            $check = '<input type="checkbox" id="'.$row['id'].'">';
+            $button = '<button style="width:50px" type="button" name="restore" id="'.$row["id"].'" class="button is-warning is-small"><i class="far fa-undo"></i> Restore</button><button style="width:50px" type="button" name="delete" id="'.$row["id"].'" class="button is-danger is-small"><i class="fal fa-trash-alt"></i> Delete</button>';
+            $output['data'][] = array(
+                $check,
+                $row['brand'],
+                $row['date_deleted'],
+                $button
+            );
+        }
+        echo json_encode($output);
+    }
+?>
