@@ -115,4 +115,22 @@
             }
         }
     }
+    else if($type == 'FAQ'){
+        if($action == 'Restore'){
+            $sql = mysqli_query($con,"SELECT question FROM faq WHERE id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$row[0]','Recover','$date','FAQ','$user')");
+            mysqli_query($con,"UPDATE faq SET deleted = 0 WHERE id = $id");
+        }
+        else if($action == 'RestoreAll'){
+            foreach($id as $newid){
+                $sql = mysqli_query($con,"SELECT question FROM faq WHERE id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$row[0]','Recover','$date','FAQ','$user')");
+                }
+                mysqli_query($con,"UPDATE faq SET deleted = 0 WHERE id = $newid");
+            }
+        }
+    }
 ?>
