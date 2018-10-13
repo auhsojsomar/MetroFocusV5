@@ -94,7 +94,7 @@ if($_COOKIE['role'] == 'Admin'){
             <aside class="sidebar">
                 <div class="sidebar-container">
                     <div class="sidebar-header">
-                        <div class="parts">
+                        <div class="brand">
                             <div style="text-align: center;margin-left: -30px;"><span style="font-size: 25px;font-weight: bold;">Metro</span><span
                                     style="font-size: 25px;color: #FF7100;font-weight:bold;">Focus</span></div>
                         </div>
