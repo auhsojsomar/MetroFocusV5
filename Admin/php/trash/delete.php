@@ -84,4 +84,23 @@
             }
         }
     }
+    else if($type == 'Admin'){
+        if($action == 'Delete'){
+            $sql = mysqli_query($con,"SELECT username FROM loginform WHERE status='Admin' AND id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Admin','$user','$description')");
+            mysqli_query($con,"DELETE FROM loginform WHERE id = $id");
+        }
+        else if($action == 'DeleteAll'){
+            $array = explode(',',$id);
+            foreach($array as $newid){
+                $sql = mysqli_query($con,"SELECT username FROM loginform WHERE status='Admin' AND id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row[0] != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Admin','$user','$description')");
+                }
+                mysqli_query($con,"DELETE FROM loginform WHERE id = $newid");
+            }
+        }
+    }
 ?>
