@@ -158,34 +158,34 @@ if($_COOKIE['role'] == 'Admin'){
                                         </a>
                                     </li>
                                     <li>
-                                <a href="">
-                                    <i class="fal fa-trash"></i> Trash
-                                    <i class="fa arrow"></i>
-                                </a>
-                                <ul class="sidebar-nav">
-                                    <li>
-                                        <a href="brandtrash.php"> Brand</a>
+                                        <a href="">
+                                            <i class="fal fa-trash"></i> Trash
+                                            <i class="fa arrow"></i>
+                                        </a>
+                                        <ul class="sidebar-nav">
+                                            <li>
+                                                <a href="brandtrash.php"> Brand</a>
+                                            </li>
+                                            <li>
+                                                <a href="categorytrash.php"> Category</a>
+                                            </li>
+                                            <li>
+                                                <a href="partstrash.php"> Parts</a>
+                                            </li>
+                                            <li>
+                                                <a href="accessoriestrash.php"> Accessories</a>
+                                            </li>
+                                            <li>
+                                                <a href="admintrash.php"> Admin</a>
+                                            </li>
+                                            <li>
+                                                <a href="clienttrash.php"> Registered Users</a>
+                                            </li>
+                                            <li>
+                                                <a href="faqtrash.php"> FAQ</a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li>
-                                        <a href="categorytrash.php"> Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="partstrash.php"> Parts</a>
-                                    </li>
-                                    <li>
-                                        <a href="accessoriestrash.php"> Accessories</a>
-                                    </li>
-                                    <li>
-                                        <a href="admintrash.php"> Admin</a>
-                                    </li>
-                                    <li>
-                                        <a href="clienttrash.php"> Registered Users</a>
-                                    </li>
-                                    <li>
-                                        <a href="faqtrash.php"> FAQ</a>
-                                    </li>
-                                </ul>
-                            </li>
                                 </ul>
                             </nav>
                         </div>  
