@@ -43,4 +43,22 @@
             }
         }
     }
+    else if($type == 'Parts'){
+        if($action == 'Restore'){
+            $sql = mysqli_query($con,"SELECT name FROM parts WHERE id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$row[0]','Recover','$date','Parts','$user')");
+            mysqli_query($con,"UPDATE parts SET deleted = 0 WHERE id = $id");
+        }
+        else if($action == 'RestoreAll'){
+            foreach($id as $newid){
+                $sql = mysqli_query($con,"SELECT name FROM parts WHERE id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user)VALUES('$row[0]','Recover','$date','Parts','$user')");
+                }
+                mysqli_query($con,"UPDATE parts SET deleted = 0 WHERE id = $newid");
+            }
+        }
+    }
 ?>

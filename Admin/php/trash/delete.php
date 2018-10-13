@@ -46,4 +46,23 @@
             }
         }
     }
+    else if($type == 'Parts'){
+        if($action == 'Delete'){
+            $sql = mysqli_query($con,"SELECT name FROM parts WHERE id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Parts','$user','$description')");
+            mysqli_query($con,"DELETE FROM parts WHERE id = $id");
+        }
+        else if($action == 'DeleteAll'){
+            $array = explode(',',$id);
+            foreach($array as $newid){
+                $sql = mysqli_query($con,"SELECT name FROM parts WHERE id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row[0] != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Parts','$user','$description')");
+                }
+                mysqli_query($con,"DELETE FROM parts WHERE id = $newid");
+            }
+        }
+    }
 ?>
