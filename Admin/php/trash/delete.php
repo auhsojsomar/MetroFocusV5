@@ -27,4 +27,23 @@
             }
         }
     }
+    else if($type == 'Category'){
+        if($action == 'Delete'){
+            $sql = mysqli_query($con,"SELECT category FROM category WHERE id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Category','$user','$description')");
+            mysqli_query($con,"DELETE FROM category WHERE id = $id");
+        }
+        else if($action == 'DeleteAll'){
+            $array = explode(',',$id);
+            foreach($array as $newid){
+                $sql = mysqli_query($con,"SELECT category FROM category WHERE id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row[0] != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Category','$user','$description')");
+                }
+                mysqli_query($con,"DELETE FROM category WHERE id = $newid");
+            }
+        }
+    }
 ?>
