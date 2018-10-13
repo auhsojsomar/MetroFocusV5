@@ -103,4 +103,23 @@
             }
         }
     }
+    else if($type == 'Registered Users'){
+        if($action == 'Delete'){
+            $sql = mysqli_query($con,"SELECT username FROM loginform WHERE status='User' AND id = $id");
+            $row = mysqli_fetch_array($sql);
+            mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Registered Users','$user','$description')");
+            mysqli_query($con,"DELETE FROM loginform WHERE id = $id");
+        }
+        else if($action == 'DeleteAll'){
+            $array = explode(',',$id);
+            foreach($array as $newid){
+                $sql = mysqli_query($con,"SELECT username FROM loginform WHERE status='User' AND id = $newid");
+                $row = mysqli_fetch_array($sql);
+                if($row[0] != ''){
+                    mysqli_query($con,"INSERT INTO activitylogs (name,action,datemod,type,user,description)VALUES('$row[0]','Permanent Delete','$date','Registered Users','$user','$description')");
+                }
+                mysqli_query($con,"DELETE FROM loginform WHERE id = $newid");
+            }
+        }
+    }
 ?>
