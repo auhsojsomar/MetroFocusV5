@@ -294,6 +294,10 @@ if($_COOKIE['role'] == 'Admin'){
 	<script src="js/vendor.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/datatables.min.js"></script>
+	<script src="js/buttons.html5.min.js"></script>
+	<script src="js/pdfmake.min.js"></script>
+	<script src="js/vfs_fonts.js"></script>
+	<script src="js/jszip.min.js"></script>
 	<script src="js/ellipsis.js"></script>
 	<!-- <script src="js/button.js"></script>
 <script src="js/print.js"></script> -->
@@ -376,12 +380,26 @@ if($_COOKIE['role'] == 'Admin'){
 		});
 		var dataTable = $('#categorytable').DataTable({
 			dom: 'Bfrtip',
-			buttons: [{
-				extend: 'print',
-				exportOptions: {
-					columns: [1]
+			buttons: [
+				{
+					extend: 'print',
+					exportOptions: {
+						columns: [1]
+					}
+				},
+				{
+					extend: 'excel',
+					exportOptions: {
+						columns: [1]
+					}
+				},
+				{
+					extend: 'pdf',
+					exportOptions: {
+						columns: [1]
+					}
 				}
-			}],
+			],
 			"order": [],
 			"ajax": {
 				url: "php/category/categoryfetch.php",

@@ -293,6 +293,10 @@ if($_COOKIE['role'] == 'Admin'){
             <script src="js/vendor.js"></script>
             <script src="js/app.js"></script>
             <script src="js/datatables.min.js"></script>
+            <script src="js/buttons.html5.min.js"></script>
+            <script src="js/pdfmake.min.js"></script>
+            <script src="js/vfs_fonts.js"></script>
+            <script src="js/jszip.min.js"></script>
             <script src="js/ellipsis.js"></script>
             <script>
             setInterval(function(){
@@ -324,6 +328,18 @@ if($_COOKIE['role'] == 'Admin'){
                 buttons: [
                     {
                         extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
                         exportOptions: {
                            columns: [0,1,2,3,4]
                         }
@@ -410,6 +426,18 @@ if($_COOKIE['role'] == 'Admin'){
                 buttons: [
                     {
                         extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
                         exportOptions: {
                            columns: [0,1,2,3,4]
                         }
