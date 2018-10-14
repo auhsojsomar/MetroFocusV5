@@ -119,7 +119,7 @@ else{
         <div class="container">
             <div class="columns is-multiline is-centered">
                 <div class="column is-half">
-                    <form onsubmit="return NewPass();">
+                    <form id="form" onsubmit="return NewPass();">
                         <h1 style="color: white" class="has-text-centered title is-cursor-pointer is-size-1-touch">
                             Metro<span style="color: #FF7100">Focus</span>
                         </h1>
@@ -166,7 +166,59 @@ else{
 <script src="../js/sweetalert.min.js"></script>
 <script src="../js/navbar-burger.js"></script>
 <script>
+var bool = false;
+function verifyPass(pass,passicon,passmessage,cpass){
+    if(pass.val() == ''){
+        pass.addClass('is-danger');
+        passicon.addClass('fal fa-exclamation-triangle');
+        passmessage.html('Enter your Password');
+        bool = false;
+    }
+    else if(pass.val().length < 8){
+        pass.addClass('is-danger');
+        passicon.addClass('fal fa-exclamation-triangle');
+        passmessage.html('Password must be more than 8 characters!');
+        bool = false;
+    }
+    else if(cpass.val() != pass.val()){
+        pass.addClass('is-danger');
+        passicon.addClass('fal fa-exclamation-triangle');
+        passmessage.html('Confirm your password');
+        bool = false;
+    }
+    else{
+        pass.removeClass('is-danger');
+        passicon.removeClass('fal fa-exclamation-triangle');
+        passmessage.html('');
+        bool = true;
+    }
+    
+}
+$('#password').bind('input',function(){
+    verifyPass($('#password'),$('#passwordicon'),$('#passwordmessage'),$('#password'));
+})
+$('#cpassword').bind('input',function(){
+    verifyPass($('#cpassword'),$('#cpasswordicon'),$('#cpasswordmessage'),$('#password'));
+})
 function NewPass(){
+    verifyPass($('#password'),$('#passwordicon'),$('#passwordmessage'),$('#password'));
+    verifyPass($('#cpassword'),$('#cpasswordicon'),$('#cpasswordmessage'),$('#password'));
+    if(bool){
+        var form = $('#form').serialize();
+        $.ajax({
+            url:'../php/newpass.php',
+            method:'POST',
+            data:form,
+            success:function(data){
+                swal('Password changed','','success',{
+                    closeOnClickOutside:false
+                })
+                .then((value) => {
+                    window.location = 'loginpage.php';
+                })
+            }
+        })
+    }
     return false;
 }
 </script>
