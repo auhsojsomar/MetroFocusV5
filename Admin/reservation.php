@@ -331,6 +331,18 @@ if($_COOKIE['role'] == 'Admin'){
                         exportOptions: {
                            columns: [0,1,2,3,4]
                         }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
                     }
                 ],
                 "order":[],
@@ -414,6 +426,18 @@ if($_COOKIE['role'] == 'Admin'){
                 buttons: [
                     {
                         extend: 'print',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                           columns: [0,1,2,3,4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
                         exportOptions: {
                            columns: [0,1,2,3,4]
                         }

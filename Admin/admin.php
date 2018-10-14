@@ -793,12 +793,26 @@ if($_COOKIE['role'] == 'Admin'){
             });
             var dataTable = $('#admintable').DataTable({
                 dom: 'Bfrtip',
-                buttons: [{
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4]
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
                     }
-                }],
+                ],
                 "order": [],
                 "ajax": {
                     url: "php/admin/adminfetch.php",

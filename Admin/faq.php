@@ -491,12 +491,26 @@ if($_COOKIE['role'] == 'Admin'){
             });
             var dataTable = $('#faqtable').DataTable({
                 dom: 'Bfrtip',
-                buttons: [{
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [0, 1]
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
                     }
-                }],
+                ],
                 "order": [],
                 "ajax": {
                     url: 'php/faq/faqfetch.php',

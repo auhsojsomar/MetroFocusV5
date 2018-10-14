@@ -377,12 +377,26 @@ if($_COOKIE['role'] == 'Admin'){
         }
         var dataTable = $('#clienttable').DataTable({
                 dom: 'Bfrtip',
-                buttons: [{
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [1,2]
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [1,2]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [1,2]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [1,2]
+                        }
                     }
-                }],
+                ],
                 "order": [],
                 "ajax": {
                     url: "php/trash/fetch.php",
