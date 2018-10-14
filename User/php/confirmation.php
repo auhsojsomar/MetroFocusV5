@@ -33,7 +33,7 @@
         $row = mysqli_fetch_assoc($sql);
         $cn = $row['cnumber'];
         $rand = rand(100000,999999);
-        // include_once 'code.php';
+        include_once 'code.php';
         mysqli_query($con,"UPDATE loginform SET newpass = '$rand' WHERE username = '$fuser'");
         $_SESSION['newpass'] = $fuser;
     }
