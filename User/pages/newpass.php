@@ -130,7 +130,7 @@ else{
                                     <input class="input is-rounded" id="password" name="password" type="password"
                                         placeholder="Password">
                                     <span class="icon is-small is-left">
-                                        <i class="fal fa-key"></i>
+                                        <i class="fal fa-lock"></i>
                                     </span>
                                     <span class="icon is-small is-right">
                                         <i id="passwordicon" class=""></i>
@@ -144,7 +144,7 @@ else{
                                     <input class="input is-rounded" id="cpassword" name="cpassword" type="password"
                                         placeholder="Password">
                                     <span class="icon is-small is-left">
-                                        <i class="fal fa-key"></i>
+                                        <i class="fal fa-lock"></i>
                                     </span>
                                     <span class="icon is-small is-right">
                                         <i id="cpasswordicon" class=""></i>
