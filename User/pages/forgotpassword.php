@@ -155,22 +155,11 @@ else{
 <script>
 	// var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-
-	function Forgot() {
-		if ($('#email').val() == '') {
-			$('#emailmessage').html('Enter your username');
-		}
-		if (regex.test($('#email').val())) {
-			$('#email').removeClass('is-danger');
-			$('#emailicon').removeClass('fal fa-exclamation-triangle');
-		} else {
-			$('#email').addClass('is-danger');
-			$('#emailicon').addClass('fal fa-exclamation-triangle');
-		}
-		return false;
-		}
-	$('#email').bind('input', function () {
+	var check = '';
+	
+	function emailverif(){
 		$.post('../php/email.php', {email: $('#email').val()}, function(data) {
+			check = data;
 			if ($('#email').val() == '') {
 				$('#emailmessage').html('Enter your username');
 				$('#email').addClass('is-danger');
@@ -195,7 +184,31 @@ else{
 				$('#emailmessage').html('Invalid Username');
 			}
 		});
+	}
+	function verif(){
+		if($('#email').val() != '' && regex.test($('#email').val()) && check == 'Exist'){
+			var user = $('#email').val();
+			$.ajax({
+				url:'../php/confirmation.php',
+				method:'POST',
+				data:{
+					fuser : user,
+					type : 'NewPass'
+				},
+				success:function(data){
+					window.location = '../pages/confirmation.php';
+				}
+			})
+		}
+	}
+	$('#email').bind('input', function () {
+	emailverif();
 	});
+	function Forgot() {
+		emailverif();
+		verif();
+		return false;
+	}
 </script>
 <?php
 }

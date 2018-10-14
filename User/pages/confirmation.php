@@ -164,21 +164,27 @@ else{
 				url: '../php/confirmation.php',
 				method: 'POST',
 				data: {
-					code: code
+					code : code,
+					type : 'Confirm' 
 				},
 				success: function (data) {
-					if (data != 'Success') {
+					if (data == 'Invalid code') {
 						swal(data, '', 'error', {
 							closeOnClickOutside: false
 						})
-					} else {
-						swal(data, '', 'success', {
-								closeOnClickOutside: false
-							})
-							.then((value) => {
-								window.location = 'loginpage.php';
-							})
 					}
+					else if(data == 'New'){
+						window.location = 'newpass.php';
+					}
+					else if(data == 'Success') {
+						swal(data, '', 'success', {
+							closeOnClickOutside: false
+						})
+						.then((value) => {
+							window.location = 'loginpage.php';
+						})
+					}
+					
 				}
 			})
 		}
