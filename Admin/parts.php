@@ -463,6 +463,10 @@ if($_COOKIE['role'] == 'Admin'){
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
         <script src="js/datatables.min.js"></script>
+        <script src="js/buttons.html5.min.js"></script>
+        <script src="js/pdfmake.min.js"></script>
+        <script src="js/vfs_fonts.js"></script>
+        <script src="js/jszip.min.js"></script>
         <script src="js/ellipsis.js"></script>
         <script>
             $('#reasoncancel').click(function(){
@@ -547,12 +551,26 @@ if($_COOKIE['role'] == 'Admin'){
             });
             var dataTable = $('#partstable').DataTable({
                 dom: 'Bfrtip',
-                buttons: [{
-                    extend: 'print',
-                    exportOptions: {
-                        columns: [2, 3, 4, 5]
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [2, 3, 4, 5]
+                        }
                     }
-                }],
+                ],
                 "order": [],
                 "ajax": {
                     url: "php/parts/partsfetch.php",
