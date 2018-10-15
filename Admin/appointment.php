@@ -328,7 +328,7 @@ if($_COOKIE['role'] == 'Admin'){
                     {
                         extend: 'print',
                         exportOptions: {
-                           columns: [0,1,2,3,4,5]
+                           columns: [0,1,2,3,4]
                         }
                     },
                     {
