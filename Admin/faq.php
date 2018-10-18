@@ -521,7 +521,7 @@ if($_COOKIE['role'] == 'Admin'){
                         "orderable": false,
                     },
                     {
-                        "targets": [0, 1],
+                        "targets": [1,2],
                         "render": $.fn.dataTable.render.ellipsis(50),
                     },
                     {
