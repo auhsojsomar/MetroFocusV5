@@ -22,5 +22,5 @@ if(isset($_COOKIE['email'])){
 
 	<link rel="stylesheet" href="css/home.css">
 	<link rel="stylesheet" href="node_modules/bulma-extensions/bulma-badge/dist/css/bulma-badge.min.css">
-	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/animate.css">
 </head>

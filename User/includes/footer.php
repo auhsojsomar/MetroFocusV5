@@ -43,12 +43,12 @@
 		</div>
 		<!-- <a title="Back to top" href="#top" class="to-top"><i class="fas fa-chevron-circle-up"></i></a> -->
 </footer>
-	<a id="elm" title="Back to top" class="to-top"><i id="jumpicon" class="fal fa-chevron-circle-up"></i></a>
+	<a id="elm" title="Back to top"z class="to-top"><i id="jumpicon" class="fal fa-chevron-circle-up"></i></a>
 	<!-- footer end -->
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/navbar-burger.js"></script>
-	<script src="js/wow.min.js"></script>
+	<script src="js/wow.js"></script>
 	<script>
 		new WOW().init();
 	<?php
