@@ -13,4 +13,4 @@ while($row = mysqli_fetch_array($sql)){
 	);
 }
 echo json_encode($output);
- ?>
+?>
